@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stepping by 5 - Multiples of 5 and of 7 - C++ Loops Midterm Review</title>
+<link rel="stylesheet" href="../assets/viewer.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#9881;</text></svg>">
+</head>
+<body>
+
+<div class="app">
+  <div class="scrim" id="scrim"></div>
+  <nav class="sidebar">
+    <div class="brand">
+      <div class="logo">C++</div>
+      <div>
+        <b>Loops Midterm Review</b>
+        <small>31 annotated examples</small>
+      </div>
+    </div>
+    <div class="side-tools">
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <input id="search" type="search" placeholder="Search all files and code..." autocomplete="off">
+        <button id="searchClear" title="Clear search" style="visibility:hidden">&times;</button>
+      </div>
+      <div class="progress-row">
+        <span id="progLabel">0 / 31 studied</span>
+        <span class="bar"><i id="barFill"></i></span>
+        <button class="btn-mini" id="resetBtn" hidden>reset</button>
+      </div>
+    </div>
+    <div class="nav" id="nav"></div>
+  </nav>
+
+  <main class="main">
+    <div class="topbar">
+      <button class="icon-btn nav-only" id="navToggle" title="Show file list">&#9776;</button>
+      <div class="crumb">
+        <span>02_for_loops</span> / <b>07_increment_by_5.cpp</b>
+      </div>
+      <span class="spacer"></span>
+      <button class="icon-btn" id="topKeys" title="Keyboard shortcuts (?)">?</button>
+      <button class="icon-btn" id="themeBtn" title="Toggle light / dark (t)">&#9680;</button>
+    </div>
+
+    <div class="scroll">
+      <div class="wrap">
+
+        <!-- ============ THE BARE PROGRAM (comments removed) =========== -->
+        <div class="card bare-card">
+          <header><i class="dot"></i><h2>The program, comments removed</h2><span class="badge ok">the code you would write in the exam</span><span class="spacer"></span><span class="badge">43 lines (from 298)</span></header>
+          <div class="toolbar bare-tools">
+            <span class="hint">Every explanation has been deleted. This is the complete program on its own &mdash; read it top to bottom until you can predict each line.</span>
+            <button class="tgl" id="copyBareBtn">Copy bare code</button>
+          </div>
+          <div class="codewrap bare"><div class="code" id="codeBare"></div></div>
+        </div>
+        <div class="hero">
+          <div class="path">02_for_loops/07_increment_by_5.cpp</div>
+          <h1>Stepping by 5 - Multiples of 5 and of 7</h1>
+          <div class="badges">
+            <span class="badge beginner">Beginner</span>
+            <span class="badge topic">for loops - using the update to walk a list of multiples</span>
+            <span class="badge">298 lines</span>
+            <span class="badge">13 kb</span>
+          </div>
+        </div>
+        <div class="note info"><b>Reading tip.</b> Every grey note below is a collapsible explanation. Click its header to read it, or press <b>C</b> to hide every comment at once so the program logic stands on its own.</div>
+        <div class="card teach"><header><i class="dot"></i><h2>WHAT THIS PROGRAM TEACHES</h2></header><div class="body"><ul class="bul"><li>Printing the multiples of any number by starting at it and stepping</li><li>The same idea applied to 7 instead of 5, with nothing else changed.</li><li>Walking DOWN a list of multiples with <code>i -= 5</code>.</li><li>The formula for how many multiples of n fit inside a range.</li></ul></div></div>
+        <div class="card exp"><header><i class="dot"></i><h2>EXPECTED OUTPUT</h2></header><div class="body"><pre class="plain">Multiples of 5 from 1 to 50: 5 10 15 20 25 30 35 40 45 50
+Multiples of 7 from 1 to 50: 7 14 21 28 35 42 49
+Multiples of 5 from 50 down to 5: 50 45 40 35 30 25 20 15 10 5
+How many multiples of 5 in 1 to 50: 10
+How many multiples of 7 in 1 to 50: 7</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>IMPORTANT SYNTAX</h2></header><div class="body"><pre class="plain wrap">for (int i = 5; i &lt;= 50; i += 5)  -&gt; walk the multiples of 5 upwards
+for (int i = 50; i &gt;= 5; i -= 5)  -&gt; walk the multiples of 5 downwards
+i += 5                            -&gt; compound assignment: add 5
+i -= 5                            -&gt; compound assignment: subtract 5
+count++                           -&gt; add 1 to a counter, inside the loop</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>STEP-BY-STEP EXPLANATION</h2></header><div class="body"><pre class="plain wrap">1. The multiples of 5 are 5, 10, 15, 20 ... To print them, start the
+counter AT 5 and step it BY 5. Starting at 1 would print 1, 6, 11,
+which are not multiples of 5 at all.
+2. The second loop uses exactly the same shape with 7 in both places:
+the start is 7 and the step is 7. Nothing else changes.
+3. 50 is not a multiple of 7, so that loop simply ends earlier: the last
+multiple that fits is 49, then 56 fails the test.
+4. Counting downwards is the same idea with the direction flipped: start
+at 50, subtract 5, and use `&gt;=` in the condition so that the last 5
+is still printed.
+5. Counting the multiples: the number of multiples of n up to limit is
+limit / n with the fraction thrown away. 50/5 = 10 and 50/7 = 7.
+============================================================</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>PART A - THE MULTIPLES OF 5</h2></header><div class="body"><pre class="plain wrap">============================================================</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>PART B - THE MULTIPLES OF 7</h2></header><div class="body"><pre class="plain wrap">============================================================</pre></div></div>
+        <div class="card teach"><header><i class="dot"></i><h2>TRACE TABLE</h2></header><div class="body"><ul class="bul"><li>-----------------------------------------------------------</li></ul></div></div>
+        <div class="card"><header><i class="dot"></i><h2>TRACE TABLE</h2></header><div class="body"><pre class="plain wrap">Multiples of 5 upwards,  for (int i = 5; i &lt;= 50; i += 5)
++-----------+------------+-------------------+--------------+
+| Iteration | i at start | Update: i += 5    | i &lt;= 50 ?    |
++-----------+------------+-------------------+--------------+
+|     1     |     5      | 5 + 5 = 10       | true         |
++-----------+------------+-------------------+--------------+
+|     2     |    10      | 10 + 5 = 15      | true         |
++-----------+------------+-------------------+--------------+
+|     3     |    15      | 15 + 5 = 20      | true         |
++-----------+------------+-------------------+--------------+
+|     4     |    20      | 20 + 5 = 25      | true         |
++-----------+------------+-------------------+--------------+
+|     5     |    25      | 25 + 5 = 30      | true         |
++-----------+------------+-------------------+--------------+
+|     6     |    30      | 30 + 5 = 35      | true         |
++-----------+------------+-------------------+--------------+
+|     7     |    35      | 35 + 5 = 40      | true         |
++-----------+------------+-------------------+--------------+
+|     8     |    40      | 40 + 5 = 45      | true         |
++-----------+------------+-------------------+--------------+
+|     9     |    45      | 45 + 5 = 50      | true         |
++-----------+------------+-------------------+--------------+
+|    10     |    50      | 50 + 5 = 55      | 55&lt;=50 FALSE |
++-----------+------------+-------------------+--------------+
+|    11     |    55      | (never reached)  |  STOP        |
++-----------+------------+-------------------+--------------+
+
+Multiples of 7 upwards,  for (int i = 7; i &lt;= 50; i += 7)
++-----------+------------+-------------------+--------------+
+| Iteration | i at start | Update: i += 7    | i &lt;= 50 ?    |
++-----------+------------+-------------------+--------------+
+|     1     |     7      | 7 + 7 = 14       | true         |
++-----------+------------+-------------------+--------------+
+|     2     |    14      | 14 + 7 = 21      | true         |
++-----------+------------+-------------------+--------------+
+|     3     |    21      | 21 + 7 = 28      | true         |
++-----------+------------+-------------------+--------------+
+|     4     |    28      | 28 + 7 = 35      | true         |
++-----------+------------+-------------------+--------------+
+|     5     |    35      | 35 + 7 = 42      | true         |
++-----------+------------+-------------------+--------------+
+|     6     |    42      | 42 + 7 = 49      | true         |
++-----------+------------+-------------------+--------------+
+|     7     |    49      | 49 + 7 = 56      | 56&lt;=50 FALSE |
++-----------+------------+-------------------+--------------+
+|     8     |    56      | (never reached)  |  STOP        |
++-----------+------------+-------------------+--------------+
+
+8 - 1 = 7 multiples, which is floor(50 / 7) = 7. The formula and the
+trace agree.</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>THE 10-SECOND EXAM METHOD</h2></header><div class="body"><pre class="plain wrap">To count the multiples of n from 1 to limit, do not trace anything:
+divide limit by n and throw the fraction away.
+To write the loop itself, copy the same n into BOTH the start and
+the update:
+for (int i = n; i &lt;= limit; i += n)
+That single pattern answers most &quot;print the multiples&quot; questions.</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>THE COMMON TRAP IN THIS FILE</h2></header><div class="body"><pre class="plain wrap">Starting the loop at 1 and stepping by 5, which gives 1, 6, 11,
+16 - a sequence of numbers that have nothing to do with 5. The
+start value must be the step size. A second trap is forgetting to
+flip the direction of the condition when counting downwards: a
+decreasing counter tested with `&lt;=` never ends. See
+../12_common_mistakes/05_infinite_loop.cpp.</pre></div></div>
+        <div class="card quiz"><header><i class="dot"></i><h2>Exam questions</h2></header><div class="body"><details class="q"><summary>What does <code>for (int i = 5; i &lt;= 50; i += 5)</code> print?</summary><div class="a"><b>Answer:</b> 5 10 15 20 25 30 35 40 45 50  (ten values)</div></details><details class="q"><summary>What is the LAST multiple of 7 printed before the limit?</summary><div class="a"><b>Answer:</b> 49, because 56 &gt; 50</div></details><details class="q"><summary>How many multiples of 7 are there from 1 to 50?</summary><div class="a"><b>Answer:</b> 7</div></details><details class="q"><summary>How do you calculate that count without tracing?</summary><div class="a"><b>Answer:</b> divide 50 by 7 and throw the fraction away: 50 / 7 = 7</div></details><details class="q"><summary>Why must the start value equal the step size?</summary><div class="a"><b>Answer:</b> so that every value the counter lands on is a multiple of that number</div></details><details class="q"><summary>What is wrong with <code>for (int i = 1; i &lt;= 50; i += 5)</code>?</summary><div class="a"><b>Answer:</b> it prints 1 6 11 16 ... which are not multiples of 5</div></details><details class="q"><summary>What three changes turn the upward loop into a downward one?</summary><div class="a"><b>Answer:</b> start at the largest multiple, use <code>i -= 5</code> in the update, and test with <code>i &gt;= 5</code></div></details><details class="q"><summary>Why must <code>count</code> be declared before the loop?</summary><div class="a"><b>Answer:</b> a variable declared inside the header or inside the braces is destroyed when the loop ends</div></details></div></div>
+        <div class="card trace"><header><i class="dot"></i><h2>Trace tables</h2></header><div class="body">
+          <p class="tbl-cap">Multiples of 5 upwards,  for (int i = 5; i &lt;= 50; i += 5)</p>
+          <div class="tbl-scroll"><table class="grid"><thead><tr>
+<th>Iteration</th>
+<th>i at start</th>
+<th>Update: i += 5</th>
+<th>i &lt;= 50 ?</th>
+</tr></thead><tbody>
+<tr><td>1</td><td>5</td><td>5 + 5 = 10</td><td>true</td></tr>
+<tr><td>2</td><td>10</td><td>10 + 5 = 15</td><td>true</td></tr>
+<tr><td>3</td><td>15</td><td>15 + 5 = 20</td><td>true</td></tr>
+<tr><td>4</td><td>20</td><td>20 + 5 = 25</td><td>true</td></tr>
+<tr><td>5</td><td>25</td><td>25 + 5 = 30</td><td>true</td></tr>
+<tr><td>6</td><td>30</td><td>30 + 5 = 35</td><td>true</td></tr>
+<tr><td>7</td><td>35</td><td>35 + 5 = 40</td><td>true</td></tr>
+<tr><td>8</td><td>40</td><td>40 + 5 = 45</td><td>true</td></tr>
+<tr><td>9</td><td>45</td><td>45 + 5 = 50</td><td>true</td></tr>
+<tr><td>10</td><td>50</td><td>50 + 5 = 55</td><td>55&lt;=50 FALSE</td></tr>
+<tr class="stop"><td>11</td><td>55</td><td>(never reached)</td><td>STOP</td></tr>
+</tbody></table></div>
+          <p class="tbl-cap">Multiples of 7 upwards,  for (int i = 7; i &lt;= 50; i += 7)</p>
+          <div class="tbl-scroll"><table class="grid"><thead><tr>
+<th>Iteration</th>
+<th>i at start</th>
+<th>Update: i += 7</th>
+<th>i &lt;= 50 ?</th>
+</tr></thead><tbody>
+<tr><td>1</td><td>7</td><td>7 + 7 = 14</td><td>true</td></tr>
+<tr><td>2</td><td>14</td><td>14 + 7 = 21</td><td>true</td></tr>
+<tr><td>3</td><td>21</td><td>21 + 7 = 28</td><td>true</td></tr>
+<tr><td>4</td><td>28</td><td>28 + 7 = 35</td><td>true</td></tr>
+<tr><td>5</td><td>35</td><td>35 + 7 = 42</td><td>true</td></tr>
+<tr><td>6</td><td>42</td><td>42 + 7 = 49</td><td>true</td></tr>
+<tr><td>7</td><td>49</td><td>49 + 7 = 56</td><td>56&lt;=50 FALSE</td></tr>
+<tr class="stop"><td>8</td><td>56</td><td>(never reached)</td><td>STOP</td></tr>
+</tbody></table></div>
+        </div></div>
+        <div class="card code-card" id="annotated">
+          <header><i class="dot"></i><h2>The program, annotated</h2></header>
+          <div class="toolbar">
+            <label class="tgl"><input type="checkbox" id="tgComments"> Hide all comments <kbd>C</kbd></label>
+            <label class="tgl"><input type="checkbox" id="tgFold"> Unfold every note <kbd>F</kbd></label>
+            <label class="tgl keep"><input type="checkbox" id="tgNums" checked> Line numbers</label>
+            <button class="tgl" id="examBtn">Exam mode <kbd>E</kbd></button>
+            <button class="tgl" id="copyBtn">Copy source</button>
+            <a class="tgl" href="../../02_for_loops/07_increment_by_5.cpp" download>Download .cpp</a>
+          </div>
+          <div class="codewrap"><div class="code" id="code"></div></div>
+        </div>
+        <div class="pager">
+          <a class="prev" id="prevLink" href="../02_for_loops/06_increment_by_2.html"><span class="dir">Previous</span><span class="nm">06 increment by 2</span></a>
+          <a class="next" id="nextLink" href="../02_for_loops/08_multiple_variables.html"><span class="dir">Next</span><span class="nm">08 multiple variables</span></a>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<dialog id="keys">
+  <header>Keyboard shortcuts <span class="spacer"></span>
+    <button class="icon-btn" id="keysClose">&#10005;</button></header>
+  <div class="body">
+    <div class="krow"><span>Toggle all comments</span><kbd>c</kbd></div>
+    <div class="krow"><span>Fold / unfold every note</span><kbd>f</kbd></div>
+    <div class="krow"><span>Exam mode (code only)</span><kbd>e</kbd></div>
+    <div class="krow"><span>Next file</span><kbd>n</kbd></div>
+    <div class="krow"><span>Previous file</span><kbd>p</kbd></div>
+    <div class="krow"><span>Focus search</span><kbd>/</kbd></div>
+    <div class="krow"><span>Light / dark theme</span><kbd>t</kbd></div>
+    <div class="krow"><span>Open this dialog</span><kbd>?</kbd></div>
+  </div>
+</dialog>
+
+<div class="toast" id="toast"></div>
+
+<script src="../assets/data.js"></script>
+<script>window.CURRENT_FILE = window.PROJECT.files.filter(function (x) { return x.path === "02_for_loops/07_increment_by_5.cpp"; })[0];</script>
+<script>window.VIEWER_DEPTH = "../";</script>
+<script src="../assets/viewer.js"></script>
+</body>
+</html>

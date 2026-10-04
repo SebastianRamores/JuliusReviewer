@@ -1,0 +1,42 @@
+{
+  "//": [
+    "Settings for studying this project in VS Code.",
+    "",
+    "The examples explain themselves line by line, which pushes the real code",
+    "lines far apart. These settings make folding behave the way you want.",
+    "",
+    "  Ctrl+K  Ctrl+0   fold every explanation at once",
+    "  Ctrl+K  Ctrl+J   unfold everything",
+    "  Ctrl+K Ctrl+0..5 fold / unfold comments only  (Ctrl+K then Ctrl+C toggles all comments)",
+    "",
+    "Long explanations are /* block comments */ on purpose, because block",
+    "comments are the only comment style every editor can collapse as a group."
+  ],
+  "editor.foldingStrategy": "indentation",
+  "editor.folding": true,
+  "editor.showFoldingControls": "always",
+  "editor.glyphMargin": true,
+  "editor.lineNumbers": "on",
+  "editor.renderWhitespace": "boundary",
+  "editor.wordWrap": "off",
+  "editor.fontSize": 13,
+  "editor.fontFamily": "Cascadia Code, JetBrains Mono, Consolas, 'DejaVu Sans Mono', monospace",
+  "editor.fontLigatures": false,
+  "editor.formatOnSave": false,
+  "editor.detectIndentation": false,
+  "editor.insertSpaces": true,
+  "editor.tabSize": 4,
+  "editor.bracketPairColorization.enabled": true,
+  "files.encoding": "utf8",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "files.exclude": {
+    "**/viewer/**": true,
+    "**/*.exe": true
+  },
+  "search.exclude": {
+    "**/viewer/**": true
+  },
+  "C_Cpp.default.compilerPath": "g++",
+  "C_Cpp.default.cppStandard": "c++17"
+}

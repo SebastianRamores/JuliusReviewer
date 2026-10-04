@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Different End Conditions in a for Loop - C++ Loops Midterm Review</title>
+<link rel="stylesheet" href="../assets/viewer.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#9881;</text></svg>">
+</head>
+<body>
+
+<div class="app">
+  <div class="scrim" id="scrim"></div>
+  <nav class="sidebar">
+    <div class="brand">
+      <div class="logo">C++</div>
+      <div>
+        <b>Loops Midterm Review</b>
+        <small>31 annotated examples</small>
+      </div>
+    </div>
+    <div class="side-tools">
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <input id="search" type="search" placeholder="Search all files and code..." autocomplete="off">
+        <button id="searchClear" title="Clear search" style="visibility:hidden">&times;</button>
+      </div>
+      <div class="progress-row">
+        <span id="progLabel">0 / 31 studied</span>
+        <span class="bar"><i id="barFill"></i></span>
+        <button class="btn-mini" id="resetBtn" hidden>reset</button>
+      </div>
+    </div>
+    <div class="nav" id="nav"></div>
+  </nav>
+
+  <main class="main">
+    <div class="topbar">
+      <button class="icon-btn nav-only" id="navToggle" title="Show file list">&#9776;</button>
+      <div class="crumb">
+        <span>02_for_loops</span> / <b>03_different_end_conditions.cpp</b>
+      </div>
+      <span class="spacer"></span>
+      <button class="icon-btn" id="topKeys" title="Keyboard shortcuts (?)">?</button>
+      <button class="icon-btn" id="themeBtn" title="Toggle light / dark (t)">&#9680;</button>
+    </div>
+
+    <div class="scroll">
+      <div class="wrap">
+
+        <!-- ============ THE BARE PROGRAM (comments removed) =========== -->
+        <div class="card bare-card">
+          <header><i class="dot"></i><h2>The program, comments removed</h2><span class="badge ok">the code you would write in the exam</span><span class="spacer"></span><span class="badge">44 lines (from 245)</span></header>
+          <div class="toolbar bare-tools">
+            <span class="hint">Every explanation has been deleted. This is the complete program on its own &mdash; read it top to bottom until you can predict each line.</span>
+            <button class="tgl" id="copyBareBtn">Copy bare code</button>
+          </div>
+          <div class="codewrap bare"><div class="code" id="codeBare"></div></div>
+        </div>
+        <div class="hero">
+          <div class="path">02_for_loops/03_different_end_conditions.cpp</div>
+          <h1>Different End Conditions in a for Loop</h1>
+          <div class="badges">
+            <span class="badge beginner">Beginner</span>
+            <span class="badge topic">for loops - the condition part and the four comparison signs</span>
+            <span class="badge">245 lines</span>
+            <span class="badge">10 kb</span>
+          </div>
+        </div>
+        <div class="note info"><b>Reading tip.</b> Every grey note below is a collapsible explanation. Click its header to read it, or press <b>C</b> to hide every comment at once so the program logic stands on its own.</div>
+        <div class="card teach"><header><i class="dot"></i><h2>WHAT THIS PROGRAM TEACHES</h2></header><div class="body"><ul class="bul"><li>All four comparison operators: &lt; , &lt;= , &gt; , &gt;= .</li><li>The difference between <code>i &lt; 10</code> and <code>i &lt;= 10</code>, with iteration counts.</li><li>Why the direction of the counter decides which operator is sensible.</li><li>What happens when the condition can never become true (zero output).</li></ul></div></div>
+        <div class="card exp"><header><i class="dot"></i><h2>EXPECTED OUTPUT</h2></header><div class="body"><pre class="plain">Loop with i &lt; 5  : 1 2 3 4
+Loop with i &lt;= 5 : 1 2 3 4 5
+Loop with i &gt; 5  : 10 9 8 7 6
+Loop with i &gt;= 5 : 10 9 8 7 6 5
+Loop with i &gt; 10 (counter goes UP): (nothing printed)</pre></div></div>
+        <div class="card syn"><header><i class="dot"></i><h2>IMPORTANT SYNTAX</h2></header><div class="body"><div class="syn-list"><div class="syn-item"><code>i--      -&gt; subtract 1 (counter goes DOWN, so use &gt; or &gt;=)</code><span>cout &lt;&lt; &quot; &quot; &lt;&lt; i;  -&gt; print a space, then i, with NO newline yet</span></div></div></div></div>
+        <div class="card"><header><i class="dot"></i><h2>STEP-BY-STEP EXPLANATION</h2></header><div class="body"><pre class="plain wrap">1. The first two loops count UP from 1 and stop at the same limit, but
+use a different sign. `&lt;` stops one value early; `&lt;=` includes the
+limit itself.
+2. The last value printed by `i &lt; 5` is 4; the last value printed by
+`i &lt;= 5` is 5. That single extra number IS the whole difference.
+3. The third and fourth loops count DOWN from 10, so the comparison has
+to be flipped: `&gt;` and `&gt;=` are the sensible signs for a decreasing
+counter. (`i &lt; 5` on a decreasing counter never becomes true again,
+so the loop would run forever - see the warning at the bottom.)
+4. The fifth loop tests `i &gt; 10` while the counter is going UP from 1.
+The very first test fails, so the body never runs and nothing at all
+is printed. A loop may legally run ZERO times.
+============================================================</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>PART C - A LOOP THAT RUNS ZERO TIMES</h2></header><div class="body"><pre class="plain wrap">============================================================</pre></div></div>
+        <div class="card teach"><header><i class="dot"></i><h2>TRACE TABLE</h2></header><div class="body"><ul class="bul"><li>-----------------------------------------------------------</li></ul></div></div>
+        <div class="card"><header><i class="dot"></i><h2>TRACE TABLE</h2></header><div class="body"><pre class="plain wrap">+-----------+------------+----------------+------------+-----------+
+| Iteration | i at start | i &lt; 5 ?       | Output     | i &lt;= 5 ? |
++-----------+------------+----------------+------------+-----------+
+|     1     |     1      | true          |    1       | true     |
++-----------+------------+----------------+------------+-----------+
+|     2     |     2      | true          |    2       | true     |
++-----------+------------+----------------+------------+-----------+
+|     3     |     3      | true          |    3       | true     |
++-----------+------------+----------------+------------+-----------+
+|     4     |     4      | true          |    4       | true     |
++-----------+------------+----------------+------------+-----------+
+|     5     |     5      | FALSE -&gt; stop |    -       | true     |
++-----------+------------+----------------+------------+-----------+
+|     6     |     6      |    -          |    -       | FALSE -&gt; stop |
++-----------+------------+----------------+------------+-----------+
+
+`i &lt; 5`  -&gt; 4 iterations, last printed value 4
+`i &lt;= 5` -&gt; 5 iterations, last printed value 5</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>THE 10-SECOND EXAM METHOD</h2></header><div class="body"><ol class="steps"><li>Write the comparison symbol as WORDS.</li><li>&lt;  -&gt; &quot;smaller than&quot;      -&gt; the limit is excluded</li><li>&lt;= -&gt; &quot;smaller or equal&quot;  -&gt; the limit is included</li><li>Ask: does the limit itself pass the test?</li><li>If YES, add one extra to your iteration count.</li><li>That single question answers most condition marks in the exam.</li></ol></div></div>
+        <div class="card"><header><i class="dot"></i><h2>THE COMMON TRAP IN THIS FILE</h2></header><div class="body"><pre class="plain wrap">Mixing the direction of travel with the direction of the symbol.
+A counter that goes UP needs `&lt;` or `&lt;=`. A counter that goes DOWN
+needs `&gt;` or `&gt;=`. Pairing them wrongly is the classic infinite
+loop: `for (int i = 10; i &lt; 5; i--)` can never satisfy the test, so
+it would never stop. That mistake is demonstrated in
+../12_common_mistakes/05_infinite_loop.cpp.</pre></div></div>
+        <div class="card quiz"><header><i class="dot"></i><h2>Exam questions</h2></header><div class="body"><details class="q"><summary>How many values does <code>for (int i = 1; i &lt; 5; i++)</code> print?</summary><div class="a"><b>Answer:</b> 4  (1 2 3 4)</div></details><details class="q"><summary>How many values does <code>for (int i = 1; i &lt;= 5; i++)</code> print?</summary><div class="a"><b>Answer:</b> 5  (1 2 3 4 5)</div></details><details class="q"><summary>What is printed by <code>for (int i = 10; i &gt;= 5; i--)</code>?</summary><div class="a"><b>Answer:</b> 10 9 8 7 6 5</div></details><details class="q"><summary>Why does <code>for (int i = 1; i &gt; 10; i++)</code> print nothing?</summary><div class="a"><b>Answer:</b> the condition is false on the very first test, so the body runs zero times</div></details><details class="q"><summary>How many values does <code>for (int i = 1; i &lt;= 10; i++)</code> print?</summary><div class="a"><b>Answer:</b> 10</div></details><details class="q"><summary>What is the danger in <code>for (int i = 10; i &lt; 5; i--)</code>?</summary><div class="a"><b>Answer:</b> infinite loop: the counter shrinks while the test demands a large value, so the test never fails</div></details></div></div>
+        <div class="card trace"><header><i class="dot"></i><h2>Trace tables</h2></header><div class="body">
+          <p class="tbl-cap">TRACE TABLE</p>
+          <div class="tbl-scroll"><table class="grid"><thead><tr>
+<th>Iteration</th>
+<th>i at start</th>
+<th>i &lt; 5 ?</th>
+<th>Output</th>
+<th>i &lt;= 5 ?</th>
+</tr></thead><tbody>
+<tr><td>1</td><td>1</td><td>true</td><td>1</td><td>true</td></tr>
+<tr><td>2</td><td>2</td><td>true</td><td>2</td><td>true</td></tr>
+<tr><td>3</td><td>3</td><td>true</td><td>3</td><td>true</td></tr>
+<tr><td>4</td><td>4</td><td>true</td><td>4</td><td>true</td></tr>
+<tr class="stop"><td>5</td><td>5</td><td>FALSE -&gt; stop</td><td>-</td><td>true</td></tr>
+<tr class="stop"><td>6</td><td>6</td><td>-</td><td>-</td><td>FALSE -&gt; stop</td></tr>
+</tbody></table></div>
+        </div></div>
+        <div class="card code-card" id="annotated">
+          <header><i class="dot"></i><h2>The program, annotated</h2></header>
+          <div class="toolbar">
+            <label class="tgl"><input type="checkbox" id="tgComments"> Hide all comments <kbd>C</kbd></label>
+            <label class="tgl"><input type="checkbox" id="tgFold"> Unfold every note <kbd>F</kbd></label>
+            <label class="tgl keep"><input type="checkbox" id="tgNums" checked> Line numbers</label>
+            <button class="tgl" id="examBtn">Exam mode <kbd>E</kbd></button>
+            <button class="tgl" id="copyBtn">Copy source</button>
+            <a class="tgl" href="../../02_for_loops/03_different_end_conditions.cpp" download>Download .cpp</a>
+          </div>
+          <div class="codewrap"><div class="code" id="code"></div></div>
+        </div>
+        <div class="pager">
+          <a class="prev" id="prevLink" href="../02_for_loops/02_different_starting_values.html"><span class="dir">Previous</span><span class="nm">02 different starting values</span></a>
+          <a class="next" id="nextLink" href="../02_for_loops/04_incrementing.html"><span class="dir">Next</span><span class="nm">04 incrementing</span></a>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<dialog id="keys">
+  <header>Keyboard shortcuts <span class="spacer"></span>
+    <button class="icon-btn" id="keysClose">&#10005;</button></header>
+  <div class="body">
+    <div class="krow"><span>Toggle all comments</span><kbd>c</kbd></div>
+    <div class="krow"><span>Fold / unfold every note</span><kbd>f</kbd></div>
+    <div class="krow"><span>Exam mode (code only)</span><kbd>e</kbd></div>
+    <div class="krow"><span>Next file</span><kbd>n</kbd></div>
+    <div class="krow"><span>Previous file</span><kbd>p</kbd></div>
+    <div class="krow"><span>Focus search</span><kbd>/</kbd></div>
+    <div class="krow"><span>Light / dark theme</span><kbd>t</kbd></div>
+    <div class="krow"><span>Open this dialog</span><kbd>?</kbd></div>
+  </div>
+</dialog>
+
+<div class="toast" id="toast"></div>
+
+<script src="../assets/data.js"></script>
+<script>window.CURRENT_FILE = window.PROJECT.files.filter(function (x) { return x.path === "02_for_loops/03_different_end_conditions.cpp"; })[0];</script>
+<script>window.VIEWER_DEPTH = "../";</script>
+<script src="../assets/viewer.js"></script>
+</body>
+</html>

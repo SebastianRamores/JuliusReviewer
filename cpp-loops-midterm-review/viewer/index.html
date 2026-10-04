@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C++ Loops Midterm Review</title>
+<link rel="stylesheet" href="assets/viewer.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#9881;</text></svg>">
+</head>
+<body>
+
+<div class="app">
+  <div class="scrim" id="scrim"></div>
+  <nav class="sidebar">
+    <div class="brand">
+      <div class="logo">C++</div>
+      <div>
+        <b>Loops Midterm Review</b>
+        <small>31 annotated examples</small>
+      </div>
+    </div>
+    <div class="side-tools">
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <input id="search" type="search" placeholder="Search all files and code..." autocomplete="off">
+        <button id="searchClear" title="Clear search" style="visibility:hidden">&times;</button>
+      </div>
+      <div class="progress-row">
+        <span id="progLabel">0 / 31 studied</span>
+        <span class="bar"><i id="barFill"></i></span>
+        <button class="btn-mini" id="resetBtn" hidden>reset</button>
+      </div>
+    </div>
+    <div class="nav" id="nav"></div>
+  </nav>
+
+  <main class="main">
+    <div class="topbar">
+      <button class="icon-btn nav-only" id="navToggle" title="Show file list">&#9776;</button>
+      <div class="crumb">
+        <span>Dashboard</span> / <b>Start here</b>
+      </div>
+      <span class="spacer"></span>
+      <button class="icon-btn" id="topKeys" title="Keyboard shortcuts (?)">?</button>
+      <button class="icon-btn" id="themeBtn" title="Toggle light / dark (t)">&#9680;</button>
+    </div>
+
+    <div class="scroll">
+      <div class="wrap">
+
+        <div class="dash">
+          <div class="dash-hero">
+            <h1>C++ Loops Midterm Review</h1>
+            <p>Every example is a complete, compilable program whose purpose is to be <em>understood</em>, not just compiled. Each file carries a line-by-line explanation, a full trace table and the exam questions it prepares you for.</p>
+            <p>Open a folder, work through it in order, and tick each file as you master it. Your progress is stored in the browser.</p>
+          </div>
+          <div class="tiles">
+            <div class="tile"><b>31</b><span>examples</span></div>
+            <div class="tile"><b>442</b><span>foldable notes</span></div>
+            <div class="tile"><b>7353</b><span>lines of code</span></div>
+            <div class="tile"><b>4</b><span>sections</span></div>
+          </div>
+          <div class="note info"><b>The two shortcuts you will use most.</b> Press <b>C</b> to hide every comment and read the bare program; press <b>E</b> for exam mode, which strips the page down to code only. Everything else is optional.</div>
+          <h2 style="font-size:15px;margin:22px 0 10px">Study order</h2>
+          <div class="grid-cards">
+            <a class="fcard" href="01_fundamentals/index.html">
+              <div class="num">01_fundamentals</div>
+              <h3>Fundamentals</h3>
+              <p>The ten smallest loops. Start here if a for loop still looks strange. Includes the deep anatomy file.</p>
+              <div class="st" data-folder="01_fundamentals"><b>0</b> of 8 studied</div>
+            </a>
+            <a class="fcard" href="02_for_loops/index.html">
+              <div class="num">02_for_loops</div>
+              <h3>for Loops</h3>
+              <p>Every variation of the for header: start value, end condition, step size, two counters, braces.</p>
+              <div class="st" data-folder="02_for_loops"><b>0</b> of 9 studied</div>
+            </a>
+            <a class="fcard" href="03_while_and_do_while/index.html">
+              <div class="num">03_while_and_do_while</div>
+              <h3>while and do...while</h3>
+              <p>The other two loop forms and how they differ from for.</p>
+              <div class="st" data-folder="03_while_and_do_while"><b>0</b> of 6 studied</div>
+            </a>
+            <a class="fcard" href="04_counters_and_accumulators/index.html">
+              <div class="num">04_counters_and_accumulators</div>
+              <h3>Counters and Accumulators</h3>
+              <p>The two ideas behind almost every exam loop: count things, and add things up.</p>
+              <div class="st" data-folder="04_counters_and_accumulators"><b>0</b> of 8 studied</div>
+            </a>
+          </div>
+          <h2 style="font-size:15px;margin:26px 0 8px">Build &amp; run</h2>
+          <div class="card"><div class="body">
+            <pre class="plain wrap"># compile one file
+g++ -std=c++17 -Wall -Wextra -o prog 01_fundamentals/01_hello_loop.cpp
+
+# run it
+./prog
+
+# compile every file in the project at once
+./build_check.sh</pre>
+            <p style="margin-top:10px">Full instructions, the loop syntax quick-reference and the mistake list live in <code>README.md</code>.</p>
+          </div></div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<dialog id="keys">
+  <header>Keyboard shortcuts <span class="spacer"></span>
+    <button class="icon-btn" id="keysClose">&#10005;</button></header>
+  <div class="body">
+    <div class="krow"><span>Toggle all comments</span><kbd>c</kbd></div>
+    <div class="krow"><span>Fold / unfold every note</span><kbd>f</kbd></div>
+    <div class="krow"><span>Exam mode (code only)</span><kbd>e</kbd></div>
+    <div class="krow"><span>Next file</span><kbd>n</kbd></div>
+    <div class="krow"><span>Previous file</span><kbd>p</kbd></div>
+    <div class="krow"><span>Focus search</span><kbd>/</kbd></div>
+    <div class="krow"><span>Light / dark theme</span><kbd>t</kbd></div>
+    <div class="krow"><span>Open this dialog</span><kbd>?</kbd></div>
+  </div>
+</dialog>
+
+<div class="toast" id="toast"></div>
+
+<script src="assets/data.js"></script>
+<!--PAGEVAR-->
+<script>window.VIEWER_DEPTH = "";</script>
+<script src="assets/viewer.js"></script>
+</body>
+</html>

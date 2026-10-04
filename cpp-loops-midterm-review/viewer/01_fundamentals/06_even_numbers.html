@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Print the Even Numbers from 1 to 20 - C++ Loops Midterm Review</title>
+<link rel="stylesheet" href="../assets/viewer.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#9881;</text></svg>">
+</head>
+<body>
+
+<div class="app">
+  <div class="scrim" id="scrim"></div>
+  <nav class="sidebar">
+    <div class="brand">
+      <div class="logo">C++</div>
+      <div>
+        <b>Loops Midterm Review</b>
+        <small>31 annotated examples</small>
+      </div>
+    </div>
+    <div class="side-tools">
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <input id="search" type="search" placeholder="Search all files and code..." autocomplete="off">
+        <button id="searchClear" title="Clear search" style="visibility:hidden">&times;</button>
+      </div>
+      <div class="progress-row">
+        <span id="progLabel">0 / 31 studied</span>
+        <span class="bar"><i id="barFill"></i></span>
+        <button class="btn-mini" id="resetBtn" hidden>reset</button>
+      </div>
+    </div>
+    <div class="nav" id="nav"></div>
+  </nav>
+
+  <main class="main">
+    <div class="topbar">
+      <button class="icon-btn nav-only" id="navToggle" title="Show file list">&#9776;</button>
+      <div class="crumb">
+        <span>01_fundamentals</span> / <b>06_even_numbers.cpp</b>
+      </div>
+      <span class="spacer"></span>
+      <button class="icon-btn" id="topKeys" title="Keyboard shortcuts (?)">?</button>
+      <button class="icon-btn" id="themeBtn" title="Toggle light / dark (t)">&#9680;</button>
+    </div>
+
+    <div class="scroll">
+      <div class="wrap">
+
+        <!-- ============ THE BARE PROGRAM (comments removed) =========== -->
+        <div class="card bare-card">
+          <header><i class="dot"></i><h2>The program, comments removed</h2><span class="badge ok">the code you would write in the exam</span><span class="spacer"></span><span class="badge">13 lines (from 120)</span></header>
+          <div class="toolbar bare-tools">
+            <span class="hint">Every explanation has been deleted. This is the complete program on its own &mdash; read it top to bottom until you can predict each line.</span>
+            <button class="tgl" id="copyBareBtn">Copy bare code</button>
+          </div>
+          <div class="codewrap bare"><div class="code" id="codeBare"></div></div>
+        </div>
+        <div class="hero">
+          <div class="path">01_fundamentals/06_even_numbers.cpp</div>
+          <h1>Print the Even Numbers from 1 to 20</h1>
+          <div class="badges">
+            <span class="badge beginner">Beginner</span>
+            <span class="badge topic">for loops + the modulo operator (%) to detect even numbers</span>
+            <span class="badge">120 lines</span>
+            <span class="badge">4 kb</span>
+          </div>
+        </div>
+        <div class="note info"><b>Reading tip.</b> Every grey note below is a collapsible explanation. Click its header to read it, or press <b>C</b> to hide every comment at once so the program logic stands on its own.</div>
+        <div class="card teach"><header><i class="dot"></i><h2>WHAT THIS PROGRAM TEACHES</h2></header><div class="body"><ul class="bul"><li>The DEFINITION of an even number: divisible by 2 with NO remainder.</li><li>How to test &quot;divisible by 2&quot; using the modulo operator <code>%</code>.</li><li>Putting an <code>if</code> INSIDE a loop so the loop body can react to each number.</li></ul></div></div>
+        <div class="card exp"><header><i class="dot"></i><h2>EXPECTED OUTPUT</h2></header><div class="body"><pre class="plain">2
+4
+6
+8
+10
+12
+14
+16
+18
+20</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>IMPORTANT SYNTAX</h2></header><div class="body"><pre class="plain wrap">if (i % 2 == 0) { ... }
+%   = modulo, gives the REMAINDER after division
+==  = &quot;is equal to?&quot;  (a COMPARISON, two equals signs)</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>STEP-BY-STEP EXPLANATION</h2></header><div class="body"><pre class="plain wrap">The loop visits every number 1, 2, 3 ... 20.
+For each number we ask: &quot;does dividing by 2 leave a remainder?&quot;
+If the remainder is 0 the number is even, and only then do we print it.
+============================================================</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>TRACE TABLE</h2></header><div class="body"><pre class="plain wrap">+-----------+------------+---------------+-------------+----------+
+| Iteration | i at start | i % 2         | i % 2 == 0 ? | Output   |
++-----------+------------+---------------+-------------+----------+
+|     1     |     1      | 1 % 2 = 1     |    false     | (nothing)|
+|     2     |     2      | 2 % 2 = 0     |    true      |    2     |
+|     3     |     3      | 3 % 2 = 1     |    false     | (nothing)|
+|     4     |     4      | 4 % 2 = 0     |    true      |    4     |
+|     5     |     5      | 5 % 2 = 1     |    false     | (nothing)|
+|     ...   |    ...     |     ...       |     ...      |   ...    |
+|    20     |    20      | 20 % 2 = 0    |    true      |   20     |
++-----------+------------+---------------+-------------+----------+
+
+Note the ODD numbers: the loop DID visit them, but the `if` blocked the
+printing. Visiting != printing. This is why the loop must step by 1.</pre></div></div>
+        <div class="card quiz"><header><i class="dot"></i><h2>Exam questions</h2></header><div class="body"><details class="q"><summary>How many even numbers are in 1..20?</summary><div class="a"><b>Answer:</b> 10</div></details><details class="q"><summary>Write the test for an ODD number.</summary><div class="a"><b>Answer:</b> if (i % 2 != 1) or i % 2 == 1</div></details><details class="q"><summary>What does 0 % 2 equal?</summary><div class="a"><b>Answer:</b> 0  (so 0 IS even)</div></details><details class="q"><summary>Print only the even numbers but also show their count. (counter needed)</summary><div class="a"></div></details><details class="q"><summary>Rewrite the same program with a WHILE loop.</summary><div class="a"></div></details></div></div>
+        <div class="card trace"><header><i class="dot"></i><h2>Trace tables</h2></header><div class="body">
+          <p class="tbl-cap">TRACE TABLE</p>
+          <div class="tbl-scroll"><table class="grid"><thead><tr>
+<th>Iteration</th>
+<th>i at start</th>
+<th>i % 2</th>
+<th>i % 2 == 0 ?</th>
+<th>Output</th>
+</tr></thead><tbody>
+<tr class="stop"><td>1</td><td>1</td><td>1 % 2 = 1</td><td>false</td><td>(nothing)</td></tr>
+<tr><td>2</td><td>2</td><td>2 % 2 = 0</td><td>true</td><td>2</td></tr>
+<tr class="stop"><td>3</td><td>3</td><td>3 % 2 = 1</td><td>false</td><td>(nothing)</td></tr>
+<tr><td>4</td><td>4</td><td>4 % 2 = 0</td><td>true</td><td>4</td></tr>
+<tr class="stop"><td>5</td><td>5</td><td>5 % 2 = 1</td><td>false</td><td>(nothing)</td></tr>
+<tr><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td></tr>
+<tr><td>20</td><td>20</td><td>20 % 2 = 0</td><td>true</td><td>20</td></tr>
+</tbody></table></div>
+        </div></div>
+        <div class="card code-card" id="annotated">
+          <header><i class="dot"></i><h2>The program, annotated</h2></header>
+          <div class="toolbar">
+            <label class="tgl"><input type="checkbox" id="tgComments"> Hide all comments <kbd>C</kbd></label>
+            <label class="tgl"><input type="checkbox" id="tgFold"> Unfold every note <kbd>F</kbd></label>
+            <label class="tgl keep"><input type="checkbox" id="tgNums" checked> Line numbers</label>
+            <button class="tgl" id="examBtn">Exam mode <kbd>E</kbd></button>
+            <button class="tgl" id="copyBtn">Copy source</button>
+            <a class="tgl" href="../../01_fundamentals/06_even_numbers.cpp" download>Download .cpp</a>
+          </div>
+          <div class="codewrap"><div class="code" id="code"></div></div>
+        </div>
+        <div class="pager">
+          <a class="prev" id="prevLink" href="../01_fundamentals/05_count_by_5.html"><span class="dir">Previous</span><span class="nm">05 count by 5</span></a>
+          <a class="next" id="nextLink" href="../01_fundamentals/07_odd_numbers.html"><span class="dir">Next</span><span class="nm">07 odd numbers</span></a>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<dialog id="keys">
+  <header>Keyboard shortcuts <span class="spacer"></span>
+    <button class="icon-btn" id="keysClose">&#10005;</button></header>
+  <div class="body">
+    <div class="krow"><span>Toggle all comments</span><kbd>c</kbd></div>
+    <div class="krow"><span>Fold / unfold every note</span><kbd>f</kbd></div>
+    <div class="krow"><span>Exam mode (code only)</span><kbd>e</kbd></div>
+    <div class="krow"><span>Next file</span><kbd>n</kbd></div>
+    <div class="krow"><span>Previous file</span><kbd>p</kbd></div>
+    <div class="krow"><span>Focus search</span><kbd>/</kbd></div>
+    <div class="krow"><span>Light / dark theme</span><kbd>t</kbd></div>
+    <div class="krow"><span>Open this dialog</span><kbd>?</kbd></div>
+  </div>
+</dialog>
+
+<div class="toast" id="toast"></div>
+
+<script src="../assets/data.js"></script>
+<script>window.CURRENT_FILE = window.PROJECT.files.filter(function (x) { return x.path === "01_fundamentals/06_even_numbers.cpp"; })[0];</script>
+<script>window.VIEWER_DEPTH = "../";</script>
+<script src="../assets/viewer.js"></script>
+</body>
+</html>

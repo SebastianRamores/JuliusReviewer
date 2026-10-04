@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>while Loop Counting - Downwards, and in Steps - C++ Loops Midterm Review</title>
+<link rel="stylesheet" href="../assets/viewer.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#9881;</text></svg>">
+</head>
+<body>
+
+<div class="app">
+  <div class="scrim" id="scrim"></div>
+  <nav class="sidebar">
+    <div class="brand">
+      <div class="logo">C++</div>
+      <div>
+        <b>Loops Midterm Review</b>
+        <small>31 annotated examples</small>
+      </div>
+    </div>
+    <div class="side-tools">
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <input id="search" type="search" placeholder="Search all files and code..." autocomplete="off">
+        <button id="searchClear" title="Clear search" style="visibility:hidden">&times;</button>
+      </div>
+      <div class="progress-row">
+        <span id="progLabel">0 / 31 studied</span>
+        <span class="bar"><i id="barFill"></i></span>
+        <button class="btn-mini" id="resetBtn" hidden>reset</button>
+      </div>
+    </div>
+    <div class="nav" id="nav"></div>
+  </nav>
+
+  <main class="main">
+    <div class="topbar">
+      <button class="icon-btn nav-only" id="navToggle" title="Show file list">&#9776;</button>
+      <div class="crumb">
+        <span>03_while_and_do_while</span> / <b>02_while_counting.cpp</b>
+      </div>
+      <span class="spacer"></span>
+      <button class="icon-btn" id="topKeys" title="Keyboard shortcuts (?)">?</button>
+      <button class="icon-btn" id="themeBtn" title="Toggle light / dark (t)">&#9680;</button>
+    </div>
+
+    <div class="scroll">
+      <div class="wrap">
+
+        <!-- ============ THE BARE PROGRAM (comments removed) =========== -->
+        <div class="card bare-card">
+          <header><i class="dot"></i><h2>The program, comments removed</h2><span class="badge ok">the code you would write in the exam</span><span class="spacer"></span><span class="badge">44 lines (from 261)</span></header>
+          <div class="toolbar bare-tools">
+            <span class="hint">Every explanation has been deleted. This is the complete program on its own &mdash; read it top to bottom until you can predict each line.</span>
+            <button class="tgl" id="copyBareBtn">Copy bare code</button>
+          </div>
+          <div class="codewrap bare"><div class="code" id="codeBare"></div></div>
+        </div>
+        <div class="hero">
+          <div class="path">03_while_and_do_while/02_while_counting.cpp</div>
+          <h1>while Loop Counting - Downwards, and in Steps</h1>
+          <div class="badges">
+            <span class="badge beginner">Beginner</span>
+            <span class="badge topic">while loops with different starting values and steps</span>
+            <span class="badge">261 lines</span>
+            <span class="badge">11 kb</span>
+          </div>
+        </div>
+        <div class="note info"><b>Reading tip.</b> Every grey note below is a collapsible explanation. Click its header to read it, or press <b>C</b> to hide every comment at once so the program logic stands on its own.</div>
+        <div class="card teach"><header><i class="dot"></i><h2>WHAT THIS PROGRAM TEACHES</h2></header><div class="body"><ul class="bul"><li>A while loop that counts DOWNWARDS, and why its condition uses <code>&gt;=</code></li><li>A while loop that moves by 3 each pass instead of 1.</li><li>What happens to the counter once the loop ends: it always overshoots.</li><li>Why the counter must be declared ABOVE the loop if we want to read</li></ul></div></div>
+        <div class="card exp"><header><i class="dot"></i><h2>EXPECTED OUTPUT</h2></header><div class="body"><pre class="plain">=== Part 1: counting DOWN from 5 to 1 ===
+5
+4
+3
+2
+1
+The counter stopped at 0
+=== Part 2: counting UP in steps of 3 ===
+1 4 7 10 13 16 19
+The counter overshot the limit to 22
+=== Part 3: a counter declared ABOVE the loop ===
+Counter before the loop: 10
+Counter after the loop: 0</pre></div></div>
+        <div class="card syn"><header><i class="dot"></i><h2>IMPORTANT SYNTAX</h2></header><div class="body"><div class="syn-list"><div class="syn-item"><code>i -= 2;                    -&gt; subtract 2 from i, in one statement</code><span>cout &lt;&lt; &quot;text&quot;;            -&gt; print text held in quotes</span></div></div></div></div>
+        <div class="card"><header><i class="dot"></i><h2>STEP-BY-STEP EXPLANATION</h2></header><div class="body"><pre class="plain wrap">1. Part 1 starts i at 5 and uses `i--`, so i travels 5, 4, 3, 2, 1, 0.
+The test `i &gt;= 1` fails at 0, so the loop stops there - NOT at -1.
+That is why a descending loop must use `&gt;= 1` and not `&gt; 1`, or the
+number 1 itself would never be printed.
+2. Part 2 starts j at 1 and uses `j += 3`, so j visits 1, 4, 7, 10, 13,
+16, 19 and then jumps to 22, which is past the limit of 20.
+3. Part 3 prints nothing inside the loop at all. The loop exists purely to
+move the counter, and the counter is readable afterwards only because
+it was declared before the loop.
+============================================================</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>PART 1 - COUNTING DOWNWARDS</h2></header><div class="body"><pre class="plain wrap">================================================================</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>PART 2 - COUNTING UP IN STEPS OF 3</h2></header><div class="body"><pre class="plain wrap">================================================================</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>THE COMMON TRAP IN THIS FILE</h2></header><div class="body"><pre class="plain wrap">Copying the `&gt;=` from the down loop into the up loop, or writing
+`while (i &lt;= 1)` when counting down. Both read fine in your head and
+both give the wrong answer. Decide first whether the counter is
+rising or falling, then pick the matching operator:
+rising  -&gt; start low,  test i &lt;= limit,  use i++  / i += step
+falling -&gt; start high, test i &gt;= limit,  use i--  / i -= step
+Remember `&lt;=` and `&gt;=` INCLUDE the limit while `&lt;` and `&gt;` exclude it.</pre></div></div>
+        <div class="card quiz"><header><i class="dot"></i><h2>Exam questions</h2></header><div class="body"><details class="q"><summary>Why does the down loop use <code>i &gt;= 1</code> and not <code>i &gt; 1</code>?</summary><div class="a"><b>Answer:</b> <code>&gt;=</code> includes 1 so it is still printed; <code>&gt;</code> would stop at 2 and skip it</div></details><details class="q"><summary>How many times does the body of Part 2 run?</summary><div class="a"><b>Answer:</b> 7 times, for j = 1, 4, 7, 10, 13, 16, 19</div></details><details class="q"><summary>What is the value of j when the loop ends, and why?</summary><div class="a"><b>Answer:</b> 22, because 19 + 3 overshoots 20 before the test can fail</div></details><details class="q"><summary><code>i += 3;</code> is shorthand for which statement?</summary><div class="a"><b>Answer:</b> i = i + 3;</div></details><details class="q"><summary>Why can Part 3 print countdown after the loop?</summary><div class="a"><b>Answer:</b> it was declared above the loop, so it survives the closing brace</div></details></div></div>
+        <div class="card trace"><header><i class="dot"></i><h2>Trace tables</h2></header><div class="body">
+          <p class="tbl-cap">================================================================</p>
+          <div class="tbl-scroll"><table class="grid"><thead><tr>
+<th>Iteration</th>
+<th>i at start</th>
+<th>Test: i &gt;= 1</th>
+<th>Output</th>
+</tr></thead><tbody>
+<tr><td>1</td><td>5</td><td>5 &gt;= 1   TRUE</td><td>5</td></tr>
+<tr><td>2</td><td>4</td><td>4 &gt;= 1   TRUE</td><td>4</td></tr>
+<tr><td>3</td><td>3</td><td>3 &gt;= 1   TRUE</td><td>3</td></tr>
+<tr><td>4</td><td>2</td><td>2 &gt;= 1   TRUE</td><td>2</td></tr>
+<tr><td>5</td><td>1</td><td>1 &gt;= 1   TRUE</td><td>1</td></tr>
+<tr class="stop"><td>6</td><td>0</td><td>0 &gt;= 1   FALSE</td><td>(nothing)</td></tr>
+</tbody></table></div>
+          <p class="tbl-cap">================================================================</p>
+          <div class="tbl-scroll"><table class="grid"><thead><tr>
+<th>Iteration</th>
+<th>j at start</th>
+<th>Test: j &lt;= 20</th>
+<th>Output</th>
+</tr></thead><tbody>
+<tr><td>1</td><td>1</td><td>1 &lt;= 20  TRUE</td><td>1</td></tr>
+<tr><td>2</td><td>4</td><td>4 &lt;= 20  TRUE</td><td>4</td></tr>
+<tr><td>3</td><td>7</td><td>7 &lt;= 20  TRUE</td><td>7</td></tr>
+<tr><td>4</td><td>10</td><td>10 &lt;= 20 TRUE</td><td>10</td></tr>
+<tr><td>5</td><td>13</td><td>13 &lt;= 20 TRUE</td><td>13</td></tr>
+<tr><td>6</td><td>16</td><td>16 &lt;= 20 TRUE</td><td>16</td></tr>
+<tr><td>7</td><td>19</td><td>19 &lt;= 20 TRUE</td><td>19</td></tr>
+<tr class="stop"><td>8</td><td>22</td><td>22 &lt;= 20 FALSE</td><td>(none)</td></tr>
+</tbody></table></div>
+        </div></div>
+        <div class="card code-card" id="annotated">
+          <header><i class="dot"></i><h2>The program, annotated</h2></header>
+          <div class="toolbar">
+            <label class="tgl"><input type="checkbox" id="tgComments"> Hide all comments <kbd>C</kbd></label>
+            <label class="tgl"><input type="checkbox" id="tgFold"> Unfold every note <kbd>F</kbd></label>
+            <label class="tgl keep"><input type="checkbox" id="tgNums" checked> Line numbers</label>
+            <button class="tgl" id="examBtn">Exam mode <kbd>E</kbd></button>
+            <button class="tgl" id="copyBtn">Copy source</button>
+            <a class="tgl" href="../../03_while_and_do_while/02_while_counting.cpp" download>Download .cpp</a>
+          </div>
+          <div class="codewrap"><div class="code" id="code"></div></div>
+        </div>
+        <div class="pager">
+          <a class="prev" id="prevLink" href="../03_while_and_do_while/01_basic_while.html"><span class="dir">Previous</span><span class="nm">01 basic while</span></a>
+          <a class="next" id="nextLink" href="../03_while_and_do_while/03_while_accumulator.html"><span class="dir">Next</span><span class="nm">03 while accumulator</span></a>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<dialog id="keys">
+  <header>Keyboard shortcuts <span class="spacer"></span>
+    <button class="icon-btn" id="keysClose">&#10005;</button></header>
+  <div class="body">
+    <div class="krow"><span>Toggle all comments</span><kbd>c</kbd></div>
+    <div class="krow"><span>Fold / unfold every note</span><kbd>f</kbd></div>
+    <div class="krow"><span>Exam mode (code only)</span><kbd>e</kbd></div>
+    <div class="krow"><span>Next file</span><kbd>n</kbd></div>
+    <div class="krow"><span>Previous file</span><kbd>p</kbd></div>
+    <div class="krow"><span>Focus search</span><kbd>/</kbd></div>
+    <div class="krow"><span>Light / dark theme</span><kbd>t</kbd></div>
+    <div class="krow"><span>Open this dialog</span><kbd>?</kbd></div>
+  </div>
+</dialog>
+
+<div class="toast" id="toast"></div>
+
+<script src="../assets/data.js"></script>
+<script>window.CURRENT_FILE = window.PROJECT.files.filter(function (x) { return x.path === "03_while_and_do_while/02_while_counting.cpp"; })[0];</script>
+<script>window.VIEWER_DEPTH = "../";</script>
+<script src="../assets/viewer.js"></script>
+</body>
+</html>

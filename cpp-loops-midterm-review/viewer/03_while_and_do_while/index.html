@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>while and do...while - C++ Loops Midterm Review</title>
+<link rel="stylesheet" href="../assets/viewer.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#9881;</text></svg>">
+</head>
+<body>
+
+<div class="app">
+  <div class="scrim" id="scrim"></div>
+  <nav class="sidebar">
+    <div class="brand">
+      <div class="logo">C++</div>
+      <div>
+        <b>Loops Midterm Review</b>
+        <small>31 annotated examples</small>
+      </div>
+    </div>
+    <div class="side-tools">
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <input id="search" type="search" placeholder="Search all files and code..." autocomplete="off">
+        <button id="searchClear" title="Clear search" style="visibility:hidden">&times;</button>
+      </div>
+      <div class="progress-row">
+        <span id="progLabel">0 / 31 studied</span>
+        <span class="bar"><i id="barFill"></i></span>
+        <button class="btn-mini" id="resetBtn" hidden>reset</button>
+      </div>
+    </div>
+    <div class="nav" id="nav"></div>
+  </nav>
+
+  <main class="main">
+    <div class="topbar">
+      <button class="icon-btn nav-only" id="navToggle" title="Show file list">&#9776;</button>
+      <div class="crumb">
+        <span>03_while_and_do_while</span> / <b>Section</b>
+      </div>
+      <span class="spacer"></span>
+      <button class="icon-btn" id="topKeys" title="Keyboard shortcuts (?)">?</button>
+      <button class="icon-btn" id="themeBtn" title="Toggle light / dark (t)">&#9680;</button>
+    </div>
+
+    <div class="scroll">
+      <div class="wrap">
+
+        <div class="dash">
+          <div class="dash-hero">
+            <h1>while and do...while</h1>
+            <p>The other two loop forms and how they differ from for.</p>
+          </div>
+          <div class="grid-cards">
+            <a class="fcard" href="01_basic_while.html">
+              <div class="num">01 &middot; 222 lines</div>
+              <h3>Basic while Loop - Counting from 1 to 5</h3>
+              <p>The three parts every working loop needs: a variable to steer the</p>
+              <div class="badges" style="margin-top:8px">
+                <span class="badge beginner">Beginner</span>
+                <span class="badge topic">while loops</span>
+              </div>
+            </a>
+            <a class="fcard" href="02_while_counting.html">
+              <div class="num">02 &middot; 261 lines</div>
+              <h3>while Loop Counting - Downwards, and in Steps</h3>
+              <p>A while loop that counts DOWNWARDS, and why its condition uses `&gt;=`</p>
+              <div class="badges" style="margin-top:8px">
+                <span class="badge beginner">Beginner</span>
+                <span class="badge topic">while loops with different starting values and steps</span>
+              </div>
+            </a>
+            <a class="fcard" href="03_while_accumulator.html">
+              <div class="num">03 &middot; 259 lines</div>
+              <h3>while Loop Accumulators - Adding and Multiplying</h3>
+              <p>The ACCUMULATOR pattern: one variable that carries a running answer</p>
+              <div class="badges" style="margin-top:8px">
+                <span class="badge beginner">Beginner</span>
+                <span class="badge topic">while loops + the ACCUMULATOR variable pattern</span>
+              </div>
+            </a>
+            <a class="fcard" href="04_basic_do_while.html">
+              <div class="num">04 &middot; 258 lines</div>
+              <h3>Basic do...while Loop</h3>
+              <p>The shape of a do...while loop and, crucially, WHERE the semicolon</p>
+              <div class="badges" style="margin-top:8px">
+                <span class="badge beginner">Beginner</span>
+                <span class="badge topic">do...while loops - a loop whose body always runs at least on</span>
+              </div>
+            </a>
+            <a class="fcard" href="05_do_while_runs_once.html">
+              <div class="num">05 &middot; 267 lines</div>
+              <h3>A do...while Loop ALWAYS Runs Its Body at Least Once</h3>
+              <p>THE CENTRAL FACT: a do...while loop runs its body one time at least,</p>
+              <div class="badges" style="margin-top:8px">
+                <span class="badge beginner">Beginner</span>
+                <span class="badge topic">the one big difference between do...while and while</span>
+              </div>
+            </a>
+            <a class="fcard" href="06_for_vs_while_vs_do_while.html">
+              <div class="num">06 &middot; 254 lines</div>
+              <h3>for vs while vs do...while - One Task, Three Answers</h3>
+              <p>The SAME job - adding up 1 to 10 - written correctly three times.</p>
+              <div class="badges" style="margin-top:8px">
+                <span class="badge beginner">Beginner</span>
+                <span class="badge topic">choosing the right loop type</span>
+              </div>
+            </a>
+          </div>
+          <div class="pager"><a href="../index.html"><span class="dir">Back</span><span class="nm">All sections</span></a></div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<dialog id="keys">
+  <header>Keyboard shortcuts <span class="spacer"></span>
+    <button class="icon-btn" id="keysClose">&#10005;</button></header>
+  <div class="body">
+    <div class="krow"><span>Toggle all comments</span><kbd>c</kbd></div>
+    <div class="krow"><span>Fold / unfold every note</span><kbd>f</kbd></div>
+    <div class="krow"><span>Exam mode (code only)</span><kbd>e</kbd></div>
+    <div class="krow"><span>Next file</span><kbd>n</kbd></div>
+    <div class="krow"><span>Previous file</span><kbd>p</kbd></div>
+    <div class="krow"><span>Focus search</span><kbd>/</kbd></div>
+    <div class="krow"><span>Light / dark theme</span><kbd>t</kbd></div>
+    <div class="krow"><span>Open this dialog</span><kbd>?</kbd></div>
+  </div>
+</dialog>
+
+<div class="toast" id="toast"></div>
+
+<script src="../assets/data.js"></script>
+<!--PAGEVAR-->
+<script>window.VIEWER_DEPTH = "../";</script>
+<script src="../assets/viewer.js"></script>
+</body>
+</html>

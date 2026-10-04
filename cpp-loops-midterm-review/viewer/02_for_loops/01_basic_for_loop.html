@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Basic for Loop - Printing the Numbers 1 to 5 - C++ Loops Midterm Review</title>
+<link rel="stylesheet" href="../assets/viewer.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#9881;</text></svg>">
+</head>
+<body>
+
+<div class="app">
+  <div class="scrim" id="scrim"></div>
+  <nav class="sidebar">
+    <div class="brand">
+      <div class="logo">C++</div>
+      <div>
+        <b>Loops Midterm Review</b>
+        <small>31 annotated examples</small>
+      </div>
+    </div>
+    <div class="side-tools">
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <input id="search" type="search" placeholder="Search all files and code..." autocomplete="off">
+        <button id="searchClear" title="Clear search" style="visibility:hidden">&times;</button>
+      </div>
+      <div class="progress-row">
+        <span id="progLabel">0 / 31 studied</span>
+        <span class="bar"><i id="barFill"></i></span>
+        <button class="btn-mini" id="resetBtn" hidden>reset</button>
+      </div>
+    </div>
+    <div class="nav" id="nav"></div>
+  </nav>
+
+  <main class="main">
+    <div class="topbar">
+      <button class="icon-btn nav-only" id="navToggle" title="Show file list">&#9776;</button>
+      <div class="crumb">
+        <span>02_for_loops</span> / <b>01_basic_for_loop.cpp</b>
+      </div>
+      <span class="spacer"></span>
+      <button class="icon-btn" id="topKeys" title="Keyboard shortcuts (?)">?</button>
+      <button class="icon-btn" id="themeBtn" title="Toggle light / dark (t)">&#9680;</button>
+    </div>
+
+    <div class="scroll">
+      <div class="wrap">
+
+        <!-- ============ THE BARE PROGRAM (comments removed) =========== -->
+        <div class="card bare-card">
+          <header><i class="dot"></i><h2>The program, comments removed</h2><span class="badge ok">the code you would write in the exam</span><span class="spacer"></span><span class="badge">11 lines (from 203)</span></header>
+          <div class="toolbar bare-tools">
+            <span class="hint">Every explanation has been deleted. This is the complete program on its own &mdash; read it top to bottom until you can predict each line.</span>
+            <button class="tgl" id="copyBareBtn">Copy bare code</button>
+          </div>
+          <div class="codewrap bare"><div class="code" id="codeBare"></div></div>
+        </div>
+        <div class="hero">
+          <div class="path">02_for_loops/01_basic_for_loop.cpp</div>
+          <h1>Basic for Loop - Printing the Numbers 1 to 5</h1>
+          <div class="badges">
+            <span class="badge beginner">Beginner</span>
+            <span class="badge topic">for loops - the three header parts</span>
+            <span class="badge">203 lines</span>
+            <span class="badge">9 kb</span>
+          </div>
+        </div>
+        <div class="note info"><b>Reading tip.</b> Every grey note below is a collapsible explanation. Click its header to read it, or press <b>C</b> to hide every comment at once so the program logic stands on its own.</div>
+        <div class="card teach"><header><i class="dot"></i><h2>WHAT THIS PROGRAM TEACHES</h2></header><div class="body"><ul class="bul"><li>The three parts of a for loop header and what each one does.</li><li>The exact ORDER in which those three parts execute.</li><li>How to work out on paper how many times a loop repeats.</li><li>How to print one number per line with cout and endl.</li></ul></div></div>
+        <div class="card exp"><header><i class="dot"></i><h2>EXPECTED OUTPUT</h2></header><div class="body"><pre class="plain">1
+2
+3
+4
+5</pre></div></div>
+        <div class="card syn"><header><i class="dot"></i><h2>IMPORTANT SYNTAX</h2></header><div class="body"><div class="syn-list"><div class="syn-item"><code>i++                         -&gt; add 1 to i (shorthand for i = i + 1)</code><span>cout &lt;&lt; i &lt;&lt; endl;          -&gt; print i, then move to the start of a new line</span></div><div class="syn-item"><code></code><span>;                           -&gt; ends a statement</span></div></div></div></div>
+        <div class="card"><header><i class="dot"></i><h2>STEP-BY-STEP EXPLANATION</h2></header><div class="body"><ol class="steps"><li><code>int i = 1</code> runs ONCE: the variable i is created holding the value 1.</li><li><code>i &lt;= 5</code> is tested. If it is true the body runs; if it is false the loop</li><li>is left behind and the program continues after the closing brace.</li><li><code>cout &lt;&lt; i &lt;&lt; endl;</code> prints the current value of i on its own line.</li><li><code>i++</code> adds 1 to i, so i changes from 1 to 2.</li><li>Go back to step 2 and repeat until i is 6 and <code>i &lt;= 5</code> is false.</li><li>That gives 5 iterations, because i takes the values 1, 2, 3, 4, 5.</li><li>============================================================</li></ol></div></div>
+        <div class="card teach"><header><i class="dot"></i><h2>THE LOOP</h2></header><div class="body"><ul class="bul"><li>-----------------------------------------------------------</li></ul></div></div>
+        <div class="card"><header><i class="dot"></i><h2>AFTER THE LOOP</h2></header><div class="body"><pre class="plain wrap">The closing brace `}` marks the end of the loop body. The statement
+after it is the first code to run once the loop is finished.
+IMPORTANT: `i` does NOT exist here. It was declared inside the loop
+header, so it was destroyed at the closing brace. Trying to print it
+now is a compile error. See 08_multiple_variables.cpp.
+
+
+
+------------------------------------------------------------
+TRACE TABLE - follow the loop with a pen on paper
+------------------------------------------------------------</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>TRACE TABLE</h2></header><div class="body"><pre class="plain wrap">+-----------+------------+----------------+-----------+
+| Iteration | i at start | condition i&lt;=5? | Output    |
++-----------+------------+----------------+-----------+
+|     1     |     1      |  1 &lt;= 5  true  |    1      |
++-----------+------------+----------------+-----------+
+|     2     |     2      |  2 &lt;= 5  true  |    2      |
++-----------+------------+----------------+-----------+
+|     3     |     3      |  3 &lt;= 5  true  |    3      |
++-----------+------------+----------------+-----------+
+|     4     |     4      |  4 &lt;= 5  true  |    4      |
++-----------+------------+----------------+-----------+
+|     5     |     5      |  5 &lt;= 5  true  |    5      |
++-----------+------------+----------------+-----------+
+|     6     |     6      |  6 &lt;= 5  FALSE | STOP     |
++-----------+------------+----------------+-----------+
+
+Row 6 is where the loop dies. The body ran 5 times, not 6: the failed
+test does not print anything.
+
+THE 10-SECOND EXAM METHOD (how to count iterations fast)
+1. What is the FIRST value of the counter?   (from the start part)
+2. What is the LAST value allowed?           (from the condition)
+3. How much does the counter change each pass? (from the update)
+4. Going UP:   count = (last - first) / step + 1
+Going DOWN: count = (first - last) / step + 1
+Here: (5 - 1) / 1 + 1 = 4 + 1 = 5 iterations. Correct.</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>THE COMMON TRAP IN THIS FILE</h2></header><div class="body"><pre class="plain wrap">Writing `i &lt; 5` instead of `i &lt;= 5` prints only 1 2 3 4 and runs 4
+times. `&lt;` excludes the limit; `&lt;=` includes it. Read the symbol
+aloud as English - &quot;less than 5&quot; means 5 is not allowed in.</pre></div></div>
+        <div class="card quiz"><header><i class="dot"></i><h2>Exam questions</h2></header><div class="body"><details class="q"><summary>How many times does the loop body run?</summary><div class="a"><b>Answer:</b> 5 times</div></details><details class="q"><summary>What is the value of i the last time the condition is tested?</summary><div class="a"><b>Answer:</b> 6</div></details><details class="q"><summary>Which header part runs exactly once?</summary><div class="a"><b>Answer:</b> the initialization <code>int i = 1</code></div></details><details class="q"><summary>List the execution order in one line.</summary><div class="a"><b>Answer:</b> init, test, body, update, test, body, update, ...</div></details><details class="q"><summary>If the condition were <code>i &lt; 5</code> instead, what changes?</summary><div class="a"><b>Answer:</b> 4 iterations, prints 1 2 3 4 only</div></details><details class="q"><summary>Is <code>i</code> usable after the closing brace?</summary><div class="a"><b>Answer:</b> no, it was scoped to the loop</div></details></div></div>
+        <div class="card trace"><header><i class="dot"></i><h2>Trace tables</h2></header><div class="body">
+          <p class="tbl-cap">TRACE TABLE</p>
+          <div class="tbl-scroll"><table class="grid"><thead><tr>
+<th>Iteration</th>
+<th>i at start</th>
+<th>condition i&lt;=5?</th>
+<th>Output</th>
+</tr></thead><tbody>
+<tr><td>1</td><td>1</td><td>1 &lt;= 5  true</td><td>1</td></tr>
+<tr><td>2</td><td>2</td><td>2 &lt;= 5  true</td><td>2</td></tr>
+<tr><td>3</td><td>3</td><td>3 &lt;= 5  true</td><td>3</td></tr>
+<tr><td>4</td><td>4</td><td>4 &lt;= 5  true</td><td>4</td></tr>
+<tr><td>5</td><td>5</td><td>5 &lt;= 5  true</td><td>5</td></tr>
+<tr class="stop"><td>6</td><td>6</td><td>6 &lt;= 5  FALSE</td><td>STOP</td></tr>
+</tbody></table></div>
+        </div></div>
+        <div class="card code-card" id="annotated">
+          <header><i class="dot"></i><h2>The program, annotated</h2></header>
+          <div class="toolbar">
+            <label class="tgl"><input type="checkbox" id="tgComments"> Hide all comments <kbd>C</kbd></label>
+            <label class="tgl"><input type="checkbox" id="tgFold"> Unfold every note <kbd>F</kbd></label>
+            <label class="tgl keep"><input type="checkbox" id="tgNums" checked> Line numbers</label>
+            <button class="tgl" id="examBtn">Exam mode <kbd>E</kbd></button>
+            <button class="tgl" id="copyBtn">Copy source</button>
+            <a class="tgl" href="../../02_for_loops/01_basic_for_loop.cpp" download>Download .cpp</a>
+          </div>
+          <div class="codewrap"><div class="code" id="code"></div></div>
+        </div>
+        <div class="pager">
+          <a class="prev" id="prevLink" href="../01_fundamentals/08_for_loop_anatomy.html"><span class="dir">Previous</span><span class="nm">08 for loop anatomy</span></a>
+          <a class="next" id="nextLink" href="../02_for_loops/02_different_starting_values.html"><span class="dir">Next</span><span class="nm">02 different starting values</span></a>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<dialog id="keys">
+  <header>Keyboard shortcuts <span class="spacer"></span>
+    <button class="icon-btn" id="keysClose">&#10005;</button></header>
+  <div class="body">
+    <div class="krow"><span>Toggle all comments</span><kbd>c</kbd></div>
+    <div class="krow"><span>Fold / unfold every note</span><kbd>f</kbd></div>
+    <div class="krow"><span>Exam mode (code only)</span><kbd>e</kbd></div>
+    <div class="krow"><span>Next file</span><kbd>n</kbd></div>
+    <div class="krow"><span>Previous file</span><kbd>p</kbd></div>
+    <div class="krow"><span>Focus search</span><kbd>/</kbd></div>
+    <div class="krow"><span>Light / dark theme</span><kbd>t</kbd></div>
+    <div class="krow"><span>Open this dialog</span><kbd>?</kbd></div>
+  </div>
+</dialog>
+
+<div class="toast" id="toast"></div>
+
+<script src="../assets/data.js"></script>
+<script>window.CURRENT_FILE = window.PROJECT.files.filter(function (x) { return x.path === "02_for_loops/01_basic_for_loop.cpp"; })[0];</script>
+<script>window.VIEWER_DEPTH = "../";</script>
+<script src="../assets/viewer.js"></script>
+</body>
+</html>

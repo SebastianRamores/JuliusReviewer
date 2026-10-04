@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Decrementing - i--, i -= 1 and i = i - 1 - C++ Loops Midterm Review</title>
+<link rel="stylesheet" href="../assets/viewer.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#9881;</text></svg>">
+</head>
+<body>
+
+<div class="app">
+  <div class="scrim" id="scrim"></div>
+  <nav class="sidebar">
+    <div class="brand">
+      <div class="logo">C++</div>
+      <div>
+        <b>Loops Midterm Review</b>
+        <small>31 annotated examples</small>
+      </div>
+    </div>
+    <div class="side-tools">
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <input id="search" type="search" placeholder="Search all files and code..." autocomplete="off">
+        <button id="searchClear" title="Clear search" style="visibility:hidden">&times;</button>
+      </div>
+      <div class="progress-row">
+        <span id="progLabel">0 / 31 studied</span>
+        <span class="bar"><i id="barFill"></i></span>
+        <button class="btn-mini" id="resetBtn" hidden>reset</button>
+      </div>
+    </div>
+    <div class="nav" id="nav"></div>
+  </nav>
+
+  <main class="main">
+    <div class="topbar">
+      <button class="icon-btn nav-only" id="navToggle" title="Show file list">&#9776;</button>
+      <div class="crumb">
+        <span>02_for_loops</span> / <b>05_decrementing.cpp</b>
+      </div>
+      <span class="spacer"></span>
+      <button class="icon-btn" id="topKeys" title="Keyboard shortcuts (?)">?</button>
+      <button class="icon-btn" id="themeBtn" title="Toggle light / dark (t)">&#9680;</button>
+    </div>
+
+    <div class="scroll">
+      <div class="wrap">
+
+        <!-- ============ THE BARE PROGRAM (comments removed) =========== -->
+        <div class="card bare-card">
+          <header><i class="dot"></i><h2>The program, comments removed</h2><span class="badge ok">the code you would write in the exam</span><span class="spacer"></span><span class="badge">42 lines (from 288)</span></header>
+          <div class="toolbar bare-tools">
+            <span class="hint">Every explanation has been deleted. This is the complete program on its own &mdash; read it top to bottom until you can predict each line.</span>
+            <button class="tgl" id="copyBareBtn">Copy bare code</button>
+          </div>
+          <div class="codewrap bare"><div class="code" id="codeBare"></div></div>
+        </div>
+        <div class="hero">
+          <div class="path">02_for_loops/05_decrementing.cpp</div>
+          <h1>Decrementing - i--, i -= 1 and i = i - 1</h1>
+          <div class="badges">
+            <span class="badge beginner">Beginner</span>
+            <span class="badge topic">for loops - counting DOWN with a decreasing counter</span>
+            <span class="badge">288 lines</span>
+            <span class="badge">12 kb</span>
+          </div>
+        </div>
+        <div class="note info"><b>Reading tip.</b> Every grey note below is a collapsible explanation. Click its header to read it, or press <b>C</b> to hide every comment at once so the program logic stands on its own.</div>
+        <div class="card teach"><header><i class="dot"></i><h2>WHAT THIS PROGRAM TEACHES</h2></header><div class="body"><ul class="bul"><li>Three spellings of &quot;subtract 1&quot; that behave identically.</li><li>Why a decreasing counter needs <code>&gt;</code> or <code>&gt;=</code> in the condition.</li><li>Why <code>i &gt;= 1</code> is correct for a countdown to 1, and what <code>i &lt;= 1</code> does.</li><li>Countdown loops that finish on 0 instead of on 1.</li></ul></div></div>
+        <div class="card exp"><header><i class="dot"></i><h2>EXPECTED OUTPUT</h2></header><div class="body"><pre class="plain">Using i--        : 10 9 8 7 6 5 4 3 2 1
+Using i -= 1     : 10 9 8 7 6 5 4 3 2 1
+Using i = i - 1  : 10 9 8 7 6 5 4 3 2 1
+All three decrement methods produced identical output.
+Countdown from 5 down to 1 (condition i &gt;= 1):
+5
+4
+3
+2
+1
+Countdown from 3 down to 0 (condition i &gt;= 0):
+3
+2
+1
+0</pre></div></div>
+        <div class="card syn"><header><i class="dot"></i><h2>IMPORTANT SYNTAX</h2></header><div class="body"><div class="syn-list"><div class="syn-item"><code>i &gt;= 1            -&gt; &quot;is i still 1 or more?&quot;  correct for a countdown to 1</code><span>i &gt; 1             -&gt; stops one step earlier, so 1 is never printed</span></div></div></div></div>
+        <div class="card"><header><i class="dot"></i><h2>STEP-BY-STEP EXPLANATION</h2></header><div class="body"><ol class="steps"><li>A countdown is written exactly like a count-up, with two differences:</li><li>the update is <code>i--</code> instead of <code>i++</code>, and the comparison is flipped</li><li>from <code>&lt;</code> / <code>&lt;=</code> to <code>&gt;</code> / <code>&gt;=</code>.</li><li><code>i--</code> is the DECREMENT operator: i = i - 1. <code>i -= 1</code> and <code>i = i - 1</code></li><li>do exactly the same thing, so all three countdowns print 10 to 1.</li><li>A countdown to 1 must use <code>i &gt;= 1</code>. The <code>&gt;=</code> is essential: it lets the</li><li>value 1 through the test one last time so that 1 can be printed.</li><li>Using <code>i &gt; 1</code> would stop one step early and never print the 1.</li><li>Using <code>i &lt;= 1</code> is the fatal mistake. The counter shrinks while the</li><li>test keeps asking for a small number, so the test is true forever -</li><li>an infinite loop that prints 1, 0, -1, -2, ... without end.</li><li>A countdown that must INCLUDE 0 uses <code>i &gt;= 0</code> instead of <code>i &gt;= 1</code>.</li><li>============================================================</li></ol></div></div>
+        <div class="card"><header><i class="dot"></i><h2>PART C - COUNTDOWN THAT ALSO INCLUDES 0</h2></header><div class="body"><pre class="plain wrap">============================================================</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>WHY IT NEVER ENDS</h2></header><div class="body"><pre class="plain wrap">The counter starts at 5 and SHRINKS: 5, 4, 3, 2, 1, 0, -1, -2 ...
+The test asks &quot;is i &lt;= 1?&quot;. It becomes true at i = 1 and stays
+true for ever after, because a decreasing whole number keeps going
+down without limit. The exit door can never be reached.
+The program would print 1, 0, -1, -2, -3 ... with no end.
+
+THE RULE THAT PREVENTS IT: the direction of the comparison must
+match the direction of the counter.
+counter goes UP   (i++) -&gt; test with &lt;  or &lt;=
+counter goes DOWN (i--) -&gt; test with &gt;  or &gt;=
+
+If you ever see a loop that appears to hang, check that pairing
+first. The same mistake with a rising counter is shown in
+../12_common_mistakes/05_infinite_loop.cpp.
+
+
+
+------------------------------------------------------------</pre></div></div>
+        <div class="card teach"><header><i class="dot"></i><h2>TRACE TABLE</h2></header><div class="body"><ul class="bul"><li>-----------------------------------------------------------</li></ul></div></div>
+        <div class="card"><header><i class="dot"></i><h2>TRACE TABLE</h2></header><div class="body"><pre class="plain wrap">+-----------+------------+-----------------+----------+------------+----------+
+| Iteration | i at start | Update written   | Printed  | i after    | next     |
+|           |            |                 |          | update     | test     |
++-----------+------------+-----------------+----------+------------+----------+
+|     1     |    10      | i-- (= i-1)      |    10    |     9      |  9&gt;=1 T  |
++-----------+------------+-----------------+----------+------------+----------+
+|     2     |     9      | i--              |     9    |     8      |  8&gt;=1 T  |
++-----------+------------+-----------------+----------+------------+----------+
+|     3     |     8      | i -= 1 (= i-1)  |     8    |     7      |  7&gt;=1 T  |
++-----------+------------+-----------------+----------+------------+----------+
+|     4     |     7      | i = i - 1       |     7    |     6      |  6&gt;=1 T  |
++-----------+------------+-----------------+----------+------------+----------+
+|     5     |     6      | i--              |     6    |     5      |  5&gt;=1 T  |
++-----------+------------+-----------------+----------+------------+----------+
+|     6     |     5      | i--              |     5    |     4      |  4&gt;=1 T  |
++-----------+------------+-----------------+----------+------------+----------+
+|     7     |     4      | i--              |     4    |     3      |  3&gt;=1 T  |
++-----------+------------+-----------------+----------+------------+----------+
+|     8     |     3      | i--              |     3    |     2      |  2&gt;=1 T  |
++-----------+------------+-----------------+----------+------------+----------+
+|     9     |     2      | i--              |     2    |     1      |  1&gt;=1 T  |
++-----------+------------+-----------------+----------+------------+----------+
+|    10     |     1      | i--              |     1    |     0      |  0&gt;=1 F  |
++-----------+------------+-----------------+----------+------------+----------+
+|    11     |     0      | (never reached)  |  STOP    |     0      |  -       |
++-----------+------------+-----------------+----------+------------+----------+
+
+The last row is the important one. i reached 0, the test failed, and
+nothing was printed - a failed test never produces output.
+
+THE 10-SECOND EXAM METHOD (counting a downward loop)
+1. First value (from the start part).
+2. Last value allowed (from the condition).
+3. Step size (1 for `i--`).
+4. Going DOWN: count = (first - last) / step + 1
+Here: (10 - 1) / 1 + 1 = 9 + 1 = 10 iterations. Correct.</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>THE COMMON TRAP IN THIS FILE</h2></header><div class="body"><pre class="plain wrap">Copying the condition from a count-up loop without changing the
+direction. `for (int i = 5; i &lt;= 1; i--)` looks reasonable at a
+glance and hangs for ever. Say the condition out loud in English -
+if the sentence cannot become false, the loop cannot end.</pre></div></div>
+        <div class="card quiz"><header><i class="dot"></i><h2>Exam questions</h2></header><div class="body"><details class="q"><summary>What does <code>i--</code> mean?</summary><div class="a"><b>Answer:</b> subtract 1 from i; it is shorthand for i = i - 1</div></details><details class="q"><summary>How many values does <code>for (int i = 10; i &gt;= 1; i--)</code> print?</summary><div class="a"><b>Answer:</b> 10  (10 9 8 7 6 5 4 3 2 1)</div></details><details class="q"><summary>What is the value of i when that loop finally stops?</summary><div class="a"><b>Answer:</b> 0</div></details><details class="q"><summary>Which condition prints the number 1 on the last pass?</summary><div class="a"><b>Answer:</b> i &gt;= 1 (the <code>&gt;=</code> lets 1 pass the test)</div></details><details class="q"><summary>What happens with <code>for (int i = 5; i &lt;= 1; i--)</code>?</summary><div class="a"><b>Answer:</b> an infinite loop: the counter falls while the test keeps succeeding, so 1 0 -1 -2 ... prints for ever</div></details><details class="q"><summary>How do you make a countdown that also prints 0?</summary><div class="a"><b>Answer:</b> change the condition to <code>i &gt;= 0</code></div></details></div></div>
+        <div class="card trace"><header><i class="dot"></i><h2>Trace tables</h2></header><div class="body">
+          <p class="tbl-cap">TRACE TABLE</p>
+          <div class="tbl-scroll"><table class="grid"><thead><tr>
+<th>Iteration</th>
+<th>i at start</th>
+<th>Update written</th>
+<th>Printed</th>
+<th>i after</th>
+<th>next</th>
+</tr></thead><tbody>
+<tr><td></td><td></td><td></td><td></td><td>update</td><td>test</td></tr>
+<tr><td>1</td><td>10</td><td>i-- (= i-1)</td><td>10</td><td>9</td><td>9&gt;=1 T</td></tr>
+<tr><td>2</td><td>9</td><td>i--</td><td>9</td><td>8</td><td>8&gt;=1 T</td></tr>
+<tr><td>3</td><td>8</td><td>i -= 1 (= i-1)</td><td>8</td><td>7</td><td>7&gt;=1 T</td></tr>
+<tr><td>4</td><td>7</td><td>i = i - 1</td><td>7</td><td>6</td><td>6&gt;=1 T</td></tr>
+<tr><td>5</td><td>6</td><td>i--</td><td>6</td><td>5</td><td>5&gt;=1 T</td></tr>
+<tr><td>6</td><td>5</td><td>i--</td><td>5</td><td>4</td><td>4&gt;=1 T</td></tr>
+<tr><td>7</td><td>4</td><td>i--</td><td>4</td><td>3</td><td>3&gt;=1 T</td></tr>
+<tr><td>8</td><td>3</td><td>i--</td><td>3</td><td>2</td><td>2&gt;=1 T</td></tr>
+<tr><td>9</td><td>2</td><td>i--</td><td>2</td><td>1</td><td>1&gt;=1 T</td></tr>
+<tr><td>10</td><td>1</td><td>i--</td><td>1</td><td>0</td><td>0&gt;=1 F</td></tr>
+<tr class="stop"><td>11</td><td>0</td><td>(never reached)</td><td>STOP</td><td>0</td><td>-</td></tr>
+</tbody></table></div>
+        </div></div>
+        <div class="card code-card" id="annotated">
+          <header><i class="dot"></i><h2>The program, annotated</h2></header>
+          <div class="toolbar">
+            <label class="tgl"><input type="checkbox" id="tgComments"> Hide all comments <kbd>C</kbd></label>
+            <label class="tgl"><input type="checkbox" id="tgFold"> Unfold every note <kbd>F</kbd></label>
+            <label class="tgl keep"><input type="checkbox" id="tgNums" checked> Line numbers</label>
+            <button class="tgl" id="examBtn">Exam mode <kbd>E</kbd></button>
+            <button class="tgl" id="copyBtn">Copy source</button>
+            <a class="tgl" href="../../02_for_loops/05_decrementing.cpp" download>Download .cpp</a>
+          </div>
+          <div class="codewrap"><div class="code" id="code"></div></div>
+        </div>
+        <div class="pager">
+          <a class="prev" id="prevLink" href="../02_for_loops/04_incrementing.html"><span class="dir">Previous</span><span class="nm">04 incrementing</span></a>
+          <a class="next" id="nextLink" href="../02_for_loops/06_increment_by_2.html"><span class="dir">Next</span><span class="nm">06 increment by 2</span></a>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<dialog id="keys">
+  <header>Keyboard shortcuts <span class="spacer"></span>
+    <button class="icon-btn" id="keysClose">&#10005;</button></header>
+  <div class="body">
+    <div class="krow"><span>Toggle all comments</span><kbd>c</kbd></div>
+    <div class="krow"><span>Fold / unfold every note</span><kbd>f</kbd></div>
+    <div class="krow"><span>Exam mode (code only)</span><kbd>e</kbd></div>
+    <div class="krow"><span>Next file</span><kbd>n</kbd></div>
+    <div class="krow"><span>Previous file</span><kbd>p</kbd></div>
+    <div class="krow"><span>Focus search</span><kbd>/</kbd></div>
+    <div class="krow"><span>Light / dark theme</span><kbd>t</kbd></div>
+    <div class="krow"><span>Open this dialog</span><kbd>?</kbd></div>
+  </div>
+</dialog>
+
+<div class="toast" id="toast"></div>
+
+<script src="../assets/data.js"></script>
+<script>window.CURRENT_FILE = window.PROJECT.files.filter(function (x) { return x.path === "02_for_loops/05_decrementing.cpp"; })[0];</script>
+<script>window.VIEWER_DEPTH = "../";</script>
+<script src="../assets/viewer.js"></script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Counting How Many Even Numbers Are in 1 to 50 - C++ Loops Midterm Review</title>
+<link rel="stylesheet" href="../assets/viewer.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#9881;</text></svg>">
+</head>
+<body>
+
+<div class="app">
+  <div class="scrim" id="scrim"></div>
+  <nav class="sidebar">
+    <div class="brand">
+      <div class="logo">C++</div>
+      <div>
+        <b>Loops Midterm Review</b>
+        <small>31 annotated examples</small>
+      </div>
+    </div>
+    <div class="side-tools">
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <input id="search" type="search" placeholder="Search all files and code..." autocomplete="off">
+        <button id="searchClear" title="Clear search" style="visibility:hidden">&times;</button>
+      </div>
+      <div class="progress-row">
+        <span id="progLabel">0 / 31 studied</span>
+        <span class="bar"><i id="barFill"></i></span>
+        <button class="btn-mini" id="resetBtn" hidden>reset</button>
+      </div>
+    </div>
+    <div class="nav" id="nav"></div>
+  </nav>
+
+  <main class="main">
+    <div class="topbar">
+      <button class="icon-btn nav-only" id="navToggle" title="Show file list">&#9776;</button>
+      <div class="crumb">
+        <span>04_counters_and_accumulators</span> / <b>04_count_even_numbers.cpp</b>
+      </div>
+      <span class="spacer"></span>
+      <button class="icon-btn" id="topKeys" title="Keyboard shortcuts (?)">?</button>
+      <button class="icon-btn" id="themeBtn" title="Toggle light / dark (t)">&#9680;</button>
+    </div>
+
+    <div class="scroll">
+      <div class="wrap">
+
+        <!-- ============ THE BARE PROGRAM (comments removed) =========== -->
+        <div class="card bare-card">
+          <header><i class="dot"></i><h2>The program, comments removed</h2><span class="badge ok">the code you would write in the exam</span><span class="spacer"></span><span class="badge">47 lines (from 257)</span></header>
+          <div class="toolbar bare-tools">
+            <span class="hint">Every explanation has been deleted. This is the complete program on its own &mdash; read it top to bottom until you can predict each line.</span>
+            <button class="tgl" id="copyBareBtn">Copy bare code</button>
+          </div>
+          <div class="codewrap bare"><div class="code" id="codeBare"></div></div>
+        </div>
+        <div class="hero">
+          <div class="path">04_counters_and_accumulators/04_count_even_numbers.cpp</div>
+          <h1>Counting How Many Even Numbers Are in 1 to 50</h1>
+          <div class="badges">
+            <span class="badge beginner">Beginner</span>
+            <span class="badge topic">the COUNTER pattern, and how it differs from an ACCUMULATOR</span>
+            <span class="badge">257 lines</span>
+            <span class="badge">11 kb</span>
+          </div>
+        </div>
+        <div class="note info"><b>Reading tip.</b> Every grey note below is a collapsible explanation. Click its header to read it, or press <b>C</b> to hide every comment at once so the program logic stands on its own.</div>
+        <div class="card teach"><header><i class="dot"></i><h2>WHAT THIS PROGRAM TEACHES</h2></header><div class="body"><ul class="bul"><li>The COUNTER: a variable that starts at 0 and goes up by 1 each time</li><li>The exact difference between a counter and an accumulator, in one</li><li>Why a counter must also be initialised BEFORE the loop.</li><li>Two methods again - test every number, or step by 2 - plus how many</li></ul></div></div>
+        <div class="card exp"><header><i class="dot"></i><h2>EXPECTED OUTPUT</h2></header><div class="body"><pre class="plain">=== Part 1: visit every number and count the even ones ===
+Loop body ran 50 times.
+Even numbers found: 25
+=== Part 2: step by 2 and count without testing ===
+Loop body ran 25 times.
+Even numbers found: 25
+=== Which method is better here? ===
+Method 1 does 50 passes, Method 2 does 25 passes.
+Both methods find 25 even numbers, so they agree.</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>IMPORTANT SYNTAX</h2></header><div class="body"><pre class="plain wrap">int count = 0;          -&gt; a counter starts at zero
+count++;                -&gt; one more thing has been found
+count += 1;             -&gt; exactly the same, written longer
+passes++;               -&gt; a second counter, counting loop passes
+if (i % 2 == 0) { ... } -&gt; only count when the number is even</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>STEP-BY-STEP EXPLANATION</h2></header><div class="body"><ol class="steps"><li><code>int count = 0;</code> is the COUNTER, created before the loop.</li><li>The loop visits every number from 1 to 50, so the body runs 50 times.</li><li><code>if (i % 2 == 0)</code> asks &quot;is there no remainder when i is divided by 2?&quot;</li><li>TRUE means even, and only then does <code>count++;</code> fire.</li><li>25 of the 50 passes pass the test, so count ends at 25.</li><li>Method 2 steps by 2, so every pass is a hit: the body runs 25 times</li><li>and count still ends at 25 - half the work for the same answer.</li><li>============================================================</li></ol></div></div>
+        <div class="card"><header><i class="dot"></i><h2>PART 1 - TEST EVERY NUMBER AND COUNT THE EVEN ONES</h2></header><div class="body"><pre class="plain wrap">================================================================</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>THE COUNTER.</h2></header><div class="body"><pre class="plain wrap">int   whole numbers only; a decimal such as 2.5 could not be held.
+count the name; it is a very common choice of name for a counter.
+=     ASSIGNMENT - &quot;store this value&quot;, NOT &quot;equals&quot;.
+0     THE STARTING VALUE. `;` ends the statement.
+
+COUNTER OR ACCUMULATOR? THIS IS THE EXAM QUESTION, AND THE ANSWER IS:
+
+A COUNTER     answers &quot;HOW MANY?&quot;     It always moves by 1.
+It ignores the size of the thing it is counting.
+The line that changes it is `count++`.
+Example: &quot;how many even numbers are there?&quot;
+
+An ACCUMULATOR answers &quot;HOW MUCH?&quot;     It moves by the value being
+processed, so the steps are different sizes.
+The line that changes it is `sum = sum + i;`
+Example: &quot;what is the total of them?&quot;
+
+Put side by side, for i = 4:
+count++            count goes 3 -&gt; 4      ONE more thing happened.
+sum = sum + i      sum    goes 36 -&gt; 40    FOUR more was added.
+
+So in this program we write `count++` and never `count = count + i`.
+Writing the accumulator form here would answer a different question
+entirely, and would give 650 rather than 25.
+
+BOTH PATTERNS MUST BE INITIALISED BEFORE THE LOOP. A variable created
+inside the braces is destroyed at the closing brace and rebuilt on
+every pass, so it would always go back to its starting value and the
+answer would never build up.</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>PART 2 - STEP BY 2 AND COUNT WITHOUT TESTING</h2></header><div class="body"><pre class="plain wrap">================================================================</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>COMPARING THE TWO METHODS</h2></header><div class="body"><pre class="plain wrap">================================================================</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>THE COMMON TRAP IN THIS FILE</h2></header><div class="body"><pre class="plain wrap">Writing `count = count + i;` where `count++` belongs. The program
+compiles, runs, and reports 650 - because 2 + 4 + 6 + ... + 50 adds
+the numbers instead of counting them. Nobody forgets an accumulator
+when they mean to use a counter. Ask the question first: &quot;how many?&quot;
+-&gt; `count++`. &quot;How much?&quot; -&gt; `sum = sum + i;`.
+
+The second trap is `int count;` with no starting value. C++ refuses
+to compile that inside a loop, because on the first pass there would
+be no value to add 1 to. Always give the starting value first.</pre></div></div>
+        <div class="card quiz"><header><i class="dot"></i><h2>Exam questions</h2></header><div class="body"><details class="q"><summary>How many even numbers are there between 1 and 50?</summary><div class="a"><b>Answer:</b> 25</div></details><details class="q"><summary>How many times does the body of Part 1 run, and how many times does the body of Part 2 run?</summary><div class="a"><b>Answer:</b> 50 and then 25</div></details><details class="q"><summary>What does <code>count++</code> mean, and what would <code>count = count + i</code> mean?</summary><div class="a"><b>Answer:</b> one more hit; adding the value of i, which counts nothing usefully</div></details><details class="q"><summary>Why must <code>count</code> be declared before the loop?</summary><div class="a"><b>Answer:</b> inside the braces it would be destroyed and reset every pass</div></details><details class="q"><summary>Which method is faster here, and by how much?</summary><div class="a"><b>Answer:</b> Method 2, using 25 passes instead of 50</div></details></div></div>
+        <div class="card trace"><header><i class="dot"></i><h2>Trace tables</h2></header><div class="body">
+          <p class="tbl-cap">same two patterns over and over, so they are elided with &quot;...&quot;.</p>
+          <div class="tbl-scroll"><table class="grid"><thead><tr>
+<th>Iteration</th>
+<th>i at start</th>
+<th>passes</th>
+<th>count</th>
+<th>i % 2 == 0 ?</th>
+<th>Output</th>
+</tr></thead><tbody>
+<tr class="stop"><td>1</td><td>1</td><td>1</td><td>0</td><td>FALSE - odd</td><td>(none)</td></tr>
+<tr><td>2</td><td>2</td><td>2</td><td>0 -&gt; 1</td><td>TRUE  - even</td><td>(none)</td></tr>
+<tr class="stop"><td>3</td><td>3</td><td>3</td><td>1</td><td>FALSE - odd</td><td>(none)</td></tr>
+<tr><td>4</td><td>4</td><td>4</td><td>1 -&gt; 2</td><td>TRUE  - even</td><td>(none)</td></tr>
+<tr><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td></tr>
+<tr class="stop"><td>49</td><td>49</td><td>49</td><td>24</td><td>FALSE - odd</td><td>(none)</td></tr>
+<tr><td>50</td><td>50</td><td>50</td><td>24 -&gt; 25</td><td>TRUE  - even</td><td>(none)</td></tr>
+<tr><td>51</td><td>51</td><td>(no more)</td><td>25</td><td>the loop has ended</td><td>(none)</td></tr>
+</tbody></table></div>
+        </div></div>
+        <div class="card code-card" id="annotated">
+          <header><i class="dot"></i><h2>The program, annotated</h2></header>
+          <div class="toolbar">
+            <label class="tgl"><input type="checkbox" id="tgComments"> Hide all comments <kbd>C</kbd></label>
+            <label class="tgl"><input type="checkbox" id="tgFold"> Unfold every note <kbd>F</kbd></label>
+            <label class="tgl keep"><input type="checkbox" id="tgNums" checked> Line numbers</label>
+            <button class="tgl" id="examBtn">Exam mode <kbd>E</kbd></button>
+            <button class="tgl" id="copyBtn">Copy source</button>
+            <a class="tgl" href="../../04_counters_and_accumulators/04_count_even_numbers.cpp" download>Download .cpp</a>
+          </div>
+          <div class="codewrap"><div class="code" id="code"></div></div>
+        </div>
+        <div class="pager">
+          <a class="prev" id="prevLink" href="../04_counters_and_accumulators/03_sum_odd_numbers.html"><span class="dir">Previous</span><span class="nm">03 sum odd numbers</span></a>
+          <a class="next" id="nextLink" href="../04_counters_and_accumulators/05_count_odd_numbers.html"><span class="dir">Next</span><span class="nm">05 count odd numbers</span></a>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<dialog id="keys">
+  <header>Keyboard shortcuts <span class="spacer"></span>
+    <button class="icon-btn" id="keysClose">&#10005;</button></header>
+  <div class="body">
+    <div class="krow"><span>Toggle all comments</span><kbd>c</kbd></div>
+    <div class="krow"><span>Fold / unfold every note</span><kbd>f</kbd></div>
+    <div class="krow"><span>Exam mode (code only)</span><kbd>e</kbd></div>
+    <div class="krow"><span>Next file</span><kbd>n</kbd></div>
+    <div class="krow"><span>Previous file</span><kbd>p</kbd></div>
+    <div class="krow"><span>Focus search</span><kbd>/</kbd></div>
+    <div class="krow"><span>Light / dark theme</span><kbd>t</kbd></div>
+    <div class="krow"><span>Open this dialog</span><kbd>?</kbd></div>
+  </div>
+</dialog>
+
+<div class="toast" id="toast"></div>
+
+<script src="../assets/data.js"></script>
+<script>window.CURRENT_FILE = window.PROJECT.files.filter(function (x) { return x.path === "04_counters_and_accumulators/04_count_even_numbers.cpp"; })[0];</script>
+<script>window.VIEWER_DEPTH = "../";</script>
+<script src="../assets/viewer.js"></script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>for Loops - C++ Loops Midterm Review</title>
+<link rel="stylesheet" href="../assets/viewer.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#9881;</text></svg>">
+</head>
+<body>
+
+<div class="app">
+  <div class="scrim" id="scrim"></div>
+  <nav class="sidebar">
+    <div class="brand">
+      <div class="logo">C++</div>
+      <div>
+        <b>Loops Midterm Review</b>
+        <small>31 annotated examples</small>
+      </div>
+    </div>
+    <div class="side-tools">
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <input id="search" type="search" placeholder="Search all files and code..." autocomplete="off">
+        <button id="searchClear" title="Clear search" style="visibility:hidden">&times;</button>
+      </div>
+      <div class="progress-row">
+        <span id="progLabel">0 / 31 studied</span>
+        <span class="bar"><i id="barFill"></i></span>
+        <button class="btn-mini" id="resetBtn" hidden>reset</button>
+      </div>
+    </div>
+    <div class="nav" id="nav"></div>
+  </nav>
+
+  <main class="main">
+    <div class="topbar">
+      <button class="icon-btn nav-only" id="navToggle" title="Show file list">&#9776;</button>
+      <div class="crumb">
+        <span>02_for_loops</span> / <b>Section</b>
+      </div>
+      <span class="spacer"></span>
+      <button class="icon-btn" id="topKeys" title="Keyboard shortcuts (?)">?</button>
+      <button class="icon-btn" id="themeBtn" title="Toggle light / dark (t)">&#9680;</button>
+    </div>
+
+    <div class="scroll">
+      <div class="wrap">
+
+        <div class="dash">
+          <div class="dash-hero">
+            <h1>for Loops</h1>
+            <p>Every variation of the for header: start value, end condition, step size, two counters, braces.</p>
+          </div>
+          <div class="grid-cards">
+            <a class="fcard" href="01_basic_for_loop.html">
+              <div class="num">01 &middot; 203 lines</div>
+              <h3>Basic for Loop - Printing the Numbers 1 to 5</h3>
+              <p>The three parts of a for loop header and what each one does.</p>
+              <div class="badges" style="margin-top:8px">
+                <span class="badge beginner">Beginner</span>
+                <span class="badge topic">for loops - the three header parts</span>
+              </div>
+            </a>
+            <a class="fcard" href="02_different_starting_values.html">
+              <div class="num">02 &middot; 253 lines</div>
+              <h3>Different Starting Values in a for Loop</h3>
+              <p>The FIRST part of the header is called the initialization.</p>
+              <div class="badges" style="margin-top:8px">
+                <span class="badge beginner">Beginner</span>
+                <span class="badge topic">for loops - the initialization part</span>
+              </div>
+            </a>
+            <a class="fcard" href="03_different_end_conditions.html">
+              <div class="num">03 &middot; 245 lines</div>
+              <h3>Different End Conditions in a for Loop</h3>
+              <p>All four comparison operators: &lt; , &lt;= , &gt; , &gt;= .</p>
+              <div class="badges" style="margin-top:8px">
+                <span class="badge beginner">Beginner</span>
+                <span class="badge topic">for loops - the condition part and the four comparison signs</span>
+              </div>
+            </a>
+            <a class="fcard" href="04_incrementing.html">
+              <div class="num">04 &middot; 277 lines</div>
+              <h3>Incrementing - i++, i += 1 and i = i + 1</h3>
+              <p>Three different spellings of &quot;add 1&quot; that behave identically.</p>
+              <div class="badges" style="margin-top:8px">
+                <span class="badge beginner">Beginner</span>
+                <span class="badge topic">for loops - the update (third) part of the header</span>
+              </div>
+            </a>
+            <a class="fcard" href="05_decrementing.html">
+              <div class="num">05 &middot; 288 lines</div>
+              <h3>Decrementing - i--, i -= 1 and i = i - 1</h3>
+              <p>Three spellings of &quot;subtract 1&quot; that behave identically.</p>
+              <div class="badges" style="margin-top:8px">
+                <span class="badge beginner">Beginner</span>
+                <span class="badge topic">for loops - counting DOWN with a decreasing counter</span>
+              </div>
+            </a>
+            <a class="fcard" href="06_increment_by_2.html">
+              <div class="num">06 &middot; 285 lines</div>
+              <h3>Stepping by 2 and Doubling with i *= 2</h3>
+              <p>Changing only the update to make a loop skip numbers.</p>
+              <div class="badges" style="margin-top:8px">
+                <span class="badge beginner">Beginner</span>
+                <span class="badge topic">for loops - changing the update to change the step size</span>
+              </div>
+            </a>
+            <a class="fcard" href="07_increment_by_5.html">
+              <div class="num">07 &middot; 298 lines</div>
+              <h3>Stepping by 5 - Multiples of 5 and of 7</h3>
+              <p>Printing the multiples of any number by starting at it and stepping</p>
+              <div class="badges" style="margin-top:8px">
+                <span class="badge beginner">Beginner</span>
+                <span class="badge topic">for loops - using the update to walk a list of multiples</span>
+              </div>
+            </a>
+            <a class="fcard" href="08_multiple_variables.html">
+              <div class="num">08 &middot; 384 lines</div>
+              <h3>Multiple Variables in and around a for Loop</h3>
+              <p>How to use TWO separate counters inside one for loop.</p>
+              <div class="badges" style="margin-top:8px">
+                <span class="badge beginner">Beginner</span>
+                <span class="badge topic">for loops - two counters, meeting counters, counters and sum</span>
+              </div>
+            </a>
+            <a class="fcard" href="09_for_loop_without_braces.html">
+              <div class="num">09 &middot; 402 lines</div>
+              <h3>For Loops Without Braces - the One Rule About { }</h3>
+              <p>The ONE rule that decides whether braces are needed around a loop body.</p>
+              <div class="badges" style="margin-top:8px">
+                <span class="badge topic">for loops - when the braces around the body are optional</span>
+              </div>
+            </a>
+          </div>
+          <div class="pager"><a href="../index.html"><span class="dir">Back</span><span class="nm">All sections</span></a></div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<dialog id="keys">
+  <header>Keyboard shortcuts <span class="spacer"></span>
+    <button class="icon-btn" id="keysClose">&#10005;</button></header>
+  <div class="body">
+    <div class="krow"><span>Toggle all comments</span><kbd>c</kbd></div>
+    <div class="krow"><span>Fold / unfold every note</span><kbd>f</kbd></div>
+    <div class="krow"><span>Exam mode (code only)</span><kbd>e</kbd></div>
+    <div class="krow"><span>Next file</span><kbd>n</kbd></div>
+    <div class="krow"><span>Previous file</span><kbd>p</kbd></div>
+    <div class="krow"><span>Focus search</span><kbd>/</kbd></div>
+    <div class="krow"><span>Light / dark theme</span><kbd>t</kbd></div>
+    <div class="krow"><span>Open this dialog</span><kbd>?</kbd></div>
+  </div>
+</dialog>
+
+<div class="toast" id="toast"></div>
+
+<script src="../assets/data.js"></script>
+<!--PAGEVAR-->
+<script>window.VIEWER_DEPTH = "../";</script>
+<script src="../assets/viewer.js"></script>
+</body>
+</html>

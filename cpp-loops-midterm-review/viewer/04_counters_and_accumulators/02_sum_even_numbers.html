@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adding Up the Even Numbers from 1 to 20, Two Ways - C++ Loops Midterm Review</title>
+<link rel="stylesheet" href="../assets/viewer.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#9881;</text></svg>">
+</head>
+<body>
+
+<div class="app">
+  <div class="scrim" id="scrim"></div>
+  <nav class="sidebar">
+    <div class="brand">
+      <div class="logo">C++</div>
+      <div>
+        <b>Loops Midterm Review</b>
+        <small>31 annotated examples</small>
+      </div>
+    </div>
+    <div class="side-tools">
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <input id="search" type="search" placeholder="Search all files and code..." autocomplete="off">
+        <button id="searchClear" title="Clear search" style="visibility:hidden">&times;</button>
+      </div>
+      <div class="progress-row">
+        <span id="progLabel">0 / 31 studied</span>
+        <span class="bar"><i id="barFill"></i></span>
+        <button class="btn-mini" id="resetBtn" hidden>reset</button>
+      </div>
+    </div>
+    <div class="nav" id="nav"></div>
+  </nav>
+
+  <main class="main">
+    <div class="topbar">
+      <button class="icon-btn nav-only" id="navToggle" title="Show file list">&#9776;</button>
+      <div class="crumb">
+        <span>04_counters_and_accumulators</span> / <b>02_sum_even_numbers.cpp</b>
+      </div>
+      <span class="spacer"></span>
+      <button class="icon-btn" id="topKeys" title="Keyboard shortcuts (?)">?</button>
+      <button class="icon-btn" id="themeBtn" title="Toggle light / dark (t)">&#9680;</button>
+    </div>
+
+    <div class="scroll">
+      <div class="wrap">
+
+        <!-- ============ THE BARE PROGRAM (comments removed) =========== -->
+        <div class="card bare-card">
+          <header><i class="dot"></i><h2>The program, comments removed</h2><span class="badge ok">the code you would write in the exam</span><span class="spacer"></span><span class="badge">45 lines (from 263)</span></header>
+          <div class="toolbar bare-tools">
+            <span class="hint">Every explanation has been deleted. This is the complete program on its own &mdash; read it top to bottom until you can predict each line.</span>
+            <button class="tgl" id="copyBareBtn">Copy bare code</button>
+          </div>
+          <div class="codewrap bare"><div class="code" id="codeBare"></div></div>
+        </div>
+        <div class="hero">
+          <div class="path">04_counters_and_accumulators/02_sum_even_numbers.cpp</div>
+          <h1>Adding Up the Even Numbers from 1 to 20, Two Ways</h1>
+          <div class="badges">
+            <span class="badge beginner">Beginner</span>
+            <span class="badge topic">accumulators + the modulo operator (%) to test for even numbers</span>
+            <span class="badge">263 lines</span>
+            <span class="badge">11 kb</span>
+          </div>
+        </div>
+        <div class="note info"><b>Reading tip.</b> Every grey note below is a collapsible explanation. Click its header to read it, or press <b>C</b> to hide every comment at once so the program logic stands on its own.</div>
+        <div class="card teach"><header><i class="dot"></i><h2>WHAT THIS PROGRAM TEACHES</h2></header><div class="body"><ul class="bul"><li>How to recognise an EVEN number: divide by 2 and get no remainder.</li><li>The MODULO operator <code>%</code>, with worked examples and the rule that</li><li>Two different programs that produce the same total - one that visits</li><li>That visiting a number and printing a number are different actions.</li></ul></div></div>
+        <div class="card exp"><header><i class="dot"></i><h2>EXPECTED OUTPUT</h2></header><div class="body"><pre class="plain">=== Method 1: visit every number and test it with % ===
+The even numbers are:
+2 4 6 8 10 12 14 16 18 20
+Their total is 110
+=== Method 2: step by 2 and skip the test ===
+The even numbers are:
+2 4 6 8 10 12 14 16 18 20
+Their total is 110
+=== Agreement ===
+Both methods give 110, so they agree.</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>IMPORTANT SYNTAX</h2></header><div class="body"><pre class="plain wrap">i % 2 == 0                 -&gt; &quot;dividing i by 2 leaves no remainder&quot;, i.e. even
+i % 2 != 0                 -&gt; there IS a remainder, i.e. odd
+sumEven = sumEven + i;     -&gt; fold i into the running total
+sumEven += i;              -&gt; exactly the same, written shorter
+i += 2;                    -&gt; skip the odd numbers entirely</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>STEP-BY-STEP EXPLANATION</h2></header><div class="body"><ol class="steps"><li>Method 1 walks through every number from 1 to 20, one at a time.</li><li>For each number it asks <code>i % 2 == 0</code>. TRUE means even, so the number</li><li>is printed and added to the accumulator; FALSE means odd, so the</li><li><code>if</code> body is skipped and the loop moves on to the next number.</li><li>Method 2 starts at 2 and adds 2 each pass, so only even numbers are</li><li>ever visited and no test is needed at all.</li><li>Both totals come to 110, and <code>==</code> confirms it in the program.</li><li>Method 2 is twice as fast in the sense of doing half the work: 10</li><li>passes instead of 20, because it never looks at an odd number.</li><li>============================================================</li></ol></div></div>
+        <div class="card"><header><i class="dot"></i><h2>METHOD 1 - VISIT EVERY NUMBER AND TEST IT</h2></header><div class="body"><pre class="plain wrap">================================================================</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>THE RULE FOR EVEN AND ODD</h2></header><div class="body"><pre class="plain wrap">i % 2 == 0   -&gt; nothing left over   -&gt; the number is EVEN
+i % 2 == 1   -&gt; exactly one left over -&gt; the number is ODD
+
+It is worth noticing that `i % 2` can only ever BE 0 or 1 when
+dividing by 2, because you cannot leave 2 or 3 or more behind when
+dividing by 2. So the test could equally be written `i % 2 != 0`
+for &quot;odd&quot;, or the whole thing could be written as
+`if (i % 2 == 0)`.
+
+ZERO IS EVEN.  0 % 2 is 0, so the test says even. Every maths
+teacher agrees: zero is divisible by every number, because
+0 = 2 * 0 with nothing left over. Loops in this project start at
+1 only so that the beginner can see the numbers climb.
+
+WHAT IS `==`?
+`==` is the EQUALITY COMPARISON and it asks a question:
+&quot;is the left side equal to the right side?&quot; It answers true or
+false and changes nothing at all.
+
+*** `=` VERSUS `==` - THE MOST COMMON BUG IN THIS COURSE ***
+`=`   (one equals sign)   ASSIGNMENT. It STORES a value.
+sumEven = 0;      means &quot;put 0 into sumEven&quot;.
+`==`  (two equals signs) COMPARISON. It CHECKS a value.
+i % 2 == 0        means &quot;is the remainder zero?&quot;
+Writing `if (i % 2 = 0)` tries to ASSIGN 0 to the calculation
+i % 2, which is nonsense, and the compiler rejects it.
+
+
+
+A SPACE IS PRINTED BEFORE EACH NUMBER rather than after it.
+That way the line never ends in a stray space, and the numbers
+come out neatly separated: &quot; 2 4 6 8 10&quot;.</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>METHOD 2 - STEP STRAIGHT TO THE EVEN NUMBERS</h2></header><div class="body"><pre class="plain wrap">================================================================</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>AGREEMENT CHECK</h2></header><div class="body"><pre class="plain wrap">================================================================</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>THE COMMON TRAP IN THIS FILE</h2></header><div class="body"><pre class="plain wrap">Stepping by 2 AND keeping the `%` test at the same time, as in
+`for (int i = 2; i &lt;= 20; i += 2) { if (i % 2 == 0) { ... } }`.
+That code is correct but wasteful, and it hides which idea you meant.
+Also beware starting Method 2 at 1: the first pass would add the
+odd number 1 straight into the total with no test to stop it, giving
+111 instead of 110. Choose deliberately between &quot;look at everything
+and reject some&quot; and &quot;go straight to the ones you want&quot;.</pre></div></div>
+        <div class="card quiz"><header><i class="dot"></i><h2>Exam questions</h2></header><div class="body"><details class="q"><summary>What does <code>i % 2</code> evaluate to for i = 7, and what does that make 7?</summary><div class="a"><b>Answer:</b> 1, and a remainder of 1 means 7 is odd</div></details><details class="q"><summary>What is the total of the even numbers from 1 to 20?</summary><div class="a"><b>Answer:</b> 110</div></details><details class="q"><summary>Why does Method 1 step by 1 rather than by 2?</summary><div class="a"><b>Answer:</b> it has to visit every number to be able to test it with %</div></details><details class="q"><summary>How many times does each loop body run?</summary><div class="a"><b>Answer:</b> Method 1 runs 20 times, Method 2 runs 10 times</div></details><details class="q"><summary>Is 0 even, and what does the test say?</summary><div class="a"><b>Answer:</b> yes, 0 is even; 0 % 2 is 0 so <code>i % 2 == 0</code> is true for it</div></details></div></div>
+        <div class="card trace"><header><i class="dot"></i><h2>Trace tables</h2></header><div class="body">
+          <p class="tbl-cap">behaves exactly like its neighbours.</p>
+          <div class="tbl-scroll"><table class="grid"><thead><tr>
+<th>Iteration</th>
+<th>i at start</th>
+<th>i % 2</th>
+<th>i % 2 == 0 ?</th>
+<th>Output</th>
+</tr></thead><tbody>
+<tr class="stop"><td>1</td><td>1</td><td>1 % 2 = 1</td><td>FALSE - odd</td><td>(none)</td></tr>
+<tr><td>2</td><td>2</td><td>2 % 2 = 0</td><td>TRUE  - even</td><td>2</td></tr>
+<tr class="stop"><td>3</td><td>3</td><td>3 % 2 = 1</td><td>FALSE - odd</td><td>(none)</td></tr>
+<tr><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td></tr>
+<tr class="stop"><td>19</td><td>19</td><td>19 % 2 = 1</td><td>FALSE - odd</td><td>(none)</td></tr>
+<tr><td>20</td><td>20</td><td>20 % 2 = 0</td><td>TRUE  - even</td><td>20</td></tr>
+<tr><td>21</td><td>21</td><td>(not tested)</td><td>loop has ended</td><td>(none)</td></tr>
+</tbody></table></div>
+        </div></div>
+        <div class="card code-card" id="annotated">
+          <header><i class="dot"></i><h2>The program, annotated</h2></header>
+          <div class="toolbar">
+            <label class="tgl"><input type="checkbox" id="tgComments"> Hide all comments <kbd>C</kbd></label>
+            <label class="tgl"><input type="checkbox" id="tgFold"> Unfold every note <kbd>F</kbd></label>
+            <label class="tgl keep"><input type="checkbox" id="tgNums" checked> Line numbers</label>
+            <button class="tgl" id="examBtn">Exam mode <kbd>E</kbd></button>
+            <button class="tgl" id="copyBtn">Copy source</button>
+            <a class="tgl" href="../../04_counters_and_accumulators/02_sum_even_numbers.cpp" download>Download .cpp</a>
+          </div>
+          <div class="codewrap"><div class="code" id="code"></div></div>
+        </div>
+        <div class="pager">
+          <a class="prev" id="prevLink" href="../04_counters_and_accumulators/01_sum_1_to_n.html"><span class="dir">Previous</span><span class="nm">01 sum 1 to n</span></a>
+          <a class="next" id="nextLink" href="../04_counters_and_accumulators/03_sum_odd_numbers.html"><span class="dir">Next</span><span class="nm">03 sum odd numbers</span></a>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<dialog id="keys">
+  <header>Keyboard shortcuts <span class="spacer"></span>
+    <button class="icon-btn" id="keysClose">&#10005;</button></header>
+  <div class="body">
+    <div class="krow"><span>Toggle all comments</span><kbd>c</kbd></div>
+    <div class="krow"><span>Fold / unfold every note</span><kbd>f</kbd></div>
+    <div class="krow"><span>Exam mode (code only)</span><kbd>e</kbd></div>
+    <div class="krow"><span>Next file</span><kbd>n</kbd></div>
+    <div class="krow"><span>Previous file</span><kbd>p</kbd></div>
+    <div class="krow"><span>Focus search</span><kbd>/</kbd></div>
+    <div class="krow"><span>Light / dark theme</span><kbd>t</kbd></div>
+    <div class="krow"><span>Open this dialog</span><kbd>?</kbd></div>
+  </div>
+</dialog>
+
+<div class="toast" id="toast"></div>
+
+<script src="../assets/data.js"></script>
+<script>window.CURRENT_FILE = window.PROJECT.files.filter(function (x) { return x.path === "04_counters_and_accumulators/02_sum_even_numbers.cpp"; })[0];</script>
+<script>window.VIEWER_DEPTH = "../";</script>
+<script src="../assets/viewer.js"></script>
+</body>
+</html>

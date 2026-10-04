@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Incrementing - i++, i += 1 and i = i + 1 - C++ Loops Midterm Review</title>
+<link rel="stylesheet" href="../assets/viewer.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#9881;</text></svg>">
+</head>
+<body>
+
+<div class="app">
+  <div class="scrim" id="scrim"></div>
+  <nav class="sidebar">
+    <div class="brand">
+      <div class="logo">C++</div>
+      <div>
+        <b>Loops Midterm Review</b>
+        <small>31 annotated examples</small>
+      </div>
+    </div>
+    <div class="side-tools">
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <input id="search" type="search" placeholder="Search all files and code..." autocomplete="off">
+        <button id="searchClear" title="Clear search" style="visibility:hidden">&times;</button>
+      </div>
+      <div class="progress-row">
+        <span id="progLabel">0 / 31 studied</span>
+        <span class="bar"><i id="barFill"></i></span>
+        <button class="btn-mini" id="resetBtn" hidden>reset</button>
+      </div>
+    </div>
+    <div class="nav" id="nav"></div>
+  </nav>
+
+  <main class="main">
+    <div class="topbar">
+      <button class="icon-btn nav-only" id="navToggle" title="Show file list">&#9776;</button>
+      <div class="crumb">
+        <span>02_for_loops</span> / <b>04_incrementing.cpp</b>
+      </div>
+      <span class="spacer"></span>
+      <button class="icon-btn" id="topKeys" title="Keyboard shortcuts (?)">?</button>
+      <button class="icon-btn" id="themeBtn" title="Toggle light / dark (t)">&#9680;</button>
+    </div>
+
+    <div class="scroll">
+      <div class="wrap">
+
+        <!-- ============ THE BARE PROGRAM (comments removed) =========== -->
+        <div class="card bare-card">
+          <header><i class="dot"></i><h2>The program, comments removed</h2><span class="badge ok">the code you would write in the exam</span><span class="spacer"></span><span class="badge">42 lines (from 277)</span></header>
+          <div class="toolbar bare-tools">
+            <span class="hint">Every explanation has been deleted. This is the complete program on its own &mdash; read it top to bottom until you can predict each line.</span>
+            <button class="tgl" id="copyBareBtn">Copy bare code</button>
+          </div>
+          <div class="codewrap bare"><div class="code" id="codeBare"></div></div>
+        </div>
+        <div class="hero">
+          <div class="path">02_for_loops/04_incrementing.cpp</div>
+          <h1>Incrementing - i++, i += 1 and i = i + 1</h1>
+          <div class="badges">
+            <span class="badge beginner">Beginner</span>
+            <span class="badge topic">for loops - the update (third) part of the header</span>
+            <span class="badge">277 lines</span>
+            <span class="badge">12 kb</span>
+          </div>
+        </div>
+        <div class="note info"><b>Reading tip.</b> Every grey note below is a collapsible explanation. Click its header to read it, or press <b>C</b> to hide every comment at once so the program logic stands on its own.</div>
+        <div class="card teach"><header><i class="dot"></i><h2>WHAT THIS PROGRAM TEACHES</h2></header><div class="body"><ul class="bul"><li>Three different spellings of &quot;add 1&quot; that behave identically.</li><li>That the update lives INSIDE the header, not after the loop.</li><li>What <code>i++</code> and <code>++i</code> mean, and why a beginner only needs <code>i++</code>.</li><li>The evaluation order when an increment sits inside a cout statement.</li></ul></div></div>
+        <div class="card exp"><header><i class="dot"></i><h2>EXPECTED OUTPUT</h2></header><div class="body"><pre class="plain">Using i++        : 1 2 3 4 5
+Using i += 1     : 1 2 3 4 5
+Using i = i + 1  : 1 2 3 4 5
+All three update methods produced identical output.
+Postfix i++ inside cout, with i = 1: prints 1
+then i holds 2
+Prefix  ++i inside cout, with i = 1: prints 2
+then i holds 2</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>IMPORTANT SYNTAX</h2></header><div class="body"><pre class="plain wrap">i++               -&gt; add 1 to i (postfix: hands over the OLD value)
+++i               -&gt; add 1 to i (prefix:  hands over the NEW value)
+i += 1            -&gt; &quot;i = i + 1&quot; written with a compound assignment operator
+i = i + 1         -&gt; the long hand version; completely valid
+cout &lt;&lt; i++       -&gt; prints the old value, THEN adds 1
+cout &lt;&lt; ++i       -&gt; adds 1 FIRST, then prints the new value</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>STEP-BY-STEP EXPLANATION</h2></header><div class="body"><ol class="steps"><li>The three loops below are the same loop with three spellings of the</li><li>update. All three print 1 2 3 4 5, which is the proof.</li><li><code>i++</code> is the shortest form and the one examiners expect to see.</li><li><code>i += 1</code> uses a compound assignment operator: variable, then <code>+=</code>,</li><li>then the amount to add. The same shape gives <code>i -= 1</code>, <code>i *= 2</code>.</li><li><code>i = i + 1</code> is the long hand. It works because the right-hand side is</li><li>worked out first and the result is then stored back in i.</li><li>Inside a cout statement the position of ++ matters, because cout</li><li>prints whatever value the expression hands it. That is why</li><li><code>cout &lt;&lt; i++</code> prints 1 and <code>cout &lt;&lt; ++i</code> prints 2.</li><li>For loops, always write <code>i++</code>. The prefix/postfix difference only</li><li>shows up when the increment is used inside a bigger expression.</li><li>============================================================</li></ol></div></div>
+        <div class="card"><header><i class="dot"></i><h2>PART B - THE POSTFIX / PREFIX DIFFERENCE</h2></header><div class="body"><pre class="plain wrap">============================================================
+An increment operator can be written in two places:
+i++   POSTFIX - the ++ is written AFTER the variable
+++i   PREFIX  - the ++ is written BEFORE the variable
+In a LOOP UPDATE the position never matters: both add exactly 1.
+It only matters when the expression is USED for its value, which is
+what cout does.
+
+THE RULE, in one line:
+postfix  i++   hands back the value i had BEFORE adding 1
+prefix   ++i   adds 1 first and hands back the NEW value
+
+BEGINNER ADVICE: in loop headers always write the postfix `i++`. It
+is what every textbook and every marking scheme uses, and it is one
+character shorter. Learn the prefix form only so you can read it.</pre></div></div>
+        <div class="card teach"><header><i class="dot"></i><h2>TRACE TABLE</h2></header><div class="body"><ul class="bul"><li>-----------------------------------------------------------</li></ul></div></div>
+        <div class="card"><header><i class="dot"></i><h2>TRACE TABLE</h2></header><div class="body"><pre class="plain wrap">+-----------+------------+-------------------+----------+------------+----------+
+| Iteration | i at start | Update written     | Printed  | i after    | i at     |
+|           |            |                   |          | update     | next test|
++-----------+------------+-------------------+----------+------------+----------+
+|     1     |     1      | i++  (= i+1)      |    1     |     2      |    2     |
++-----------+------------+-------------------+----------+------------+----------+
+|     2     |     2      | i += 1 (= i+1)    |    2     |     3      |    3     |
++-----------+------------+-------------------+----------+------------+----------+
+|     3     |     3      | i = i + 1         |    3     |     4      |    4     |
++-----------+------------+-------------------+----------+------------+----------+
+|     4     |     4      | i++               |    4     |     5      |    5     |
++-----------+------------+-------------------+----------+------------+----------+
+|     5     |     5      | i++               |    5     |     6      |    6     |
++-----------+------------+-------------------+----------+------------+----------+
+|     6     |     6      | (not reached)     |  STOP    |     6      |    6     |
++-----------+------------+-------------------+----------+------------+----------+
+
+The middle &quot;Update written&quot; column is the ONLY column that differs
+between the three loops. Read across: every other column is identical,
+which is exactly why the three loops print the same thing.</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>THE 10-SECOND EXAM METHOD</h2></header><div class="body"><pre class="plain wrap">If a question asks how many times a loop runs, the update tells you
+the STEP SIZE:
+i++       step is 1
+i += 2    step is 2
+i *= 3    the numbers jump: 1 3 9 27 ...
+Then count = (limit - start) / step + 1, going up.</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>THE COMMON TRAP IN THIS FILE</h2></header><div class="body"><pre class="plain wrap">Writing the update AFTER the loop, or forgetting it altogether:
+for (int i = 1; i &lt;= 5; ) { cout &lt;&lt; i; }
+Here i never changes, the condition `i &lt;= 5` stays true forever,
+and the program prints 1 for ever. An update that is missing or
+misplaced is the most common cause of an infinite loop.</pre></div></div>
+        <div class="card quiz"><header><i class="dot"></i><h2>Exam questions</h2></header><div class="body"><details class="q"><summary>Are <code>i++</code>, <code>i += 1</code> and <code>i = i + 1</code> different?</summary><div class="a"><b>Answer:</b> No, all three add exactly 1 and produce identical output</div></details><details class="q"><summary>In which part of the header does the update go?</summary><div class="a"><b>Answer:</b> the third part, inside the ( ) after the second semicolon</div></details><details class="q"><summary>What does <code>cout &lt;&lt; i++</code> print when i holds 1?</summary><div class="a"><b>Answer:</b> 1, and afterwards i holds 2</div></details><details class="q"><summary>What does <code>cout &lt;&lt; ++i</code> print when i holds 1?</summary><div class="a"><b>Answer:</b> 2, and afterwards i holds 2</div></details><details class="q"><summary>What is the difference between prefix and postfix?</summary><div class="a"><b>Answer:</b> postfix hands back the old value, prefix adds first and hands back the new value</div></details><details class="q"><summary>Which spelling should a beginner always write?</summary><div class="a"><b>Answer:</b> the postfix <code>i++</code></div></details><details class="q"><summary>What happens if the update is left out of the header?</summary><div class="a"><b>Answer:</b> i never changes, the condition never fails, and the loop runs for ever</div></details></div></div>
+        <div class="card trace"><header><i class="dot"></i><h2>Trace tables</h2></header><div class="body">
+          <p class="tbl-cap">TRACE TABLE</p>
+          <div class="tbl-scroll"><table class="grid"><thead><tr>
+<th>Iteration</th>
+<th>i at start</th>
+<th>Update written</th>
+<th>Printed</th>
+<th>i after</th>
+<th>i at</th>
+</tr></thead><tbody>
+<tr><td></td><td></td><td></td><td></td><td>update</td><td>next test</td></tr>
+<tr><td>1</td><td>1</td><td>i++  (= i+1)</td><td>1</td><td>2</td><td>2</td></tr>
+<tr><td>2</td><td>2</td><td>i += 1 (= i+1)</td><td>2</td><td>3</td><td>3</td></tr>
+<tr><td>3</td><td>3</td><td>i = i + 1</td><td>3</td><td>4</td><td>4</td></tr>
+<tr><td>4</td><td>4</td><td>i++</td><td>4</td><td>5</td><td>5</td></tr>
+<tr><td>5</td><td>5</td><td>i++</td><td>5</td><td>6</td><td>6</td></tr>
+<tr class="stop"><td>6</td><td>6</td><td>(not reached)</td><td>STOP</td><td>6</td><td>6</td></tr>
+</tbody></table></div>
+        </div></div>
+        <div class="card code-card" id="annotated">
+          <header><i class="dot"></i><h2>The program, annotated</h2></header>
+          <div class="toolbar">
+            <label class="tgl"><input type="checkbox" id="tgComments"> Hide all comments <kbd>C</kbd></label>
+            <label class="tgl"><input type="checkbox" id="tgFold"> Unfold every note <kbd>F</kbd></label>
+            <label class="tgl keep"><input type="checkbox" id="tgNums" checked> Line numbers</label>
+            <button class="tgl" id="examBtn">Exam mode <kbd>E</kbd></button>
+            <button class="tgl" id="copyBtn">Copy source</button>
+            <a class="tgl" href="../../02_for_loops/04_incrementing.cpp" download>Download .cpp</a>
+          </div>
+          <div class="codewrap"><div class="code" id="code"></div></div>
+        </div>
+        <div class="pager">
+          <a class="prev" id="prevLink" href="../02_for_loops/03_different_end_conditions.html"><span class="dir">Previous</span><span class="nm">03 different end conditions</span></a>
+          <a class="next" id="nextLink" href="../02_for_loops/05_decrementing.html"><span class="dir">Next</span><span class="nm">05 decrementing</span></a>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<dialog id="keys">
+  <header>Keyboard shortcuts <span class="spacer"></span>
+    <button class="icon-btn" id="keysClose">&#10005;</button></header>
+  <div class="body">
+    <div class="krow"><span>Toggle all comments</span><kbd>c</kbd></div>
+    <div class="krow"><span>Fold / unfold every note</span><kbd>f</kbd></div>
+    <div class="krow"><span>Exam mode (code only)</span><kbd>e</kbd></div>
+    <div class="krow"><span>Next file</span><kbd>n</kbd></div>
+    <div class="krow"><span>Previous file</span><kbd>p</kbd></div>
+    <div class="krow"><span>Focus search</span><kbd>/</kbd></div>
+    <div class="krow"><span>Light / dark theme</span><kbd>t</kbd></div>
+    <div class="krow"><span>Open this dialog</span><kbd>?</kbd></div>
+  </div>
+</dialog>
+
+<div class="toast" id="toast"></div>
+
+<script src="../assets/data.js"></script>
+<script>window.CURRENT_FILE = window.PROJECT.files.filter(function (x) { return x.path === "02_for_loops/04_incrementing.cpp"; })[0];</script>
+<script>window.VIEWER_DEPTH = "../";</script>
+<script src="../assets/viewer.js"></script>
+</body>
+</html>

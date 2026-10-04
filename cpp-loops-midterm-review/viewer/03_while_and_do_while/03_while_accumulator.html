@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>while Loop Accumulators - Adding and Multiplying - C++ Loops Midterm Review</title>
+<link rel="stylesheet" href="../assets/viewer.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#9881;</text></svg>">
+</head>
+<body>
+
+<div class="app">
+  <div class="scrim" id="scrim"></div>
+  <nav class="sidebar">
+    <div class="brand">
+      <div class="logo">C++</div>
+      <div>
+        <b>Loops Midterm Review</b>
+        <small>31 annotated examples</small>
+      </div>
+    </div>
+    <div class="side-tools">
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <input id="search" type="search" placeholder="Search all files and code..." autocomplete="off">
+        <button id="searchClear" title="Clear search" style="visibility:hidden">&times;</button>
+      </div>
+      <div class="progress-row">
+        <span id="progLabel">0 / 31 studied</span>
+        <span class="bar"><i id="barFill"></i></span>
+        <button class="btn-mini" id="resetBtn" hidden>reset</button>
+      </div>
+    </div>
+    <div class="nav" id="nav"></div>
+  </nav>
+
+  <main class="main">
+    <div class="topbar">
+      <button class="icon-btn nav-only" id="navToggle" title="Show file list">&#9776;</button>
+      <div class="crumb">
+        <span>03_while_and_do_while</span> / <b>03_while_accumulator.cpp</b>
+      </div>
+      <span class="spacer"></span>
+      <button class="icon-btn" id="topKeys" title="Keyboard shortcuts (?)">?</button>
+      <button class="icon-btn" id="themeBtn" title="Toggle light / dark (t)">&#9680;</button>
+    </div>
+
+    <div class="scroll">
+      <div class="wrap">
+
+        <!-- ============ THE BARE PROGRAM (comments removed) =========== -->
+        <div class="card bare-card">
+          <header><i class="dot"></i><h2>The program, comments removed</h2><span class="badge ok">the code you would write in the exam</span><span class="spacer"></span><span class="badge">40 lines (from 259)</span></header>
+          <div class="toolbar bare-tools">
+            <span class="hint">Every explanation has been deleted. This is the complete program on its own &mdash; read it top to bottom until you can predict each line.</span>
+            <button class="tgl" id="copyBareBtn">Copy bare code</button>
+          </div>
+          <div class="codewrap bare"><div class="code" id="codeBare"></div></div>
+        </div>
+        <div class="hero">
+          <div class="path">03_while_and_do_while/03_while_accumulator.cpp</div>
+          <h1>while Loop Accumulators - Adding and Multiplying</h1>
+          <div class="badges">
+            <span class="badge beginner">Beginner</span>
+            <span class="badge topic">while loops + the ACCUMULATOR variable pattern</span>
+            <span class="badge">259 lines</span>
+            <span class="badge">11 kb</span>
+          </div>
+        </div>
+        <div class="note info"><b>Reading tip.</b> Every grey note below is a collapsible explanation. Click its header to read it, or press <b>C</b> to hide every comment at once so the program logic stands on its own.</div>
+        <div class="card teach"><header><i class="dot"></i><h2>WHAT THIS PROGRAM TEACHES</h2></header><div class="body"><ul class="bul"><li>The ACCUMULATOR pattern: one variable that carries a running answer</li><li>Why an accumulator MUST be initialised before the loop - add with 0</li><li>How <code>sum = sum + i;</code> is read in two steps, right to left.</li><li>Printing the running value each pass so the pattern becomes visible.</li></ul></div></div>
+        <div class="card exp"><header><i class="dot"></i><h2>EXPECTED OUTPUT</h2></header><div class="body"><pre class="plain">=== Part 1: adding up the numbers 1 to 10 ===
+After adding 1 the total is 1
+After adding 2 the total is 3
+After adding 3 the total is 6
+After adding 4 the total is 10
+After adding 5 the total is 15
+After adding 6 the total is 21
+After adding 7 the total is 28
+After adding 8 the total is 36
+After adding 9 the total is 45
+After adding 10 the total is 55
+Final total: 55
+=== Part 2: multiplying up to 5! ===
+After multiplying by 1 the product is 1
+After multiplying by 2 the product is 2
+After multiplying by 3 the product is 6
+After multiplying by 4 the product is 24
+After multiplying by 5 the product is 120
+Final product: 120</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>IMPORTANT SYNTAX</h2></header><div class="body"><pre class="plain wrap">int sum = 0;            -&gt; start a running total at zero
+int product = 1;        -&gt; start a running product at one
+sum = sum + i;          -&gt; add i into the total and store it back
+sum += i;               -&gt; exactly the same thing, written shorter
+product = product * j;  -&gt; multiply j into the product
+product *= j;           -&gt; exactly the same thing, written shorter</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>STEP-BY-STEP EXPLANATION</h2></header><div class="body"><ol class="steps"><li><code>int sum = 0;</code> creates the accumulator BEFORE the loop. Created inside</li><li>the loop it would be thrown away and rebuilt on every pass, so nothing</li><li>would ever be carried forward.</li><li><code>int i = 1;</code> creates the loop counter, also before the loop.</li><li><code>while (i &lt;= 10)</code> asks &quot;is i at most 10?&quot;. TRUE runs the body, FALSE</li><li>leaves the loop and the program continues below the closing brace.</li><li><code>sum = sum + i;</code> is the heart of the pattern. Read it in two steps:</li><li>work out the total of the old sum plus i, then store that back in sum.</li><li>The print shows the total after each pass, so you can watch it grow.</li><li><code>i++</code> moves the counter on. Deleting it would loop for ever.</li><li>Part 2 repeats the pattern with <code>*</code> instead of <code>+</code>, which is exactly</li><li>why its accumulator starts at 1 instead of 0.</li><li>============================================================</li></ol></div></div>
+        <div class="card"><header><i class="dot"></i><h2>PART 1 - AN ACCUMULATOR THAT ADDS</h2></header><div class="body"><pre class="plain wrap">================================================================</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>PART 2 - AN ACCUMULATOR THAT MULTIPLIES (FACTORIAL)</h2></header><div class="body"><pre class="plain wrap">================================================================</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>THE COMMON TRAP IN THIS FILE</h2></header><div class="body"><pre class="plain wrap">Writing `product = 0;` instead of `product = 1;`. The loop runs
+happily, prints every line, and gives the answer 0 - and on row 1
+the reason is invisible, because 0 * 1 really is 0. Ask instead
+&quot;what is the identity for this operator?&quot;: 0 for + and -, 1 for *.
+A wrongly initialised accumulator gives a wrong answer silently.
+The second trap is putting the accumulator INSIDE the loop. C++
+would allow `while (...) { int sum = 0; sum = sum + i; }`, but sum
+would be destroyed and rebuilt every pass, so it would never grow.</pre></div></div>
+        <div class="card quiz"><header><i class="dot"></i><h2>Exam questions</h2></header><div class="body"><details class="q"><summary>What are the running totals after adding 4 and after adding 5?</summary><div class="a"><b>Answer:</b> 10 and 15</div></details><details class="q"><summary>What final value does sum hold, and why?</summary><div class="a"><b>Answer:</b> 55, the total of every whole number from 1 to 10</div></details><details class="q"><summary>Why must an adding accumulator start at 0?</summary><div class="a"><b>Answer:</b> 0 is the identity for +, so 0 + first number passes it through unchanged</div></details><details class="q"><summary>Why must a multiplying accumulator start at 1 and not 0?</summary><div class="a"><b>Answer:</b> anything multiplied by 0 is 0, so starting at 0 would give 0 for ever</div></details><details class="q"><summary>Where must the accumulator be declared, and why?</summary><div class="a"><b>Answer:</b> before the loop, so it keeps its value from one pass to the next</div></details></div></div>
+        <div class="card trace"><header><i class="dot"></i><h2>Trace tables</h2></header><div class="body">
+          <p class="tbl-cap">failing, test are both shown in full.</p>
+          <div class="tbl-scroll"><table class="grid"><thead><tr>
+<th>Iteration</th>
+<th>i at start</th>
+<th>sum before</th>
+<th>sum after</th>
+<th>Output</th>
+</tr></thead><tbody>
+<tr><td>1</td><td>1</td><td>0</td><td>0 + 1 = 1</td><td>1</td></tr>
+<tr><td>2</td><td>2</td><td>1</td><td>1 + 2 = 3</td><td>3</td></tr>
+<tr><td>3</td><td>3</td><td>3</td><td>3 + 3 = 6</td><td>6</td></tr>
+<tr><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td></tr>
+<tr><td>10</td><td>10</td><td>45</td><td>45 + 10 = 55</td><td>55</td></tr>
+<tr><td>11</td><td>11</td><td>55</td><td>(body skipped)</td><td>(none)</td></tr>
+</tbody></table></div>
+          <p class="tbl-cap">================================================================</p>
+          <div class="tbl-scroll"><table class="grid"><thead><tr>
+<th>Iteration</th>
+<th>j at start</th>
+<th>prod before</th>
+<th>product after</th>
+<th>Output</th>
+</tr></thead><tbody>
+<tr><td>1</td><td>1</td><td>1</td><td>1 * 1 = 1</td><td>1</td></tr>
+<tr><td>2</td><td>2</td><td>1</td><td>1 * 2 = 2</td><td>2</td></tr>
+<tr><td>3</td><td>3</td><td>2</td><td>2 * 3 = 6</td><td>6</td></tr>
+<tr><td>4</td><td>4</td><td>6</td><td>6 * 4 = 24</td><td>24</td></tr>
+<tr><td>5</td><td>5</td><td>24</td><td>24 * 5 = 120</td><td>120</td></tr>
+<tr><td>6</td><td>6</td><td>120</td><td>(body skipped)</td><td>(none)</td></tr>
+</tbody></table></div>
+        </div></div>
+        <div class="card code-card" id="annotated">
+          <header><i class="dot"></i><h2>The program, annotated</h2></header>
+          <div class="toolbar">
+            <label class="tgl"><input type="checkbox" id="tgComments"> Hide all comments <kbd>C</kbd></label>
+            <label class="tgl"><input type="checkbox" id="tgFold"> Unfold every note <kbd>F</kbd></label>
+            <label class="tgl keep"><input type="checkbox" id="tgNums" checked> Line numbers</label>
+            <button class="tgl" id="examBtn">Exam mode <kbd>E</kbd></button>
+            <button class="tgl" id="copyBtn">Copy source</button>
+            <a class="tgl" href="../../03_while_and_do_while/03_while_accumulator.cpp" download>Download .cpp</a>
+          </div>
+          <div class="codewrap"><div class="code" id="code"></div></div>
+        </div>
+        <div class="pager">
+          <a class="prev" id="prevLink" href="../03_while_and_do_while/02_while_counting.html"><span class="dir">Previous</span><span class="nm">02 while counting</span></a>
+          <a class="next" id="nextLink" href="../03_while_and_do_while/04_basic_do_while.html"><span class="dir">Next</span><span class="nm">04 basic do while</span></a>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<dialog id="keys">
+  <header>Keyboard shortcuts <span class="spacer"></span>
+    <button class="icon-btn" id="keysClose">&#10005;</button></header>
+  <div class="body">
+    <div class="krow"><span>Toggle all comments</span><kbd>c</kbd></div>
+    <div class="krow"><span>Fold / unfold every note</span><kbd>f</kbd></div>
+    <div class="krow"><span>Exam mode (code only)</span><kbd>e</kbd></div>
+    <div class="krow"><span>Next file</span><kbd>n</kbd></div>
+    <div class="krow"><span>Previous file</span><kbd>p</kbd></div>
+    <div class="krow"><span>Focus search</span><kbd>/</kbd></div>
+    <div class="krow"><span>Light / dark theme</span><kbd>t</kbd></div>
+    <div class="krow"><span>Open this dialog</span><kbd>?</kbd></div>
+  </div>
+</dialog>
+
+<div class="toast" id="toast"></div>
+
+<script src="../assets/data.js"></script>
+<script>window.CURRENT_FILE = window.PROJECT.files.filter(function (x) { return x.path === "03_while_and_do_while/03_while_accumulator.cpp"; })[0];</script>
+<script>window.VIEWER_DEPTH = "../";</script>
+<script src="../assets/viewer.js"></script>
+</body>
+</html>

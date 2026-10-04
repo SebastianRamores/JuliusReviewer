@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>for vs while vs do...while - One Task, Three Answers - C++ Loops Midterm Review</title>
+<link rel="stylesheet" href="../assets/viewer.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#9881;</text></svg>">
+</head>
+<body>
+
+<div class="app">
+  <div class="scrim" id="scrim"></div>
+  <nav class="sidebar">
+    <div class="brand">
+      <div class="logo">C++</div>
+      <div>
+        <b>Loops Midterm Review</b>
+        <small>31 annotated examples</small>
+      </div>
+    </div>
+    <div class="side-tools">
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <input id="search" type="search" placeholder="Search all files and code..." autocomplete="off">
+        <button id="searchClear" title="Clear search" style="visibility:hidden">&times;</button>
+      </div>
+      <div class="progress-row">
+        <span id="progLabel">0 / 31 studied</span>
+        <span class="bar"><i id="barFill"></i></span>
+        <button class="btn-mini" id="resetBtn" hidden>reset</button>
+      </div>
+    </div>
+    <div class="nav" id="nav"></div>
+  </nav>
+
+  <main class="main">
+    <div class="topbar">
+      <button class="icon-btn nav-only" id="navToggle" title="Show file list">&#9776;</button>
+      <div class="crumb">
+        <span>03_while_and_do_while</span> / <b>06_for_vs_while_vs_do_while.cpp</b>
+      </div>
+      <span class="spacer"></span>
+      <button class="icon-btn" id="topKeys" title="Keyboard shortcuts (?)">?</button>
+      <button class="icon-btn" id="themeBtn" title="Toggle light / dark (t)">&#9680;</button>
+    </div>
+
+    <div class="scroll">
+      <div class="wrap">
+
+        <!-- ============ THE BARE PROGRAM (comments removed) =========== -->
+        <div class="card bare-card">
+          <header><i class="dot"></i><h2>The program, comments removed</h2><span class="badge ok">the code you would write in the exam</span><span class="spacer"></span><span class="badge">50 lines (from 254)</span></header>
+          <div class="toolbar bare-tools">
+            <span class="hint">Every explanation has been deleted. This is the complete program on its own &mdash; read it top to bottom until you can predict each line.</span>
+            <button class="tgl" id="copyBareBtn">Copy bare code</button>
+          </div>
+          <div class="codewrap bare"><div class="code" id="codeBare"></div></div>
+        </div>
+        <div class="hero">
+          <div class="path">03_while_and_do_while/06_for_vs_while_vs_do_while.cpp</div>
+          <h1>for vs while vs do...while - One Task, Three Answers</h1>
+          <div class="badges">
+            <span class="badge beginner">Beginner</span>
+            <span class="badge topic">choosing the right loop type</span>
+            <span class="badge">254 lines</span>
+            <span class="badge">11 kb</span>
+          </div>
+        </div>
+        <div class="note info"><b>Reading tip.</b> Every grey note below is a collapsible explanation. Click its header to read it, or press <b>C</b> to hide every comment at once so the program logic stands on its own.</div>
+        <div class="card teach"><header><i class="dot"></i><h2>WHAT THIS PROGRAM TEACHES</h2></header><div class="body"><ul class="bul"><li>The SAME job - adding up 1 to 10 - written correctly three times.</li><li>All three programs must produce the same answer, and the program</li><li>Where each loop type tests its condition, and what that decides.</li><li>How to pick the right loop for a new question on an exam.</li></ul></div></div>
+        <div class="card exp"><header><i class="dot"></i><h2>EXPECTED OUTPUT</h2></header><div class="body"><pre class="plain">=== Version 1: for loop ===
+Sum using for = 55
+=== Version 2: while loop ===
+Sum using while = 55
+=== Version 3: do...while loop ===
+Sum using do...while = 55
+=== Agreement check ===
+All three methods produce the same answer: 55</pre></div></div>
+        <div class="card syn"><header><i class="dot"></i><h2>IMPORTANT SYNTAX</h2></header><div class="body"><div class="syn-list"><div class="syn-item"><code>for (int i = 1; i &lt;= 10; i++) { sumFor += i; }</code><span>^ start, then test, then update - all in one header</span></div><div class="syn-item"><code>while (w &lt;= 10)  { sumWhile += w; w++; }</code><span>^ test first, so the body may run zero times</span></div><div class="syn-item"><code>do { sumDo += d; d++; } while (d &lt;= 10);</code><span>^ test last, so the body always runs once</span></div><div class="syn-item"><code>sumFor += i;     -&gt; add i into the running total and store it back</code><span>&amp;&amp;              -&gt; &quot;AND&quot;: true only when BOTH sides are true</span></div></div></div></div>
+        <div class="card"><header><i class="dot"></i><h2>STEP-BY-STEP EXPLANATION</h2></header><div class="body"><ol class="steps"><li>Version 1 packs the start value, the test and the update into the for</li><li>header, so the loop counter <code>i</code> lives and dies with the loop.</li><li>Version 2 does the same work with the counter declared beforehand, and</li><li><code>w++</code> written at the bottom of the body instead of in a header.</li><li>Version 3 uses the same counter and the same test, but the test comes</li><li>after the body. With these starting values the result is identical.</li><li>The three totals are compared with <code>==</code>, joined by <code>&amp;&amp;</code>. Because both</li><li>comparisons hold, the program reports that all three agree.</li><li>Note what would NOT agree: a do...while whose counter starts already</li><li>beyond the limit, because it would add one number too many.</li><li>============================================================</li></ol></div></div>
+        <div class="card"><header><i class="dot"></i><h2>THE AGREEMENT CHECK</h2></header><div class="body"><pre class="plain wrap">================================================================</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>THE COMMON TRAP IN THIS FILE</h2></header><div class="body"><pre class="plain wrap">Writing `if (sumFor = sumWhile)` with one equals sign. That does not
+compare anything: it throws sumWhile&#x27;s value into sumFor and then
+treats the result as true whenever sumWhile is not zero. The program
+would print &quot;they agree&quot; even when they did not. Compare with `==`,
+assign with `=`, and never mix them up.</pre></div></div>
+        <div class="card quiz"><header><i class="dot"></i><h2>Exam questions</h2></header><div class="body"><details class="q"><summary>What answer do all three versions produce, and why?</summary><div class="a"><b>Answer:</b> 55, because 1 + 2 + ... + 10 = 55 in every case</div></details><details class="q"><summary>Which of the three types tests its condition after the body?</summary><div class="a"><b>Answer:</b> do...while, so it can never run fewer than one time</div></details><details class="q"><summary>Why can sumFor be declared inside the loop header instead of above it?</summary><div class="a"><b>Answer:</b> the for header creates it, which keeps it out of the rest of main</div></details><details class="q"><summary>What would the do...while version give if d started at 20?</summary><div class="a"><b>Answer:</b> 20, not 0, because its body runs once before any test is made</div></details><details class="q"><summary>What is wrong with <code>if (sumFor = sumWhile)</code>?</summary><div class="a"><b>Answer:</b> <code>=</code> assigns instead of comparing, so no real test is performed</div></details></div></div>
+        <div class="card trace"><header><i class="dot"></i><h2>Trace tables</h2></header><div class="body">
+          <p class="tbl-cap">what the passing test was instead of any screen output.</p>
+          <div class="tbl-scroll"><table class="grid"><thead><tr>
+<th>Iteration</th>
+<th>i / w / d</th>
+<th>sumFor</th>
+<th>sumWhile</th>
+<th>sumDo</th>
+<th>Test: i&lt;=10</th>
+</tr></thead><tbody>
+<tr><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>TRUE</td></tr>
+<tr><td>2</td><td>2</td><td>3</td><td>3</td><td>3</td><td>TRUE</td></tr>
+<tr><td>3</td><td>3</td><td>6</td><td>6</td><td>6</td><td>TRUE</td></tr>
+<tr><td>4</td><td>4</td><td>10</td><td>10</td><td>10</td><td>TRUE</td></tr>
+<tr><td>5</td><td>5</td><td>15</td><td>15</td><td>15</td><td>TRUE</td></tr>
+<tr><td>6</td><td>6</td><td>21</td><td>21</td><td>21</td><td>TRUE</td></tr>
+<tr><td>7</td><td>7</td><td>28</td><td>28</td><td>28</td><td>TRUE</td></tr>
+<tr><td>8</td><td>8</td><td>36</td><td>36</td><td>36</td><td>TRUE</td></tr>
+<tr><td>9</td><td>9</td><td>45</td><td>45</td><td>45</td><td>TRUE</td></tr>
+<tr><td>10</td><td>10</td><td>55</td><td>55</td><td>55</td><td>TRUE</td></tr>
+<tr><td>11</td><td>11</td><td>55</td><td>55</td><td>55</td><td>FALSE</td></tr>
+</tbody></table></div>
+          <p class="tbl-cap">================================================================</p>
+          <div class="tbl-scroll"><table class="grid"><thead><tr>
+<th>Feature</th>
+<th>for</th>
+<th>while</th>
+<th>do...while</th>
+</tr></thead><tbody>
+<tr><td>Syntax</td><td>for (a;b;c) {}</td><td>while (b) {}</td><td>do{} while (b);</td></tr>
+<tr><td>Condition checked</td><td>before body</td><td>before body</td><td>AFTER the body</td></tr>
+<tr><td>Minimum executions</td><td>0</td><td>0</td><td>1</td></tr>
+<tr><td>Best used when</td><td>count known</td><td>passes unknown</td><td>must run once</td></tr>
+<tr><td>Infinite-loop risk</td><td>update missing</td><td>update missing</td><td>test stays true</td></tr>
+</tbody></table></div>
+        </div></div>
+        <div class="card code-card" id="annotated">
+          <header><i class="dot"></i><h2>The program, annotated</h2></header>
+          <div class="toolbar">
+            <label class="tgl"><input type="checkbox" id="tgComments"> Hide all comments <kbd>C</kbd></label>
+            <label class="tgl"><input type="checkbox" id="tgFold"> Unfold every note <kbd>F</kbd></label>
+            <label class="tgl keep"><input type="checkbox" id="tgNums" checked> Line numbers</label>
+            <button class="tgl" id="examBtn">Exam mode <kbd>E</kbd></button>
+            <button class="tgl" id="copyBtn">Copy source</button>
+            <a class="tgl" href="../../03_while_and_do_while/06_for_vs_while_vs_do_while.cpp" download>Download .cpp</a>
+          </div>
+          <div class="codewrap"><div class="code" id="code"></div></div>
+        </div>
+        <div class="pager">
+          <a class="prev" id="prevLink" href="../03_while_and_do_while/05_do_while_runs_once.html"><span class="dir">Previous</span><span class="nm">05 do while runs once</span></a>
+          <a class="next" id="nextLink" href="../04_counters_and_accumulators/01_sum_1_to_n.html"><span class="dir">Next</span><span class="nm">01 sum 1 to n</span></a>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<dialog id="keys">
+  <header>Keyboard shortcuts <span class="spacer"></span>
+    <button class="icon-btn" id="keysClose">&#10005;</button></header>
+  <div class="body">
+    <div class="krow"><span>Toggle all comments</span><kbd>c</kbd></div>
+    <div class="krow"><span>Fold / unfold every note</span><kbd>f</kbd></div>
+    <div class="krow"><span>Exam mode (code only)</span><kbd>e</kbd></div>
+    <div class="krow"><span>Next file</span><kbd>n</kbd></div>
+    <div class="krow"><span>Previous file</span><kbd>p</kbd></div>
+    <div class="krow"><span>Focus search</span><kbd>/</kbd></div>
+    <div class="krow"><span>Light / dark theme</span><kbd>t</kbd></div>
+    <div class="krow"><span>Open this dialog</span><kbd>?</kbd></div>
+  </div>
+</dialog>
+
+<div class="toast" id="toast"></div>
+
+<script src="../assets/data.js"></script>
+<script>window.CURRENT_FILE = window.PROJECT.files.filter(function (x) { return x.path === "03_while_and_do_while/06_for_vs_while_vs_do_while.cpp"; })[0];</script>
+<script>window.VIEWER_DEPTH = "../";</script>
+<script src="../assets/viewer.js"></script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fundamentals - C++ Loops Midterm Review</title>
+<link rel="stylesheet" href="../assets/viewer.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#9881;</text></svg>">
+</head>
+<body>
+
+<div class="app">
+  <div class="scrim" id="scrim"></div>
+  <nav class="sidebar">
+    <div class="brand">
+      <div class="logo">C++</div>
+      <div>
+        <b>Loops Midterm Review</b>
+        <small>31 annotated examples</small>
+      </div>
+    </div>
+    <div class="side-tools">
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <input id="search" type="search" placeholder="Search all files and code..." autocomplete="off">
+        <button id="searchClear" title="Clear search" style="visibility:hidden">&times;</button>
+      </div>
+      <div class="progress-row">
+        <span id="progLabel">0 / 31 studied</span>
+        <span class="bar"><i id="barFill"></i></span>
+        <button class="btn-mini" id="resetBtn" hidden>reset</button>
+      </div>
+    </div>
+    <div class="nav" id="nav"></div>
+  </nav>
+
+  <main class="main">
+    <div class="topbar">
+      <button class="icon-btn nav-only" id="navToggle" title="Show file list">&#9776;</button>
+      <div class="crumb">
+        <span>01_fundamentals</span> / <b>Section</b>
+      </div>
+      <span class="spacer"></span>
+      <button class="icon-btn" id="topKeys" title="Keyboard shortcuts (?)">?</button>
+      <button class="icon-btn" id="themeBtn" title="Toggle light / dark (t)">&#9680;</button>
+    </div>
+
+    <div class="scroll">
+      <div class="wrap">
+
+        <div class="dash">
+          <div class="dash-hero">
+            <h1>Fundamentals</h1>
+            <p>The ten smallest loops. Start here if a for loop still looks strange. Includes the deep anatomy file.</p>
+          </div>
+          <div class="grid-cards">
+            <a class="fcard" href="01_hello_loop.html">
+              <div class="num">01 &middot; 194 lines</div>
+              <h3>Hello, Loop!</h3>
+              <p>What a &quot;loop&quot; is in plain English: repeating something.</p>
+              <div class="badges" style="margin-top:8px">
+                <span class="badge beginner">Beginner</span>
+                <span class="badge topic">Loops - fundamentals / first program with a loop</span>
+              </div>
+            </a>
+            <a class="fcard" href="02_count_1_to_10.html">
+              <div class="num">02 &middot; 109 lines</div>
+              <h3>Count from 1 to 10</h3>
+              <p>The single most common exam loop: print numbers from 1 to some limit.</p>
+              <div class="badges" style="margin-top:8px">
+                <span class="badge beginner">Beginner</span>
+                <span class="badge topic">for loops - the classic counting loop</span>
+              </div>
+            </a>
+            <a class="fcard" href="03_count_down_10_to_1.html">
+              <div class="num">03 &middot; 109 lines</div>
+              <h3>Count Down from 10 to 1</h3>
+              <p>How to make a loop run backwards by starting high and using `i--`.</p>
+              <div class="badges" style="margin-top:8px">
+                <span class="badge beginner">Beginner</span>
+                <span class="badge topic">for loops - decrementing loops</span>
+              </div>
+            </a>
+            <a class="fcard" href="04_count_by_2.html">
+              <div class="num">04 &middot; 108 lines</div>
+              <h3>Count by 2 (Stepping / Skipping Loops)</h3>
+              <p>How to change the SIZE of the step in a counting loop.</p>
+              <div class="badges" style="margin-top:8px">
+                <span class="badge beginner">Beginner</span>
+                <span class="badge topic">for loops - custom increment size</span>
+              </div>
+            </a>
+            <a class="fcard" href="05_count_by_5.html">
+              <div class="num">05 &middot; 100 lines</div>
+              <h3>Count by 5 (Multiples and Grouping)</h3>
+              <p>Using a step size of 5 to visit only multiples of 5.</p>
+              <div class="badges" style="margin-top:8px">
+                <span class="badge beginner">Beginner</span>
+                <span class="badge topic">for loops - larger step sizes, multiples</span>
+              </div>
+            </a>
+            <a class="fcard" href="06_even_numbers.html">
+              <div class="num">06 &middot; 120 lines</div>
+              <h3>Print the Even Numbers from 1 to 20</h3>
+              <p>The DEFINITION of an even number: divisible by 2 with NO remainder.</p>
+              <div class="badges" style="margin-top:8px">
+                <span class="badge beginner">Beginner</span>
+                <span class="badge topic">for loops + the modulo operator (%) to detect even numbers</span>
+              </div>
+            </a>
+            <a class="fcard" href="07_odd_numbers.html">
+              <div class="num">07 &middot; 121 lines</div>
+              <h3>Print the Odd Numbers from 1 to 20</h3>
+              <p>The definition of an odd number.</p>
+              <div class="badges" style="margin-top:8px">
+                <span class="badge beginner">Beginner</span>
+                <span class="badge topic">for loops + modulo, and the `!=` operator</span>
+              </div>
+            </a>
+            <a class="fcard" href="08_for_loop_anatomy.html">
+              <div class="num">08 &middot; 258 lines</div>
+              <h3>Anatomy of a for Loop</h3>
+              <p>The exact meaning of every character in a for loop.</p>
+              <div class="badges" style="margin-top:8px">
+                <span class="badge topic">for loops - every single character explained</span>
+              </div>
+            </a>
+          </div>
+          <div class="pager"><a href="../index.html"><span class="dir">Back</span><span class="nm">All sections</span></a></div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<dialog id="keys">
+  <header>Keyboard shortcuts <span class="spacer"></span>
+    <button class="icon-btn" id="keysClose">&#10005;</button></header>
+  <div class="body">
+    <div class="krow"><span>Toggle all comments</span><kbd>c</kbd></div>
+    <div class="krow"><span>Fold / unfold every note</span><kbd>f</kbd></div>
+    <div class="krow"><span>Exam mode (code only)</span><kbd>e</kbd></div>
+    <div class="krow"><span>Next file</span><kbd>n</kbd></div>
+    <div class="krow"><span>Previous file</span><kbd>p</kbd></div>
+    <div class="krow"><span>Focus search</span><kbd>/</kbd></div>
+    <div class="krow"><span>Light / dark theme</span><kbd>t</kbd></div>
+    <div class="krow"><span>Open this dialog</span><kbd>?</kbd></div>
+  </div>
+</dialog>
+
+<div class="toast" id="toast"></div>
+
+<script src="../assets/data.js"></script>
+<!--PAGEVAR-->
+<script>window.VIEWER_DEPTH = "../";</script>
+<script src="../assets/viewer.js"></script>
+</body>
+</html>

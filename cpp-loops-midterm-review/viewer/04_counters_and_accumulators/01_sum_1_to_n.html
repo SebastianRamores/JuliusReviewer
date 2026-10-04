@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adding Up 1 to N - the Accumulator and its Shortcut - C++ Loops Midterm Review</title>
+<link rel="stylesheet" href="../assets/viewer.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#9881;</text></svg>">
+</head>
+<body>
+
+<div class="app">
+  <div class="scrim" id="scrim"></div>
+  <nav class="sidebar">
+    <div class="brand">
+      <div class="logo">C++</div>
+      <div>
+        <b>Loops Midterm Review</b>
+        <small>31 annotated examples</small>
+      </div>
+    </div>
+    <div class="side-tools">
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <input id="search" type="search" placeholder="Search all files and code..." autocomplete="off">
+        <button id="searchClear" title="Clear search" style="visibility:hidden">&times;</button>
+      </div>
+      <div class="progress-row">
+        <span id="progLabel">0 / 31 studied</span>
+        <span class="bar"><i id="barFill"></i></span>
+        <button class="btn-mini" id="resetBtn" hidden>reset</button>
+      </div>
+    </div>
+    <div class="nav" id="nav"></div>
+  </nav>
+
+  <main class="main">
+    <div class="topbar">
+      <button class="icon-btn nav-only" id="navToggle" title="Show file list">&#9776;</button>
+      <div class="crumb">
+        <span>04_counters_and_accumulators</span> / <b>01_sum_1_to_n.cpp</b>
+      </div>
+      <span class="spacer"></span>
+      <button class="icon-btn" id="topKeys" title="Keyboard shortcuts (?)">?</button>
+      <button class="icon-btn" id="themeBtn" title="Toggle light / dark (t)">&#9680;</button>
+    </div>
+
+    <div class="scroll">
+      <div class="wrap">
+
+        <!-- ============ THE BARE PROGRAM (comments removed) =========== -->
+        <div class="card bare-card">
+          <header><i class="dot"></i><h2>The program, comments removed</h2><span class="badge ok">the code you would write in the exam</span><span class="spacer"></span><span class="badge">34 lines (from 256)</span></header>
+          <div class="toolbar bare-tools">
+            <span class="hint">Every explanation has been deleted. This is the complete program on its own &mdash; read it top to bottom until you can predict each line.</span>
+            <button class="tgl" id="copyBareBtn">Copy bare code</button>
+          </div>
+          <div class="codewrap bare"><div class="code" id="codeBare"></div></div>
+        </div>
+        <div class="hero">
+          <div class="path">04_counters_and_accumulators/01_sum_1_to_n.cpp</div>
+          <h1>Adding Up 1 to N - the Accumulator and its Shortcut</h1>
+          <div class="badges">
+            <span class="badge beginner">Beginner</span>
+            <span class="badge topic">accumulators + the closed formula n * (n + 1) / 2</span>
+            <span class="badge">256 lines</span>
+            <span class="badge">11 kb</span>
+          </div>
+        </div>
+        <div class="note info"><b>Reading tip.</b> Every grey note below is a collapsible explanation. Click its header to read it, or press <b>C</b> to hide every comment at once so the program logic stands on its own.</div>
+        <div class="card teach"><header><i class="dot"></i><h2>WHAT THIS PROGRAM TEACHES</h2></header><div class="body"><ul class="bul"><li>The classic ACCUMULATOR: <code>sum</code> is created as 0 BEFORE the loop and</li><li>WHY the accumulator must start at 0 rather than 1, in plain words.</li><li>The arithmetic-operator family <code>+ - * / %</code> and what each is for.</li><li>The 10-second formula n * (n + 1) / 2, and a loop that checks it.</li><li>Why <code>n * (n + 1) / 2</code> always divides exactly, for every whole n.</li></ul></div></div>
+        <div class="card exp"><header><i class="dot"></i><h2>EXPECTED OUTPUT</h2></header><div class="body"><pre class="plain">=== Adding up 1 to 10 with a loop ===
+The loop total is 55
+=== The 10-second formula n * (n + 1) / 2 ===
+For n = 10 the formula gives 55
+=== Checking that the two agree ===
+55 == 55 - the loop matches the formula.</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>IMPORTANT SYNTAX</h2></header><div class="body"><pre class="plain wrap">int sum = 0;               -&gt; an accumulator starts at zero
+sum = sum + i;             -&gt; fold the new value into the running total
+sum += i;                  -&gt; exactly the same thing, written shorter
+n * (n + 1) / 2            -&gt; multiply, then add 1, then divide by 2
+sum == formula             -&gt; &quot;are these two the same?&quot; (a question)</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>STEP-BY-STEP EXPLANATION</h2></header><div class="body"><ol class="steps"><li><code>int n = 10;</code> is the upper limit, given a name so the loop and the</li><li>formula can both use it and be changed in one place.</li><li><code>int sum = 0;</code> is the accumulator, created BEFORE the loop. This is</li><li>the single most important line in the program.</li><li>The loop adds i into sum for every i from 1 to n, then i++ moves on.</li><li>After the loop sum holds the finished answer, 55.</li><li><code>n * (n + 1) / 2</code> computes the same answer with no loop at all: the</li><li>maths has a shortcut that saves you writing the loop on an exam.</li><li><code>==</code> compares the two answers so the agreement is proven, not assumed.</li><li>============================================================</li></ol></div></div>
+        <div class="card"><header><i class="dot"></i><h2>PART 2 - THE 10-SECOND FORMULA</h2></header><div class="body"><pre class="plain wrap">================================================================</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>PART 3 - PROVE THE TWO AGREE</h2></header><div class="body"><pre class="plain wrap">================================================================</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>THE COMMON TRAP IN THIS FILE</h2></header><div class="body"><pre class="plain wrap">Writing `int sum;` with no starting value, or `int sum = 1;`.
+With no value at all the program is illegal in C++ - the compiler
+refuses with &quot;sum was not initialised&quot; - because there would be no
+answer to add to on the first pass. With 1 it compiles perfectly and
+prints 56. Accumulators must be given a value BEFORE the loop, and
+that value must be the identity for the operator being used:
+adding      -&gt; 0
+multiplying  -&gt; 1</pre></div></div>
+        <div class="card quiz"><header><i class="dot"></i><h2>Exam questions</h2></header><div class="body"><details class="q"><summary>What value must an adding accumulator start at, and why?</summary><div class="a"><b>Answer:</b> 0, because 0 is the identity for + so the first number passes through unchanged</div></details><details class="q"><summary>What does this loop produce for n = 10?</summary><div class="a"><b>Answer:</b> 55, from 1 + 2 + 3 + ... + 10</div></details><details class="q"><summary>Why are the brackets needed in n * (n + 1) / 2?</summary><div class="a"><b>Answer:</b> without them division happens before multiplication, giving 100 instead of 55</div></details><details class="q"><summary>Why does n * (n + 1) / 2 never lose a fraction?</summary><div class="a"><b>Answer:</b> one of n and n+1 is always even, so the product divides by 2 exactly</div></details><details class="q"><summary>What is the difference between <code>sum == formula</code> and <code>sum = formula</code>?</summary><div class="a"><b>Answer:</b> <code>==</code> compares them, while <code>=</code> overwrites sum and loses the loop answer</div></details></div></div>
+        <div class="card trace"><header><i class="dot"></i><h2>Trace tables</h2></header><div class="body">
+          <p class="tbl-cap">total once, after the loop has finished.</p>
+          <div class="tbl-scroll"><table class="grid"><thead><tr>
+<th>Iteration</th>
+<th>i at start</th>
+<th>sum before</th>
+<th>sum after</th>
+<th>Test: i&lt;=n</th>
+</tr></thead><tbody>
+<tr><td>1</td><td>1</td><td>0</td><td>0 + 1 = 1</td><td>TRUE</td></tr>
+<tr><td>2</td><td>2</td><td>1</td><td>1 + 2 = 3</td><td>TRUE</td></tr>
+<tr><td>3</td><td>3</td><td>3</td><td>3 + 3 = 6</td><td>TRUE</td></tr>
+<tr><td>4</td><td>4</td><td>6</td><td>6 + 4 = 10</td><td>TRUE</td></tr>
+<tr><td>5</td><td>5</td><td>10</td><td>10 + 5 = 15</td><td>TRUE</td></tr>
+<tr><td>6</td><td>6</td><td>15</td><td>15 + 6 = 21</td><td>TRUE</td></tr>
+<tr><td>7</td><td>7</td><td>21</td><td>21 + 7 = 28</td><td>TRUE</td></tr>
+<tr><td>8</td><td>8</td><td>28</td><td>28 + 8 = 36</td><td>TRUE</td></tr>
+<tr><td>9</td><td>9</td><td>36</td><td>36 + 9 = 45</td><td>TRUE</td></tr>
+<tr><td>10</td><td>10</td><td>45</td><td>45 + 10 = 55</td><td>TRUE</td></tr>
+<tr><td>11</td><td>11</td><td>55</td><td>(body skipped)</td><td>FALSE</td></tr>
+</tbody></table></div>
+        </div></div>
+        <div class="card code-card" id="annotated">
+          <header><i class="dot"></i><h2>The program, annotated</h2></header>
+          <div class="toolbar">
+            <label class="tgl"><input type="checkbox" id="tgComments"> Hide all comments <kbd>C</kbd></label>
+            <label class="tgl"><input type="checkbox" id="tgFold"> Unfold every note <kbd>F</kbd></label>
+            <label class="tgl keep"><input type="checkbox" id="tgNums" checked> Line numbers</label>
+            <button class="tgl" id="examBtn">Exam mode <kbd>E</kbd></button>
+            <button class="tgl" id="copyBtn">Copy source</button>
+            <a class="tgl" href="../../04_counters_and_accumulators/01_sum_1_to_n.cpp" download>Download .cpp</a>
+          </div>
+          <div class="codewrap"><div class="code" id="code"></div></div>
+        </div>
+        <div class="pager">
+          <a class="prev" id="prevLink" href="../03_while_and_do_while/06_for_vs_while_vs_do_while.html"><span class="dir">Previous</span><span class="nm">06 for vs while vs do while</span></a>
+          <a class="next" id="nextLink" href="../04_counters_and_accumulators/02_sum_even_numbers.html"><span class="dir">Next</span><span class="nm">02 sum even numbers</span></a>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<dialog id="keys">
+  <header>Keyboard shortcuts <span class="spacer"></span>
+    <button class="icon-btn" id="keysClose">&#10005;</button></header>
+  <div class="body">
+    <div class="krow"><span>Toggle all comments</span><kbd>c</kbd></div>
+    <div class="krow"><span>Fold / unfold every note</span><kbd>f</kbd></div>
+    <div class="krow"><span>Exam mode (code only)</span><kbd>e</kbd></div>
+    <div class="krow"><span>Next file</span><kbd>n</kbd></div>
+    <div class="krow"><span>Previous file</span><kbd>p</kbd></div>
+    <div class="krow"><span>Focus search</span><kbd>/</kbd></div>
+    <div class="krow"><span>Light / dark theme</span><kbd>t</kbd></div>
+    <div class="krow"><span>Open this dialog</span><kbd>?</kbd></div>
+  </div>
+</dialog>
+
+<div class="toast" id="toast"></div>
+
+<script src="../assets/data.js"></script>
+<script>window.CURRENT_FILE = window.PROJECT.files.filter(function (x) { return x.path === "04_counters_and_accumulators/01_sum_1_to_n.cpp"; })[0];</script>
+<script>window.VIEWER_DEPTH = "../";</script>
+<script src="../assets/viewer.js"></script>
+</body>
+</html>

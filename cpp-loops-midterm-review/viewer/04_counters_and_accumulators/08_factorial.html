@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Factorials - the Multiplying Accumulator - C++ Loops Midterm Review</title>
+<link rel="stylesheet" href="../assets/viewer.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#9881;</text></svg>">
+</head>
+<body>
+
+<div class="app">
+  <div class="scrim" id="scrim"></div>
+  <nav class="sidebar">
+    <div class="brand">
+      <div class="logo">C++</div>
+      <div>
+        <b>Loops Midterm Review</b>
+        <small>31 annotated examples</small>
+      </div>
+    </div>
+    <div class="side-tools">
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <input id="search" type="search" placeholder="Search all files and code..." autocomplete="off">
+        <button id="searchClear" title="Clear search" style="visibility:hidden">&times;</button>
+      </div>
+      <div class="progress-row">
+        <span id="progLabel">0 / 31 studied</span>
+        <span class="bar"><i id="barFill"></i></span>
+        <button class="btn-mini" id="resetBtn" hidden>reset</button>
+      </div>
+    </div>
+    <div class="nav" id="nav"></div>
+  </nav>
+
+  <main class="main">
+    <div class="topbar">
+      <button class="icon-btn nav-only" id="navToggle" title="Show file list">&#9776;</button>
+      <div class="crumb">
+        <span>04_counters_and_accumulators</span> / <b>08_factorial.cpp</b>
+      </div>
+      <span class="spacer"></span>
+      <button class="icon-btn" id="topKeys" title="Keyboard shortcuts (?)">?</button>
+      <button class="icon-btn" id="themeBtn" title="Toggle light / dark (t)">&#9680;</button>
+    </div>
+
+    <div class="scroll">
+      <div class="wrap">
+
+        <!-- ============ THE BARE PROGRAM (comments removed) =========== -->
+        <div class="card bare-card">
+          <header><i class="dot"></i><h2>The program, comments removed</h2><span class="badge ok">the code you would write in the exam</span><span class="spacer"></span><span class="badge">48 lines (from 265)</span></header>
+          <div class="toolbar bare-tools">
+            <span class="hint">Every explanation has been deleted. This is the complete program on its own &mdash; read it top to bottom until you can predict each line.</span>
+            <button class="tgl" id="copyBareBtn">Copy bare code</button>
+          </div>
+          <div class="codewrap bare"><div class="code" id="codeBare"></div></div>
+        </div>
+        <div class="hero">
+          <div class="path">04_counters_and_accumulators/08_factorial.cpp</div>
+          <h1>Factorials - the Multiplying Accumulator</h1>
+          <div class="badges">
+            <span class="badge beginner">Beginner</span>
+            <span class="badge topic">accumulators + the special cases 0! and 1! + overflow</span>
+            <span class="badge">265 lines</span>
+            <span class="badge">11 kb</span>
+          </div>
+        </div>
+        <div class="note info"><b>Reading tip.</b> Every grey note below is a collapsible explanation. Click its header to read it, or press <b>C</b> to hide every comment at once so the program logic stands on its own.</div>
+        <div class="card teach"><header><i class="dot"></i><h2>WHAT THIS PROGRAM TEACHES</h2></header><div class="body"><ul class="bul"><li>Factorial as an accumulator that MULTIPLIES rather than adds, and why</li><li>The two special cases, 0! and 1!, which are both 1 - and the loop</li><li>Why an int cannot hold a large factorial, and what 13! actually is.</li></ul></div></div>
+        <div class="card exp"><header><i class="dot"></i><h2>EXPECTED OUTPUT</h2></header><div class="body"><pre class="plain">=== Factorial of 5 using an accumulator ===
+After multiplying by 1 the product is 1
+After multiplying by 2 the product is 2
+After multiplying by 3 the product is 6
+After multiplying by 4 the product is 24
+After multiplying by 5 the product is 120
+5! is 120
+=== The special cases 0! and 1! ===
+0! is 1
+1! is 1
+For 0! the loop body never runs, so the answer is just the starting 1.
+For 1! the body runs once and multiplies by 1, so the answer is 1 again.
+=== How large can an int go? ===
+12! is 479001600, which still fits in an int.
+13! is 6227020800, which does NOT fit in an int, so never compute it in one.</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>IMPORTANT SYNTAX</h2></header><div class="body"><pre class="plain wrap">int product = 1;          -&gt; a multiplying accumulator starts at ONE
+product = product * i;    -&gt; fold i into the running product
+product *= i;             -&gt; exactly the same thing, written shorter
+for (int i = 1; i &lt;= n; i++) -&gt; ten passes for n = 10, one for each factor
+0! = 1                   -&gt; by definition, the product of NO numbers</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>STEP-BY-STEP EXPLANATION</h2></header><div class="body"><pre class="plain wrap">1. `int product = 1;` is the accumulator. 1 is the identity for `*`, so
+the first factor passes through untouched. Starting at 0 would give 0
+for ever, because anything multiplied by 0 is 0.
+2. The loop multiplies in every number from 1 up to n, one per pass, and
+for n = 5 the product finishes at 120.
+3. For n = 0 the test `1 &lt;= 0` fails immediately, the body never runs, and
+the answer is the untouched starting value of 1 - exactly the
+mathematical definition of 0!.
+4. For n = 1 the body runs once and multiplies by 1, so the answer is 1
+again. Both special cases fall out of the loop for free.
+5. 12! still fits in an int; 13! does not, and trying it anyway is called
+OVERFLOW and produces a meaningless answer.
+============================================================</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>THE COMMON TRAP IN THIS FILE</h2></header><div class="body"><pre class="plain wrap">Writing `int product = 0;`. It compiles, it runs, it prints five
+lines, and it answers 0 - and on the first line the fault is
+invisible, because 0 * 1 does equal 0. Always ask &quot;what is the
+identity for my operator?&quot; before initialising an accumulator:
+0 for `+` and `-`, 1 for `*` and `/`. The second trap is forgetting
+that `i` must be initialised to 1 rather than 0: starting from 0
+would multiply by 0 first and give 0 for ever.</pre></div></div>
+        <div class="card quiz"><header><i class="dot"></i><h2>Exam questions</h2></header><div class="body"><details class="q"><summary>What does this program compute for n = 5, and why?</summary><div class="a"><b>Answer:</b> 120, the product 1 * 2 * 3 * 4 * 5</div></details><details class="q"><summary>Why must a multiplying accumulator start at 1 rather than 0?</summary><div class="a"><b>Answer:</b> 1 is the identity for <code>*</code>, so the first factor passes through unchanged; 0 would give 0 for ever</div></details><details class="q"><summary>What is 0!, and why does this loop give it without any special code?</summary><div class="a"><b>Answer:</b> 1; the test <code>1 &lt;= 0</code> fails at once so the body never runs and the starting 1 survives</div></details><details class="q"><summary>What is the largest factorial that still fits in an int?</summary><div class="a"><b>Answer:</b> 12! = 479001600, since 13! = 6227020800 is too big</div></details><details class="q"><summary>What is overflow, and what happens if you compute 13! in an int?</summary><div class="a"><b>Answer:</b> exceeding the type&#x27;s range; the result is meaningless, often a wrapped negative number</div></details></div></div>
+        <div class="card trace"><header><i class="dot"></i><h2>Trace tables</h2></header><div class="body">
+          <p class="tbl-cap">================================================================</p>
+          <div class="tbl-scroll"><table class="grid"><thead><tr>
+<th>Iteration</th>
+<th>i at start</th>
+<th>product bef.</th>
+<th>product after</th>
+<th>Output</th>
+</tr></thead><tbody>
+<tr><td>1</td><td>1</td><td>1</td><td>1 * 1 = 1</td><td>1</td></tr>
+<tr><td>2</td><td>2</td><td>1</td><td>1 * 2 = 2</td><td>2</td></tr>
+<tr><td>3</td><td>3</td><td>2</td><td>2 * 3 = 6</td><td>6</td></tr>
+<tr><td>4</td><td>4</td><td>6</td><td>6 * 4 = 24</td><td>24</td></tr>
+<tr><td>5</td><td>5</td><td>24</td><td>24 * 5 = 120</td><td>120</td></tr>
+<tr><td>6</td><td>6</td><td>120</td><td>(body not run)</td><td>(none)</td></tr>
+</tbody></table></div>
+        </div></div>
+        <div class="card code-card" id="annotated">
+          <header><i class="dot"></i><h2>The program, annotated</h2></header>
+          <div class="toolbar">
+            <label class="tgl"><input type="checkbox" id="tgComments"> Hide all comments <kbd>C</kbd></label>
+            <label class="tgl"><input type="checkbox" id="tgFold"> Unfold every note <kbd>F</kbd></label>
+            <label class="tgl keep"><input type="checkbox" id="tgNums" checked> Line numbers</label>
+            <button class="tgl" id="examBtn">Exam mode <kbd>E</kbd></button>
+            <button class="tgl" id="copyBtn">Copy source</button>
+            <a class="tgl" href="../../04_counters_and_accumulators/08_factorial.cpp" download>Download .cpp</a>
+          </div>
+          <div class="codewrap"><div class="code" id="code"></div></div>
+        </div>
+        <div class="pager">
+          <a class="prev" id="prevLink" href="../04_counters_and_accumulators/07_average_numbers.html"><span class="dir">Previous</span><span class="nm">07 average numbers</span></a>
+          <a class="next" href="../index.html"><span class="dir">Finished</span><span class="nm">Dashboard</span></a>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<dialog id="keys">
+  <header>Keyboard shortcuts <span class="spacer"></span>
+    <button class="icon-btn" id="keysClose">&#10005;</button></header>
+  <div class="body">
+    <div class="krow"><span>Toggle all comments</span><kbd>c</kbd></div>
+    <div class="krow"><span>Fold / unfold every note</span><kbd>f</kbd></div>
+    <div class="krow"><span>Exam mode (code only)</span><kbd>e</kbd></div>
+    <div class="krow"><span>Next file</span><kbd>n</kbd></div>
+    <div class="krow"><span>Previous file</span><kbd>p</kbd></div>
+    <div class="krow"><span>Focus search</span><kbd>/</kbd></div>
+    <div class="krow"><span>Light / dark theme</span><kbd>t</kbd></div>
+    <div class="krow"><span>Open this dialog</span><kbd>?</kbd></div>
+  </div>
+</dialog>
+
+<div class="toast" id="toast"></div>
+
+<script src="../assets/data.js"></script>
+<script>window.CURRENT_FILE = window.PROJECT.files.filter(function (x) { return x.path === "04_counters_and_accumulators/08_factorial.cpp"; })[0];</script>
+<script>window.VIEWER_DEPTH = "../";</script>
+<script src="../assets/viewer.js"></script>
+</body>
+</html>

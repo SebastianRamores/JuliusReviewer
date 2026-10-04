@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A do...while Loop ALWAYS Runs Its Body at Least Once - C++ Loops Midterm Review</title>
+<link rel="stylesheet" href="../assets/viewer.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#9881;</text></svg>">
+</head>
+<body>
+
+<div class="app">
+  <div class="scrim" id="scrim"></div>
+  <nav class="sidebar">
+    <div class="brand">
+      <div class="logo">C++</div>
+      <div>
+        <b>Loops Midterm Review</b>
+        <small>31 annotated examples</small>
+      </div>
+    </div>
+    <div class="side-tools">
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <input id="search" type="search" placeholder="Search all files and code..." autocomplete="off">
+        <button id="searchClear" title="Clear search" style="visibility:hidden">&times;</button>
+      </div>
+      <div class="progress-row">
+        <span id="progLabel">0 / 31 studied</span>
+        <span class="bar"><i id="barFill"></i></span>
+        <button class="btn-mini" id="resetBtn" hidden>reset</button>
+      </div>
+    </div>
+    <div class="nav" id="nav"></div>
+  </nav>
+
+  <main class="main">
+    <div class="topbar">
+      <button class="icon-btn nav-only" id="navToggle" title="Show file list">&#9776;</button>
+      <div class="crumb">
+        <span>03_while_and_do_while</span> / <b>05_do_while_runs_once.cpp</b>
+      </div>
+      <span class="spacer"></span>
+      <button class="icon-btn" id="topKeys" title="Keyboard shortcuts (?)">?</button>
+      <button class="icon-btn" id="themeBtn" title="Toggle light / dark (t)">&#9680;</button>
+    </div>
+
+    <div class="scroll">
+      <div class="wrap">
+
+        <!-- ============ THE BARE PROGRAM (comments removed) =========== -->
+        <div class="card bare-card">
+          <header><i class="dot"></i><h2>The program, comments removed</h2><span class="badge ok">the code you would write in the exam</span><span class="spacer"></span><span class="badge">72 lines (from 267)</span></header>
+          <div class="toolbar bare-tools">
+            <span class="hint">Every explanation has been deleted. This is the complete program on its own &mdash; read it top to bottom until you can predict each line.</span>
+            <button class="tgl" id="copyBareBtn">Copy bare code</button>
+          </div>
+          <div class="codewrap bare"><div class="code" id="codeBare"></div></div>
+        </div>
+        <div class="hero">
+          <div class="path">03_while_and_do_while/05_do_while_runs_once.cpp</div>
+          <h1>A do...while Loop ALWAYS Runs Its Body at Least Once</h1>
+          <div class="badges">
+            <span class="badge beginner">Beginner</span>
+            <span class="badge topic">the one big difference between do...while and while</span>
+            <span class="badge">267 lines</span>
+            <span class="badge">11 kb</span>
+          </div>
+        </div>
+        <div class="note info"><b>Reading tip.</b> Every grey note below is a collapsible explanation. Click its header to read it, or press <b>C</b> to hide every comment at once so the program logic stands on its own.</div>
+        <div class="card teach"><header><i class="dot"></i><h2>WHAT THIS PROGRAM TEACHES</h2></header><div class="body"><ul class="bul"><li>THE CENTRAL FACT: a do...while loop runs its body one time at least,</li><li>Proof by comparison: the SAME false condition in a plain while loop</li><li>What happens when the condition is true to begin with - the loop then</li><li>Where the compulsory semicolon goes, and what a stray one does.</li></ul></div></div>
+        <div class="card exp"><header><i class="dot"></i><h2>EXPECTED OUTPUT</h2></header><div class="body"><pre class="plain">=== Example A: the condition is FALSE right from the start ===
+Body pass number 1 ran, even though the test will fail.
+do...while body ran 1 time(s).
+=== Example B: the condition is TRUE to begin with ===
+Body pass number 1 ran.
+Body pass number 2 ran.
+Body pass number 3 ran.
+do...while body ran 3 time(s).
+=== Example C: the same test in a plain while loop ===
+while body ran 0 time(s).
+=== Example D: the semicolon after while(...) is compulsory ===
+This line printed because the semicolon after while is present.
+The do...while above compiled and ran exactly once.
+=== SUMMARY ===
+do...while with a false condition runs 1 time.
+while with the same false condition runs 0 times.
+Confirmed: the two loop types disagree when the condition starts false.</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>IMPORTANT SYNTAX</h2></header><div class="body"><pre class="plain wrap">do { body } while (condition);  -&gt; run the body FIRST, then test, then repeat
+while (condition) { body }       -&gt; test FIRST, so the body may run 0 times
+while (up &lt;= 0) { ... }         -&gt; a false test, so this body never runs
+a != b                          -&gt; &quot;is a NOT equal to b?&quot;</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>STEP-BY-STEP EXPLANATION</h2></header><div class="body"><ol class="steps"><li>Example A sets up a condition that is FALSE before the loop starts.</li><li>The body still prints once, then the failing test ends the loop.</li><li>Example B uses a condition that is TRUE to begin with, so the loop</li><li>runs as many times as it would in a while loop - three of them.</li><li>Example C rewrites Example A as a plain while loop. The test comes</li><li>first and is false, so the body is skipped completely and the pass</li><li>counter stays at 0. The line inside the braces never prints.</li><li>Example D shows the required semicolon after the closing parenthesis.</li><li>The summary compares the two counters with <code>!=</code>, which is true, so</li><li>the disagreement is confirmed out loud.</li><li>============================================================</li></ol></div></div>
+        <div class="card"><header><i class="dot"></i><h2>EXAMPLE A - A CONDITION THAT IS FALSE FROM THE START</h2></header><div class="body"><pre class="plain wrap">================================================================</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>EXAMPLE B - A CONDITION THAT IS TRUE TO BEGIN WITH</h2></header><div class="body"><pre class="plain wrap">================================================================</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>EXAMPLE D - THE COMPULSORY SEMICOLON</h2></header><div class="body"><pre class="plain wrap">================================================================</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>SUMMARY - THE DIFFERENCE STATED AS DATA</h2></header><div class="body"><pre class="plain wrap">================================================================</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>THE COMMON TRAP IN THIS FILE</h2></header><div class="body"><pre class="plain wrap">Reaching for a do...while &quot;just in case&quot;, then being surprised when
+the body fires once with values you never wanted it to see. Choose:
+while       -&gt; the test must pass first; 0 passes is fine.
+do...while  -&gt; the body MUST happen at least once. Perfect for a
+menu, a &quot;press a key to continue&quot; prompt, or a
+countdown. Wrong for anything where a condition has
+to be met before work starts.
+Forgetting the trailing semicolon also turns a five-line loop into
+a compile error.</pre></div></div>
+        <div class="card quiz"><header><i class="dot"></i><h2>Exam questions</h2></header><div class="body"><details class="q"><summary>How many times does the body of Example A run?</summary><div class="a"><b>Answer:</b> exactly 1, because the test comes after the body</div></details><details class="q"><summary>How many times does the body of Example C run, and why?</summary><div class="a"><b>Answer:</b> 0 times, because a while loop tests first and 1 &lt;= 0 is false</div></details><details class="q"><summary>What is the minimum number of passes for each loop type?</summary><div class="a"><b>Answer:</b> while and for can run 0 times; do...while always runs at least 1</div></details><details class="q"><summary>Where does the compulsory semicolon go?</summary><div class="a"><b>Answer:</b> after the closing parenthesis: <code>while (condition);</code> - not after the brace</div></details><details class="q"><summary>What would <code>passesA = passesC</code> mean instead of <code>!=</code>?</summary><div class="a"><b>Answer:</b> it would ASSIGN passesC&#x27;s value into passesA and ask no question at all</div></details></div></div>
+        <div class="card trace"><header><i class="dot"></i><h2>Trace tables</h2></header><div class="body">
+          <p class="tbl-cap">================================================================</p>
+          <div class="tbl-scroll"><table class="grid"><thead><tr>
+<th>Example</th>
+<th>Test at start</th>
+<th>Test at the end</th>
+<th>Passes</th>
+<th>Body ran?</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>0 &lt; 0 FALSE</td><td>1 &lt; 0 FALSE</td><td>1</td><td>YES</td></tr>
+<tr><td>B</td><td>1 &lt;= 3 TRUE</td><td>4 &lt;= 3 FALSE</td><td>3</td><td>YES</td></tr>
+<tr class="stop"><td>C</td><td>1 &lt;= 0 FALSE</td><td>(never tested)</td><td>0</td><td>NO</td></tr>
+<tr><td>D</td><td>0 &lt; 0 FALSE</td><td>1 &lt; 0 FALSE</td><td>1</td><td>YES</td></tr>
+</tbody></table></div>
+        </div></div>
+        <div class="card code-card" id="annotated">
+          <header><i class="dot"></i><h2>The program, annotated</h2></header>
+          <div class="toolbar">
+            <label class="tgl"><input type="checkbox" id="tgComments"> Hide all comments <kbd>C</kbd></label>
+            <label class="tgl"><input type="checkbox" id="tgFold"> Unfold every note <kbd>F</kbd></label>
+            <label class="tgl keep"><input type="checkbox" id="tgNums" checked> Line numbers</label>
+            <button class="tgl" id="examBtn">Exam mode <kbd>E</kbd></button>
+            <button class="tgl" id="copyBtn">Copy source</button>
+            <a class="tgl" href="../../03_while_and_do_while/05_do_while_runs_once.cpp" download>Download .cpp</a>
+          </div>
+          <div class="codewrap"><div class="code" id="code"></div></div>
+        </div>
+        <div class="pager">
+          <a class="prev" id="prevLink" href="../03_while_and_do_while/04_basic_do_while.html"><span class="dir">Previous</span><span class="nm">04 basic do while</span></a>
+          <a class="next" id="nextLink" href="../03_while_and_do_while/06_for_vs_while_vs_do_while.html"><span class="dir">Next</span><span class="nm">06 for vs while vs do while</span></a>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<dialog id="keys">
+  <header>Keyboard shortcuts <span class="spacer"></span>
+    <button class="icon-btn" id="keysClose">&#10005;</button></header>
+  <div class="body">
+    <div class="krow"><span>Toggle all comments</span><kbd>c</kbd></div>
+    <div class="krow"><span>Fold / unfold every note</span><kbd>f</kbd></div>
+    <div class="krow"><span>Exam mode (code only)</span><kbd>e</kbd></div>
+    <div class="krow"><span>Next file</span><kbd>n</kbd></div>
+    <div class="krow"><span>Previous file</span><kbd>p</kbd></div>
+    <div class="krow"><span>Focus search</span><kbd>/</kbd></div>
+    <div class="krow"><span>Light / dark theme</span><kbd>t</kbd></div>
+    <div class="krow"><span>Open this dialog</span><kbd>?</kbd></div>
+  </div>
+</dialog>
+
+<div class="toast" id="toast"></div>
+
+<script src="../assets/data.js"></script>
+<script>window.CURRENT_FILE = window.PROJECT.files.filter(function (x) { return x.path === "03_while_and_do_while/05_do_while_runs_once.cpp"; })[0];</script>
+<script>window.VIEWER_DEPTH = "../";</script>
+<script src="../assets/viewer.js"></script>
+</body>
+</html>

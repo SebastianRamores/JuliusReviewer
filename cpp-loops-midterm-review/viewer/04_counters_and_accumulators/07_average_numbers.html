@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Finding the Average - and Why Integer Division Loses It - C++ Loops Midterm Review</title>
+<link rel="stylesheet" href="../assets/viewer.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#9881;</text></svg>">
+</head>
+<body>
+
+<div class="app">
+  <div class="scrim" id="scrim"></div>
+  <nav class="sidebar">
+    <div class="brand">
+      <div class="logo">C++</div>
+      <div>
+        <b>Loops Midterm Review</b>
+        <small>31 annotated examples</small>
+      </div>
+    </div>
+    <div class="side-tools">
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <input id="search" type="search" placeholder="Search all files and code..." autocomplete="off">
+        <button id="searchClear" title="Clear search" style="visibility:hidden">&times;</button>
+      </div>
+      <div class="progress-row">
+        <span id="progLabel">0 / 31 studied</span>
+        <span class="bar"><i id="barFill"></i></span>
+        <button class="btn-mini" id="resetBtn" hidden>reset</button>
+      </div>
+    </div>
+    <div class="nav" id="nav"></div>
+  </nav>
+
+  <main class="main">
+    <div class="topbar">
+      <button class="icon-btn nav-only" id="navToggle" title="Show file list">&#9776;</button>
+      <div class="crumb">
+        <span>04_counters_and_accumulators</span> / <b>07_average_numbers.cpp</b>
+      </div>
+      <span class="spacer"></span>
+      <button class="icon-btn" id="topKeys" title="Keyboard shortcuts (?)">?</button>
+      <button class="icon-btn" id="themeBtn" title="Toggle light / dark (t)">&#9680;</button>
+    </div>
+
+    <div class="scroll">
+      <div class="wrap">
+
+        <!-- ============ THE BARE PROGRAM (comments removed) =========== -->
+        <div class="card bare-card">
+          <header><i class="dot"></i><h2>The program, comments removed</h2><span class="badge ok">the code you would write in the exam</span><span class="spacer"></span><span class="badge">43 lines (from 267)</span></header>
+          <div class="toolbar bare-tools">
+            <span class="hint">Every explanation has been deleted. This is the complete program on its own &mdash; read it top to bottom until you can predict each line.</span>
+            <button class="tgl" id="copyBareBtn">Copy bare code</button>
+          </div>
+          <div class="codewrap bare"><div class="code" id="codeBare"></div></div>
+        </div>
+        <div class="hero">
+          <div class="path">04_counters_and_accumulators/07_average_numbers.cpp</div>
+          <h1>Finding the Average - and Why Integer Division Loses It</h1>
+          <div class="badges">
+            <span class="badge beginner">Beginner</span>
+            <span class="badge topic">accumulators + counters + the double type and type conversion</span>
+            <span class="badge">267 lines</span>
+            <span class="badge">12 kb</span>
+          </div>
+        </div>
+        <div class="note info"><b>Reading tip.</b> Every grey note below is a collapsible explanation. Click its header to read it, or press <b>C</b> to hide every comment at once so the program logic stands on its own.</div>
+        <div class="card teach"><header><i class="dot"></i><h2>WHAT THIS PROGRAM TEACHES</h2></header><div class="body"><ul class="bul"><li>An average is found in three steps: add everything up, count how many</li><li>Why <code>sum / count</code> with two ints throws the fraction away - INTEGER</li><li>The trap nobody expects: putting <code>double</code> on the LEFT of the division</li><li>How to force a real division by converting one side with a cast.</li></ul></div></div>
+        <div class="card exp"><header><i class="dot"></i><h2>EXPECTED OUTPUT</h2></header><div class="body"><pre class="plain">=== Step 1: sum and count ===
+Sum of the 10 numbers is 23
+Count is 10
+=== Step 2: dividing two whole numbers ===
+23 / 10 as int division gives 2
+=== Step 3: a double on the left does NOT help ===
+Declaring the answer as double still gives 2
+=== Step 4: convert one side BEFORE dividing ===
+23 / 10 as a double gives 2.3
+That is the correct average.</pre></div></div>
+        <div class="card syn"><header><i class="dot"></i><h2>IMPORTANT SYNTAX</h2></header><div class="body"><div class="syn-list"><div class="syn-item"><code>int count = 0;            -&gt; a counter, for how many there are</code><span>sum / count               -&gt; INTEGER division: the fraction is discarded</span></div></div></div></div>
+        <div class="card"><header><i class="dot"></i><h2>STEP-BY-STEP EXPLANATION</h2></header><div class="body"><ol class="steps"><li>One loop does both jobs: it adds each value into <code>sum</code> and raises</li><li><code>count</code> by 1, so the two always describe the same set of numbers.</li><li><code>int wrong = sum / count;</code> gives 2, because both sides are ints and</li><li>the division throws away the 0.3.</li><li><code>double stillWrong = sum / count;</code> ALSO gives 2. The division is</li><li>carried out in ints first, and only the finished 2 is turned into a</li><li>double afterwards.</li><li><code>double average = (double) sum / count;</code> converts sum to a double</li><li>BEFORE the division happens, so the answer keeps its fraction: 2.3.</li><li>The mean of the list is therefore 2.3, not 2.</li><li>============================================================</li></ol></div></div>
+        <div class="card"><header><i class="dot"></i><h2>THE DATA - THE SAME TEN FIXED NUMBERS AS FILE 06</h2></header><div class="body"><pre class="plain wrap">================================================================
+An ARRAY is a fixed row of values, all of one type, each in its own
+numbered box. `int numbers[]` - `int` is the element type, `[]` after
+the name says the length is worked out from the values in `{ }`.
+INDEXING STARTS AT 0, so these ten values live at boxes 0 to 9.
+(File 06 counted how many of them are positive, negative and zero.)</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>STEP 1 - ADD EVERYTHING UP AND COUNT AT THE SAME TIME</h2></header><div class="body"><pre class="plain wrap">================================================================</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>THE COMMON TRAP IN THIS FILE</h2></header><div class="body"><pre class="plain wrap">Stopping at Step 2 and printing `wrong`, which is 2 instead of 2.3.
+It is a perfectly reasonable-looking line of code and it compiles
+with no warning whatsoever. The habit that prevents it is to decide
+the type of the ANSWER before writing the division: if the answer
+might have a fraction anywhere in it, make sure a `double` is
+involved in the division, not merely in the variable that receives
+it. A good exam habit is to ask &quot;could this ever be a half?&quot; before
+dividing anything.</pre></div></div>
+        <div class="card quiz"><header><i class="dot"></i><h2>Exam questions</h2></header><div class="body"><details class="q"><summary>What are the final values of sum and count?</summary><div class="a"><b>Answer:</b> 23 and 10</div></details><details class="q"><summary>What does <code>23 / 10</code> give when both sides are ints, and why?</summary><div class="a"><b>Answer:</b> 2, because integer division discards the .3 instead of rounding</div></details><details class="q"><summary>Why does <code>double stillWrong = sum / count;</code> still give 2?</summary><div class="a"><b>Answer:</b> the division is carried out in ints first; only the finished 2 is converted afterwards</div></details><details class="q"><summary>What is the correct average of the list, and how is it forced?</summary><div class="a"><b>Answer:</b> 2.3, by casting one side: (double) sum / count</div></details><details class="q"><summary>Why can the running total in this loop go DOWN?</summary><div class="a"><b>Answer:</b> sum is fed negative values as well as positive ones, such as -3 and -15</div></details></div></div>
+        <div class="card trace"><header><i class="dot"></i><h2>Trace tables</h2></header><div class="body">
+          <p class="tbl-cap">================================================================</p>
+          <div class="tbl-scroll"><table class="grid"><thead><tr>
+<th>Iteration</th>
+<th>i</th>
+<th>numbers[i]</th>
+<th>sum before</th>
+<th>sum after</th>
+<th>count</th>
+</tr></thead><tbody>
+<tr><td>1</td><td>0</td><td>5</td><td>0</td><td>0 + 5 = 5</td><td>1</td></tr>
+<tr><td>2</td><td>1</td><td>-3</td><td>5</td><td>5 - 3 = 2</td><td>2</td></tr>
+<tr><td>3</td><td>2</td><td>0</td><td>2</td><td>2 + 0 = 2</td><td>3</td></tr>
+<tr><td>4</td><td>3</td><td>12</td><td>2</td><td>2 + 12 = 14</td><td>4</td></tr>
+<tr><td>5</td><td>4</td><td>-7</td><td>14</td><td>14 - 7 = 7</td><td>5</td></tr>
+<tr><td>6</td><td>5</td><td>8</td><td>7</td><td>7 + 8 = 15</td><td>6</td></tr>
+<tr><td>7</td><td>6</td><td>-1</td><td>15</td><td>15 - 1 = 14</td><td>7</td></tr>
+<tr><td>8</td><td>7</td><td>20</td><td>14</td><td>14 + 20 = 34</td><td>8</td></tr>
+<tr><td>9</td><td>8</td><td>-15</td><td>34</td><td>34 - 15 = 19</td><td>9</td></tr>
+<tr><td>10</td><td>9</td><td>4</td><td>19</td><td>19 + 4 = 23</td><td>10</td></tr>
+<tr><td>11</td><td>10</td><td>(no more)</td><td>23</td><td>(body not run)</td><td>10</td></tr>
+</tbody></table></div>
+        </div></div>
+        <div class="card code-card" id="annotated">
+          <header><i class="dot"></i><h2>The program, annotated</h2></header>
+          <div class="toolbar">
+            <label class="tgl"><input type="checkbox" id="tgComments"> Hide all comments <kbd>C</kbd></label>
+            <label class="tgl"><input type="checkbox" id="tgFold"> Unfold every note <kbd>F</kbd></label>
+            <label class="tgl keep"><input type="checkbox" id="tgNums" checked> Line numbers</label>
+            <button class="tgl" id="examBtn">Exam mode <kbd>E</kbd></button>
+            <button class="tgl" id="copyBtn">Copy source</button>
+            <a class="tgl" href="../../04_counters_and_accumulators/07_average_numbers.cpp" download>Download .cpp</a>
+          </div>
+          <div class="codewrap"><div class="code" id="code"></div></div>
+        </div>
+        <div class="pager">
+          <a class="prev" id="prevLink" href="../04_counters_and_accumulators/06_count_positive_negative.html"><span class="dir">Previous</span><span class="nm">06 count positive negative</span></a>
+          <a class="next" id="nextLink" href="../04_counters_and_accumulators/08_factorial.html"><span class="dir">Next</span><span class="nm">08 factorial</span></a>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<dialog id="keys">
+  <header>Keyboard shortcuts <span class="spacer"></span>
+    <button class="icon-btn" id="keysClose">&#10005;</button></header>
+  <div class="body">
+    <div class="krow"><span>Toggle all comments</span><kbd>c</kbd></div>
+    <div class="krow"><span>Fold / unfold every note</span><kbd>f</kbd></div>
+    <div class="krow"><span>Exam mode (code only)</span><kbd>e</kbd></div>
+    <div class="krow"><span>Next file</span><kbd>n</kbd></div>
+    <div class="krow"><span>Previous file</span><kbd>p</kbd></div>
+    <div class="krow"><span>Focus search</span><kbd>/</kbd></div>
+    <div class="krow"><span>Light / dark theme</span><kbd>t</kbd></div>
+    <div class="krow"><span>Open this dialog</span><kbd>?</kbd></div>
+  </div>
+</dialog>
+
+<div class="toast" id="toast"></div>
+
+<script src="../assets/data.js"></script>
+<script>window.CURRENT_FILE = window.PROJECT.files.filter(function (x) { return x.path === "04_counters_and_accumulators/07_average_numbers.cpp"; })[0];</script>
+<script>window.VIEWER_DEPTH = "../";</script>
+<script src="../assets/viewer.js"></script>
+</body>
+</html>

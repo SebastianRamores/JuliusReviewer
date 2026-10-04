@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Count by 2 (Stepping / Skipping Loops) - C++ Loops Midterm Review</title>
+<link rel="stylesheet" href="../assets/viewer.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#9881;</text></svg>">
+</head>
+<body>
+
+<div class="app">
+  <div class="scrim" id="scrim"></div>
+  <nav class="sidebar">
+    <div class="brand">
+      <div class="logo">C++</div>
+      <div>
+        <b>Loops Midterm Review</b>
+        <small>31 annotated examples</small>
+      </div>
+    </div>
+    <div class="side-tools">
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <input id="search" type="search" placeholder="Search all files and code..." autocomplete="off">
+        <button id="searchClear" title="Clear search" style="visibility:hidden">&times;</button>
+      </div>
+      <div class="progress-row">
+        <span id="progLabel">0 / 31 studied</span>
+        <span class="bar"><i id="barFill"></i></span>
+        <button class="btn-mini" id="resetBtn" hidden>reset</button>
+      </div>
+    </div>
+    <div class="nav" id="nav"></div>
+  </nav>
+
+  <main class="main">
+    <div class="topbar">
+      <button class="icon-btn nav-only" id="navToggle" title="Show file list">&#9776;</button>
+      <div class="crumb">
+        <span>01_fundamentals</span> / <b>04_count_by_2.cpp</b>
+      </div>
+      <span class="spacer"></span>
+      <button class="icon-btn" id="topKeys" title="Keyboard shortcuts (?)">?</button>
+      <button class="icon-btn" id="themeBtn" title="Toggle light / dark (t)">&#9680;</button>
+    </div>
+
+    <div class="scroll">
+      <div class="wrap">
+
+        <!-- ============ THE BARE PROGRAM (comments removed) =========== -->
+        <div class="card bare-card">
+          <header><i class="dot"></i><h2>The program, comments removed</h2><span class="badge ok">the code you would write in the exam</span><span class="spacer"></span><span class="badge">11 lines (from 108)</span></header>
+          <div class="toolbar bare-tools">
+            <span class="hint">Every explanation has been deleted. This is the complete program on its own &mdash; read it top to bottom until you can predict each line.</span>
+            <button class="tgl" id="copyBareBtn">Copy bare code</button>
+          </div>
+          <div class="codewrap bare"><div class="code" id="codeBare"></div></div>
+        </div>
+        <div class="hero">
+          <div class="path">01_fundamentals/04_count_by_2.cpp</div>
+          <h1>Count by 2 (Stepping / Skipping Loops)</h1>
+          <div class="badges">
+            <span class="badge beginner">Beginner</span>
+            <span class="badge topic">for loops - custom increment size</span>
+            <span class="badge">108 lines</span>
+            <span class="badge">3 kb</span>
+          </div>
+        </div>
+        <div class="note info"><b>Reading tip.</b> Every grey note below is a collapsible explanation. Click its header to read it, or press <b>C</b> to hide every comment at once so the program logic stands on its own.</div>
+        <div class="card teach"><header><i class="dot"></i><h2>WHAT THIS PROGRAM TEACHES</h2></header><div class="body"><ul class="bul"><li>How to change the SIZE of the step in a counting loop.</li><li><code>i += 2</code> (compound assignment) and why it is easier than <code>i = i + 2</code>.</li><li>How to count even numbers without testing each number with <code>%</code>.</li></ul></div></div>
+        <div class="card exp"><header><i class="dot"></i><h2>EXPECTED OUTPUT</h2></header><div class="body"><pre class="plain">2
+4
+6
+8
+10</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>IMPORTANT SYNTAX</h2></header><div class="body"><pre class="plain wrap">i += 2     means  i = i + 2
+i += 1     means  i = i + 1   (the same as i++)</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>STEP-BY-STEP EXPLANATION</h2></header><div class="body"><pre class="plain wrap">Start at 2 and jump 2 each time. i visits 2, 4, 6, 8, 10 and then 12.
+At 12 the test `i &lt;= 10` fails, so the loop stops.
+Because i starts at an even number and only ever grows by 2, every value
+printed is even. That is the trick for &quot;print the even numbers&quot;.
+============================================================</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>TRACE TABLE</h2></header><div class="body"><pre class="plain wrap">+-----------+------------+-----------+----------+
+| Iteration | i at start | i &lt;= 10 ? | Output   |
++-----------+------------+-----------+----------+
+|     1     |     2      |   true    |    2     |
+|     2     |     4      |   true    |    4     |
+|     3     |     6      |   true    |    6     |
+|     4     |     8      |   true    |    8     |
+|     5     |    10      |   true    |   10     |
+|     6     |    12      |   false   |  STOP    |
++-----------+------------+-----------+----------+
+
+
+
+---------------------------------------------------------------
+TWO WAYS TO PRINT THE EVEN NUMBERS 1..10 - know both!
+---------------------------------------------------------------
+WAY A (stepping - what this file does):
+for (int i = 2; i &lt;= 10; i += 2) cout &lt;&lt; i &lt;&lt; endl;
+Fast, clean. But only works if the range STARTS on a multiple.
+
+WAY B (testing every number with the modulo operator):
+for (int i = 1; i &lt;= 10; i++)
+if (i % 2 == 0) cout &lt;&lt; i &lt;&lt; endl;
+Works for any range. `%` gives the remainder after division.
+4 % 2 == 0 means 4 divides evenly by 2, so 4 is even.</pre></div></div>
+        <div class="card quiz"><header><i class="dot"></i><h2>Exam questions</h2></header><div class="body"><details class="q"><summary>Print the ODD numbers from 1 to 9.</summary><div class="a"><b>Answer:</b> for (i=1; i&lt;=9; i+=2)</div></details><details class="q"><summary>Print 0, 5, 10, ..., 50.</summary><div class="a"><b>Answer:</b> for (i=0; i&lt;=50; i+=5)</div></details><details class="q"><summary>How many iterations does 1..100 step 5 print?</summary><div class="a"><b>Answer:</b> 20</div></details><details class="q"><summary>Rewrite  i += 2  without += .</summary><div class="a"><b>Answer:</b> i = i + 2;</div></details><details class="q"><summary>What does 7 % 2 equal?</summary><div class="a"><b>Answer:</b> 1  (so 7 is odd)</div></details></div></div>
+        <div class="card trace"><header><i class="dot"></i><h2>Trace tables</h2></header><div class="body">
+          <p class="tbl-cap">TRACE TABLE</p>
+          <div class="tbl-scroll"><table class="grid"><thead><tr>
+<th>Iteration</th>
+<th>i at start</th>
+<th>i &lt;= 10 ?</th>
+<th>Output</th>
+</tr></thead><tbody>
+<tr><td>1</td><td>2</td><td>true</td><td>2</td></tr>
+<tr><td>2</td><td>4</td><td>true</td><td>4</td></tr>
+<tr><td>3</td><td>6</td><td>true</td><td>6</td></tr>
+<tr><td>4</td><td>8</td><td>true</td><td>8</td></tr>
+<tr><td>5</td><td>10</td><td>true</td><td>10</td></tr>
+<tr class="stop"><td>6</td><td>12</td><td>false</td><td>STOP</td></tr>
+</tbody></table></div>
+        </div></div>
+        <div class="card code-card" id="annotated">
+          <header><i class="dot"></i><h2>The program, annotated</h2></header>
+          <div class="toolbar">
+            <label class="tgl"><input type="checkbox" id="tgComments"> Hide all comments <kbd>C</kbd></label>
+            <label class="tgl"><input type="checkbox" id="tgFold"> Unfold every note <kbd>F</kbd></label>
+            <label class="tgl keep"><input type="checkbox" id="tgNums" checked> Line numbers</label>
+            <button class="tgl" id="examBtn">Exam mode <kbd>E</kbd></button>
+            <button class="tgl" id="copyBtn">Copy source</button>
+            <a class="tgl" href="../../01_fundamentals/04_count_by_2.cpp" download>Download .cpp</a>
+          </div>
+          <div class="codewrap"><div class="code" id="code"></div></div>
+        </div>
+        <div class="pager">
+          <a class="prev" id="prevLink" href="../01_fundamentals/03_count_down_10_to_1.html"><span class="dir">Previous</span><span class="nm">03 count down 10 to 1</span></a>
+          <a class="next" id="nextLink" href="../01_fundamentals/05_count_by_5.html"><span class="dir">Next</span><span class="nm">05 count by 5</span></a>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<dialog id="keys">
+  <header>Keyboard shortcuts <span class="spacer"></span>
+    <button class="icon-btn" id="keysClose">&#10005;</button></header>
+  <div class="body">
+    <div class="krow"><span>Toggle all comments</span><kbd>c</kbd></div>
+    <div class="krow"><span>Fold / unfold every note</span><kbd>f</kbd></div>
+    <div class="krow"><span>Exam mode (code only)</span><kbd>e</kbd></div>
+    <div class="krow"><span>Next file</span><kbd>n</kbd></div>
+    <div class="krow"><span>Previous file</span><kbd>p</kbd></div>
+    <div class="krow"><span>Focus search</span><kbd>/</kbd></div>
+    <div class="krow"><span>Light / dark theme</span><kbd>t</kbd></div>
+    <div class="krow"><span>Open this dialog</span><kbd>?</kbd></div>
+  </div>
+</dialog>
+
+<div class="toast" id="toast"></div>
+
+<script src="../assets/data.js"></script>
+<script>window.CURRENT_FILE = window.PROJECT.files.filter(function (x) { return x.path === "01_fundamentals/04_count_by_2.cpp"; })[0];</script>
+<script>window.VIEWER_DEPTH = "../";</script>
+<script src="../assets/viewer.js"></script>
+</body>
+</html>

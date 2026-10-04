@@ -1,0 +1,21 @@
+{
+  "//": "Ctrl+Shift+B builds every file in the project at once.",
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Compile all examples",
+      "type": "shell",
+      "command": "./build_check.sh",
+      "problemMatcher": [],
+      "group": { "kind": "build", "isDefault": true },
+      "presentation": { "reveal": "always", "panel": "shared" }
+    },
+    {
+      "label": "Run the current file",
+      "type": "shell",
+      "command": "g++ -std=c++17 -Wall -Wextra -o /tmp/out ${file} && /tmp/out",
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "shared" }
+    }
+  ]
+}

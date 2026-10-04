@@ -1,0 +1,13 @@
+# Compiled examples
+*.exe
+*.o
+*.out
+a.out
+
+# Build scratch space used by build_check.sh
+/tmp/
+build/
+
+# Editor noise
+.DS_Store
+Thumbs.db

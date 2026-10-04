@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Multiple Variables in and around a for Loop - C++ Loops Midterm Review</title>
+<link rel="stylesheet" href="../assets/viewer.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#9881;</text></svg>">
+</head>
+<body>
+
+<div class="app">
+  <div class="scrim" id="scrim"></div>
+  <nav class="sidebar">
+    <div class="brand">
+      <div class="logo">C++</div>
+      <div>
+        <b>Loops Midterm Review</b>
+        <small>31 annotated examples</small>
+      </div>
+    </div>
+    <div class="side-tools">
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <input id="search" type="search" placeholder="Search all files and code..." autocomplete="off">
+        <button id="searchClear" title="Clear search" style="visibility:hidden">&times;</button>
+      </div>
+      <div class="progress-row">
+        <span id="progLabel">0 / 31 studied</span>
+        <span class="bar"><i id="barFill"></i></span>
+        <button class="btn-mini" id="resetBtn" hidden>reset</button>
+      </div>
+    </div>
+    <div class="nav" id="nav"></div>
+  </nav>
+
+  <main class="main">
+    <div class="topbar">
+      <button class="icon-btn nav-only" id="navToggle" title="Show file list">&#9776;</button>
+      <div class="crumb">
+        <span>02_for_loops</span> / <b>08_multiple_variables.cpp</b>
+      </div>
+      <span class="spacer"></span>
+      <button class="icon-btn" id="topKeys" title="Keyboard shortcuts (?)">?</button>
+      <button class="icon-btn" id="themeBtn" title="Toggle light / dark (t)">&#9680;</button>
+    </div>
+
+    <div class="scroll">
+      <div class="wrap">
+
+        <!-- ============ THE BARE PROGRAM (comments removed) =========== -->
+        <div class="card bare-card">
+          <header><i class="dot"></i><h2>The program, comments removed</h2><span class="badge ok">the code you would write in the exam</span><span class="spacer"></span><span class="badge">57 lines (from 384)</span></header>
+          <div class="toolbar bare-tools">
+            <span class="hint">Every explanation has been deleted. This is the complete program on its own &mdash; read it top to bottom until you can predict each line.</span>
+            <button class="tgl" id="copyBareBtn">Copy bare code</button>
+          </div>
+          <div class="codewrap bare"><div class="code" id="codeBare"></div></div>
+        </div>
+        <div class="hero">
+          <div class="path">02_for_loops/08_multiple_variables.cpp</div>
+          <h1>Multiple Variables in and around a for Loop</h1>
+          <div class="badges">
+            <span class="badge beginner">Beginner</span>
+            <span class="badge topic">for loops - two counters, meeting counters, counters and sums</span>
+            <span class="badge">384 lines</span>
+            <span class="badge">17 kb</span>
+          </div>
+        </div>
+        <div class="note info"><b>Reading tip.</b> Every grey note below is a collapsible explanation. Click its header to read it, or press <b>C</b> to hide every comment at once so the program logic stands on its own.</div>
+        <div class="card teach"><header><i class="dot"></i><h2>WHAT THIS PROGRAM TEACHES</h2></header><div class="body"><ul class="bul"><li>How to use TWO separate counters inside one for loop.</li><li>How to make two counters walk towards each other until they meet.</li><li>How a counter (how many times) and an accumulator (running total) are</li><li>SCOPE: a variable declared inside the loop header does not exist after</li></ul></div></div>
+        <div class="card exp"><header><i class="dot"></i><h2>EXPECTED OUTPUT</h2></header><div class="body"><pre class="plain">(a) Two separate counters updated inside one loop:
+step 1: i = 2, j = 110
+step 2: i = 3, j = 120
+step 3: i = 4, j = 130
+
+(b) i and j moving towards each other:
+start  : i = 1, j = 5
+step 1 : i = 2, j = 4
+step 2 : i = 3, j = 3
+They met in the middle at 3.
+
+(c) A counter and an accumulator used together:
+add 1 -&gt; total 1
+add 2 -&gt; total 3
+add 3 -&gt; total 6
+add 4 -&gt; total 10
+add 5 -&gt; total 15
+Final total = 15
+(d) After the loop sum is still 15, because it was declared before it.</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>IMPORTANT SYNTAX</h2></header><div class="body"><pre class="plain wrap">int i = 1;              -&gt; declare a variable that outlives the loop
+for (int step = 1; ...) -&gt; the loop variable lives and dies with the loop
+sum = sum + i;          -&gt; accumulate: keep a running total
+count++;                -&gt; count: add one to a tally
+if (i &gt;= j) { ... }     -&gt; compare two variables to decide when to stop
+i = i + 1;  j = j + 1;  -&gt; two separate statements on two separate lines</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>STEP-BY-STEP EXPLANATION</h2></header><div class="body"><pre class="plain wrap">1. Part (a) declares two counters, i and j, BEFORE the loop, then updates
+both of them inside the body. Both survive the loop, so they can be
+printed afterwards.
+2. Part (b) makes i grow and j shrink. Each pass moves them one place
+closer until they are equal, which is how you find a MIDDLE point.
+3. Part (c) pairs a counter (i, which walks 1 to 5) with an accumulator
+(sum, which collects a running total). The counter decides HOW MANY
+passes happen; the accumulator decides WHAT is remembered.
+4. Part (d) proves the scope rule: sum was declared before its loop, so
+it still holds 15 afterwards. The loop variable i from part (c) is
+gone and cannot be printed - trying to do so is a compile error.
+5. NOTE ON STYLE: this file never joins two statements with a comma in
+the loop header. Every extra statement gets its own line and its own
+semicolon. That is slower to write but impossible to misread.
+============================================================</pre></div></div>
+        <div class="card teach"><header><i class="dot"></i><h2>TRACE TABLE</h2></header><div class="body"><ul class="bul"><li>-----------------------------------------------------------</li></ul></div></div>
+        <div class="card"><header><i class="dot"></i><h2>TRACE TABLE</h2></header><div class="body"><pre class="plain wrap">Part (a): i and j both move on every pass
++-----------+------------+--------+-----------+---------------+
+| Iteration | step       | i      | i update  | j and update  |
++-----------+------------+--------+-----------+---------------+
+|     1     | 1 &lt;= 3 T  | 1      | 1+1 = 2   | 100+10 = 110  |
++-----------+------------+--------+-----------+---------------+
+|     2     | 2 &lt;= 3 T  | 2      | 2+1 = 3   | 110+10 = 120  |
++-----------+------------+--------+-----------+---------------+
+|     3     | 3 &lt;= 3 T  | 3      | 3+1 = 4   | 120+10 = 130  |
++-----------+------------+--------+-----------+---------------+
+|     4     | 4 &lt;= 3 F  | 4      | no update | STOP          |
++-----------+------------+--------+-----------+---------------+
+
+Part (b): i climbs while j falls
++-----------+------------+--------+---------+-------------------+
+| Iteration | step       | i      | j       | Distance left    |
++-----------+------------+--------+---------+-------------------+
+|     1     | 1 &lt;= 2 T  | 1      | 5       | j - i = 4        |
++-----------+------------+--------+---------+-------------------+
+|     2     | 2 &lt;= 2 T  | 2      | 4       | j - i = 2        |
++-----------+------------+--------+---------+-------------------+
+|     3     | 3 &lt;= 2 F  | 3      | 3       | j - i = 0 (met)  |
++-----------+------------+--------+---------+-------------------+
+
+Part (c): the counter and the accumulator side by side
++-----------+------------+------------------+-------------------+
+| Iteration | i at start | sum BEFORE        | sum AFTER         |
++-----------+------------+------------------+-------------------+
+|     1     |     1      | 0                | 0 + 1 = 1         |
++-----------+------------+------------------+-------------------+
+|     2     |     2      | 1                | 1 + 2 = 3         |
++-----------+------------+------------------+-------------------+
+|     3     |     3      | 3                | 3 + 3 = 6         |
++-----------+------------+------------------+-------------------+
+|     4     |     4      | 6                | 6 + 4 = 10        |
++-----------+------------+------------------+-------------------+
+|     5     |     5      | 10               | 10 + 5 = 15       |
++-----------+------------+------------------+-------------------+
+|     6     |     6      | 15               | loop stops here   |
++-----------+------------+------------------+-------------------+</pre></div></div>
+        <div class="card"><header><i class="dot"></i><h2>THE 10-SECOND EXAM METHOD</h2></header><div class="body"><ol class="steps"><li>List EVERY variable the loop touches: the loop variable, any</li><li>variable updated in the body, and any accumulator.</li><li>For each one, ask: was it declared before the loop or inside it?</li><li>Anything declared before is readable afterwards. Anything</li><li>declared inside is gone. That single question answers every</li><li>scope question in the exam.</li></ol></div></div>
+        <div class="card"><header><i class="dot"></i><h2>THE COMMON TRAP IN THIS FILE</h2></header><div class="body"><pre class="plain wrap">Declaring a variable inside the header when it is needed later:
+for (int n = 1; n &lt;= 5; n++) { sum = sum + n; }
+cout &lt;&lt; n;          // error: &#x27;n&#x27; was not declared in this scope
+Fix: move `int n = 1;` above the loop and leave the header starting
+with a plain semicolon: `for (; n &lt;= 5; n++)`. A quick way to spot
+the bug before compiling is to ask, for every printed variable,
+&quot;which line declared it, and is it still inside those braces?&quot;</pre></div></div>
+        <div class="card quiz"><header><i class="dot"></i><h2>Exam questions</h2></header><div class="body"><details class="q"><summary>How many passes does part (a) make, and what is i at the end?</summary><div class="a"><b>Answer:</b> 3 passes; i = 4 and j = 130</div></details><details class="q"><summary>Which variable decides when the loop in part (a) stops?</summary><div class="a"><b>Answer:</b> <code>step</code>, the loop variable, NOT i or j</div></details><details class="q"><summary>What are i and j after the loop in part (b)?</summary><div class="a"><b>Answer:</b> i = 3 and j = 3, they met in the middle</div></details><details class="q"><summary>Why is the test <code>if (i &gt;= j)</code> needed in part (b)?</summary><div class="a"><b>Answer:</b> to find out when the two moving counters have met; one counter alone could not say it</div></details><details class="q"><summary>What is the value of sum after part (c)?</summary><div class="a"><b>Answer:</b> 15</div></details><details class="q"><summary>Why must <code>sum</code> be declared BEFORE the loop?</summary><div class="a"><b>Answer:</b> so it keeps its value between passes and can still be read after the loop ends</div></details><details class="q"><summary>Can you print <code>i</code> after the loop in part (c)?</summary><div class="a"><b>Answer:</b> no, it is destroyed at the loop&#x27;s closing brace: error: &#x27;i&#x27; was not declared in this scope</div></details><details class="q"><summary>What is an accumulator, in one sentence?</summary><div class="a"><b>Answer:</b> a variable declared before the loop that is updated inside it to collect a running result such as a total</div></details><details class="q"><summary>Is <code>for (int i = 1, sum = 0; i &lt;= 5; i++)</code> legal?</summary><div class="a"><b>Answer:</b> yes, the comma separates two declarations inside one <code>int</code>; beginners should still use one declaration per line</div></details></div></div>
+        <div class="card trace"><header><i class="dot"></i><h2>Trace tables</h2></header><div class="body">
+          <p class="tbl-cap">Part (a): i and j both move on every pass</p>
+          <div class="tbl-scroll"><table class="grid"><thead><tr>
+<th>Iteration</th>
+<th>step</th>
+<th>i</th>
+<th>i update</th>
+<th>j and update</th>
+</tr></thead><tbody>
+<tr><td>1</td><td>1 &lt;= 3 T</td><td>1</td><td>1+1 = 2</td><td>100+10 = 110</td></tr>
+<tr><td>2</td><td>2 &lt;= 3 T</td><td>2</td><td>2+1 = 3</td><td>110+10 = 120</td></tr>
+<tr><td>3</td><td>3 &lt;= 3 T</td><td>3</td><td>3+1 = 4</td><td>120+10 = 130</td></tr>
+<tr class="stop"><td>4</td><td>4 &lt;= 3 F</td><td>4</td><td>no update</td><td>STOP</td></tr>
+</tbody></table></div>
+          <p class="tbl-cap">Part (b): i climbs while j falls</p>
+          <div class="tbl-scroll"><table class="grid"><thead><tr>
+<th>Iteration</th>
+<th>step</th>
+<th>i</th>
+<th>j</th>
+<th>Distance left</th>
+</tr></thead><tbody>
+<tr><td>1</td><td>1 &lt;= 2 T</td><td>1</td><td>5</td><td>j - i = 4</td></tr>
+<tr><td>2</td><td>2 &lt;= 2 T</td><td>2</td><td>4</td><td>j - i = 2</td></tr>
+<tr><td>3</td><td>3 &lt;= 2 F</td><td>3</td><td>3</td><td>j - i = 0 (met)</td></tr>
+</tbody></table></div>
+          <p class="tbl-cap">Part (c): the counter and the accumulator side by side</p>
+          <div class="tbl-scroll"><table class="grid"><thead><tr>
+<th>Iteration</th>
+<th>i at start</th>
+<th>sum BEFORE</th>
+<th>sum AFTER</th>
+</tr></thead><tbody>
+<tr><td>1</td><td>1</td><td>0</td><td>0 + 1 = 1</td></tr>
+<tr><td>2</td><td>2</td><td>1</td><td>1 + 2 = 3</td></tr>
+<tr><td>3</td><td>3</td><td>3</td><td>3 + 3 = 6</td></tr>
+<tr><td>4</td><td>4</td><td>6</td><td>6 + 4 = 10</td></tr>
+<tr><td>5</td><td>5</td><td>10</td><td>10 + 5 = 15</td></tr>
+<tr class="stop"><td>6</td><td>6</td><td>15</td><td>loop stops here</td></tr>
+</tbody></table></div>
+        </div></div>
+        <div class="card code-card" id="annotated">
+          <header><i class="dot"></i><h2>The program, annotated</h2></header>
+          <div class="toolbar">
+            <label class="tgl"><input type="checkbox" id="tgComments"> Hide all comments <kbd>C</kbd></label>
+            <label class="tgl"><input type="checkbox" id="tgFold"> Unfold every note <kbd>F</kbd></label>
+            <label class="tgl keep"><input type="checkbox" id="tgNums" checked> Line numbers</label>
+            <button class="tgl" id="examBtn">Exam mode <kbd>E</kbd></button>
+            <button class="tgl" id="copyBtn">Copy source</button>
+            <a class="tgl" href="../../02_for_loops/08_multiple_variables.cpp" download>Download .cpp</a>
+          </div>
+          <div class="codewrap"><div class="code" id="code"></div></div>
+        </div>
+        <div class="pager">
+          <a class="prev" id="prevLink" href="../02_for_loops/07_increment_by_5.html"><span class="dir">Previous</span><span class="nm">07 increment by 5</span></a>
+          <a class="next" id="nextLink" href="../02_for_loops/09_for_loop_without_braces.html"><span class="dir">Next</span><span class="nm">09 for loop without braces</span></a>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<dialog id="keys">
+  <header>Keyboard shortcuts <span class="spacer"></span>
+    <button class="icon-btn" id="keysClose">&#10005;</button></header>
+  <div class="body">
+    <div class="krow"><span>Toggle all comments</span><kbd>c</kbd></div>
+    <div class="krow"><span>Fold / unfold every note</span><kbd>f</kbd></div>
+    <div class="krow"><span>Exam mode (code only)</span><kbd>e</kbd></div>
+    <div class="krow"><span>Next file</span><kbd>n</kbd></div>
+    <div class="krow"><span>Previous file</span><kbd>p</kbd></div>
+    <div class="krow"><span>Focus search</span><kbd>/</kbd></div>
+    <div class="krow"><span>Light / dark theme</span><kbd>t</kbd></div>
+    <div class="krow"><span>Open this dialog</span><kbd>?</kbd></div>
+  </div>
+</dialog>
+
+<div class="toast" id="toast"></div>
+
+<script src="../assets/data.js"></script>
+<script>window.CURRENT_FILE = window.PROJECT.files.filter(function (x) { return x.path === "02_for_loops/08_multiple_variables.cpp"; })[0];</script>
+<script>window.VIEWER_DEPTH = "../";</script>
+<script src="../assets/viewer.js"></script>
+</body>
+</html>
